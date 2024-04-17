@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mydoc:
+    # build:
+    #   context: .
+    image: squidfunk/mkdocs-material
+    # command:
+    #   - "mkdocs build"
+    #   - "mkdocs serve"
+    # entrypoint: /bin/sh -c "mkdocs build && mkdocs serve -a 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    volumes:
+      - ${PWD}:/docs
