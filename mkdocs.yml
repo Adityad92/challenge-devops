@@ -1,16 +1,16 @@
 site_name: Challenge DevOps
 theme:
-  name: material #windmill mkdocs, readthedocs, material
+  name: mkdocs #windmill mkdocs, readthedocs, material
 copyright: 'Challenge DevOps Team'
 site_author: 'Challenge DevOps Team'
 site_description: 'Challenge DevOps Documentation'
 use_directory_urls: false
 markdown_extensions:
-  - pymdownx.snippets
-  - pymdownx.superfences
-  - pymdownx.inlinehilite
+  # - pymdownx.snippets
+  # - pymdownx.superfences
+  # - pymdownx.inlinehilite
   - admonition
-  - pymdownx.details
+  # - pymdownx.details
   - codehilite
   - attr_list
   - md_in_html
