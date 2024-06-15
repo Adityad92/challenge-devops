@@ -21,17 +21,17 @@ nav:
     - SSG: rendering/SSG.md
     - ISR: rendering/ISR.md
   - Docker:
-    - Dockercompose:
-    - Docker networking:
-    - volumes:
-    - Environment variables:
-  - Terraform:
-    - functions:
-    - loops:
-    - variables:
-  - Kubernetes:
-  - Proxy:
-  - Golang:
-  - Bash-Scripting:
-  - Monitoring:
-  - Logging:
+    - Dockercompose: docker/docker.md
+  #   - Docker networking: rendering/concept.md
+  #   - volumes: rendering/concept.md
+  #   - Environment variables: rendering/concept.md
+  # - Terraform:
+  #   - functions: rendering/concept.md
+  #   - loops: rendering/concept.md
+  #   - variables: rendering/concept.md
+  # - Kubernetes:
+  # - Proxy:
+  # - Golang:
+  # - Bash-Scripting:
+  # - Monitoring:
+  # - Logging:
