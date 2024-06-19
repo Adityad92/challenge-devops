@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Db crud - Challenge DevOps</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Db crud";
+        var mkdocs_page_input_path = "golang/db-crud.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../index.html" class="icon icon-home"> Challenge DevOps
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index.html">About Us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Code Rendering Types</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../rendering/concept.html">concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rendering/CSR.html">CSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rendering/SSR.html">SSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rendering/SSG.html">SSG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rendering/ISR.html">ISR</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Docker</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../docker/docker.html">Dockercompose</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Golang</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="methods.html">Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="struct.html">Struct</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="file-operations.html">File operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="complex-struct.html">Complex struct</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="database-struct.html">Database struct</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="db-connection.html">Db connection</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="db-crud.html">Db crud</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="json.html">Json</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../bash/special-variable.html">Special variable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../bash/conditional-expression.html">Conditional expression</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Challenge DevOps</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Golang</li>
+      <li class="breadcrumb-item active">Db crud</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Certainly! Let's extend the previous example to include the other CRUD (Create, Read, Update, Delete) operations for the <code>users</code> collection in the MongoDB database using Gin.</p>
+<pre class="codehilite"><code class="language-go">package main
+
+import (
+    &quot;context&quot;
+    &quot;fmt&quot;
+    &quot;log&quot;
+    &quot;net/http&quot;
+
+    &quot;github.com/gin-gonic/gin&quot;
+    &quot;go.mongodb.org/mongo-driver/bson&quot;
+    &quot;go.mongodb.org/mongo-driver/bson/primitive&quot;
+    &quot;go.mongodb.org/mongo-driver/mongo&quot;
+    &quot;go.mongodb.org/mongo-driver/mongo/options&quot;
+)
+
+type User struct {
+    ID   primitive.ObjectID `json:&quot;id,omitempty&quot; bson:&quot;_id,omitempty&quot;`
+    Name string             `json:&quot;name&quot;`
+    Age  int                `json:&quot;age&quot;`
+}
+
+var collection *mongo.Collection
+
+func init() {
+    // Connect to the MongoDB database
+    clientOptions := options.Client().ApplyURI(&quot;mongodb://localhost:27017&quot;)
+    client, err := mongo.Connect(context.Background(), clientOptions)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // Access the specific database and collection
+    database := client.Database(&quot;your_database_name&quot;)
+    collection = database.Collection(&quot;users&quot;)
+}
+
+func createUserHandler(c *gin.Context) {
+    var user User
+    if err := c.ShouldBindJSON(&amp;user); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{&quot;error&quot;: err.Error()})
+        return
+    }
+
+    // Insert the user into the database
+    result, err := collection.InsertOne(context.Background(), user)
+    if err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{&quot;error&quot;: err.Error()})
+        return
+    }
+
+    // Send a success response
+    c.JSON(http.StatusCreated, gin.H{&quot;id&quot;: result.InsertedID})
+}
+
+func getUserHandler(c *gin.Context) {
+    id := c.Param(&quot;id&quot;)
+    objectID, err := primitive.ObjectIDFromHex(id)
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{&quot;error&quot;: &quot;Invalid user ID&quot;})
+        return
+    }
+
+    var user User
+    err = collection.FindOne(context.Background(), bson.M{&quot;_id&quot;: objectID}).Decode(&amp;user)
+    if err != nil {
+        if err == mongo.ErrNoDocuments {
+            c.JSON(http.StatusNotFound, gin.H{&quot;error&quot;: &quot;User not found&quot;})
+        } else {
+            c.JSON(http.StatusInternalServerError, gin.H{&quot;error&quot;: err.Error()})
+        }
+        return
+    }
+
+    c.JSON(http.StatusOK, user)
+}
+
+func updateUserHandler(c *gin.Context) {
+    id := c.Param(&quot;id&quot;)
+    objectID, err := primitive.ObjectIDFromHex(id)
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{&quot;error&quot;: &quot;Invalid user ID&quot;})
+        return
+    }
+
+    var user User
+    if err := c.ShouldBindJSON(&amp;user); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{&quot;error&quot;: err.Error()})
+        return
+    }
+
+    update := bson.M{
+        &quot;$set&quot;: bson.M{
+            &quot;name&quot;: user.Name,
+            &quot;age&quot;:  user.Age,
+        },
+    }
+
+    _, err = collection.UpdateOne(context.Background(), bson.M{&quot;_id&quot;: objectID}, update)
+    if err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{&quot;error&quot;: err.Error()})
+        return
+    }
+
+    c.JSON(http.StatusOK, gin.H{&quot;message&quot;: &quot;User updated successfully&quot;})
+}
+
+func deleteUserHandler(c *gin.Context) {
+    id := c.Param(&quot;id&quot;)
+    objectID, err := primitive.ObjectIDFromHex(id)
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{&quot;error&quot;: &quot;Invalid user ID&quot;})
+        return
+    }
+
+    _, err = collection.DeleteOne(context.Background(), bson.M{&quot;_id&quot;: objectID})
+    if err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{&quot;error&quot;: err.Error()})
+        return
+    }
+
+    c.JSON(http.StatusOK, gin.H{&quot;message&quot;: &quot;User deleted successfully&quot;})
+}
+
+func main() {
+    router := gin.Default()
+
+    router.POST(&quot;/users&quot;, createUserHandler)
+    router.GET(&quot;/users/:id&quot;, getUserHandler)
+    router.PUT(&quot;/users/:id&quot;, updateUserHandler)
+    router.DELETE(&quot;/users/:id&quot;, deleteUserHandler)
+
+    fmt.Println(&quot;Server is running on port 8080&quot;)
+    log.Fatal(router.Run(&quot;:8080&quot;))
+}
+</code></pre>
+
+<p>In this updated example, we have added the following CRUD operations:</p>
+<ol>
+<li>Create (POST <code>/users</code>):</li>
+<li>The <code>createUserHandler</code> function handles the creation of a new user.</li>
+<li>It binds the JSON request body to the <code>user</code> struct using <code>c.ShouldBindJSON(&amp;user)</code>.</li>
+<li>It inserts the user into the <code>users</code> collection using <code>collection.InsertOne()</code>.</li>
+<li>
+<p>It sends a success response with the inserted user's ID.</p>
+</li>
+<li>
+<p>Read (GET <code>/users/:id</code>):</p>
+</li>
+<li>The <code>getUserHandler</code> function handles retrieving a user by ID.</li>
+<li>It extracts the user ID from the URL parameter using <code>c.Param("id")</code>.</li>
+<li>It converts the ID string to an <code>ObjectID</code> using <code>primitive.ObjectIDFromHex()</code>.</li>
+<li>It finds the user in the <code>users</code> collection using <code>collection.FindOne()</code>.</li>
+<li>
+<p>It sends the user as a JSON response if found, or an appropriate error response.</p>
+</li>
+<li>
+<p>Update (PUT <code>/users/:id</code>):</p>
+</li>
+<li>The <code>updateUserHandler</code> function handles updating a user by ID.</li>
+<li>It extracts the user ID from the URL parameter and converts it to an <code>ObjectID</code>.</li>
+<li>It binds the JSON request body to the <code>user</code> struct.</li>
+<li>It creates an update document using <code>bson.M</code> to specify the fields to update.</li>
+<li>It updates the user in the <code>users</code> collection using <code>collection.UpdateOne()</code>.</li>
+<li>
+<p>It sends a success response indicating that the user was updated successfully.</p>
+</li>
+<li>
+<p>Delete (DELETE <code>/users/:id</code>):</p>
+</li>
+<li>The <code>deleteUserHandler</code> function handles deleting a user by ID.</li>
+<li>It extracts the user ID from the URL parameter and converts it to an <code>ObjectID</code>.</li>
+<li>It deletes the user from the <code>users</code> collection using <code>collection.DeleteOne()</code>.</li>
+<li>It sends a success response indicating that the user was deleted successfully.</li>
+</ol>
+<p>The <code>init()</code> function is used to establish a connection to the MongoDB database when the program starts. It connects to the specified MongoDB server and sets the <code>collection</code> variable to the <code>users</code> collection.</p>
+<p>The <code>main()</code> function sets up the Gin router and defines the routes for each CRUD operation, mapping them to the corresponding handler functions.</p>
+<p>You can test these endpoints using Postman by sending appropriate requests to the specified routes (<code>/users</code> for create and <code>/users/:id</code> for read, update, and delete operations) with the required JSON payloads.</p>
+<p>Remember to replace <code>"your_database_name"</code> with the actual name of your MongoDB database.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="db-connection.html" class="btn btn-neutral float-left" title="Db connection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="json.html" class="btn btn-neutral float-right" title="Json">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Challenge DevOps Team</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="db-connection.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="json.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

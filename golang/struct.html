@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Lesson 1 - Challenge DevOps</title>
+    <title>Struct - Challenge DevOps</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Lesson 1";
-        var mkdocs_page_input_path = "golang/lesson-1.md";
+        var mkdocs_page_name = "Struct";
+        var mkdocs_page_input_path = "golang/struct.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -63,11 +63,25 @@
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="lesson-1.html">Lesson 1</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="methods.html">Methods</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="struct.html">Struct</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="file-operations.html">File operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="complex-struct.html">Complex struct</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="database-struct.html">Database struct</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="db-connection.html">Db connection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="db-crud.html">Db crud</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="json.html">Json</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
@@ -92,7 +106,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
-      <li class="breadcrumb-item active">Lesson 1</li>
+      <li class="breadcrumb-item active">Struct</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -101,73 +115,80 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="variable-address-passing">Variable address passing</h2>
-<p>In this example, we have two variables, name and age, that we want to read from the terminal. Here's how it works:</p>
-<p>We use the fmt.Print() function to prompt the user to enter their name.
-We then use fmt.Scan(&amp;name) to read the user's input and store it in the name variable. The &amp; symbol is used to pass the address of the variable to the Scan() function.
-We check for any errors that may have occurred during the input reading process using the returned error value.
-We repeat the same process for the age variable, using fmt.Scan(&amp;age) to read the user's input.
-Finally, we use fmt.Printf() to print the user's name and age.
-Alternatively, you can use the fmt.Scanln() function, which reads input until a newline character is encountered:</p>
-<p>fmt.Print("Enter your name and age: ")
-_, err := fmt.Scanln(&amp;name, &amp;age)
-if err != nil {
-    fmt.Println("Error:", err)
-    return
+                <p>Sure, I'd be happy to teach you about structs in Go (Golang). A struct is a user-defined data type that allows you to group related pieces of data together in a single unit. It's similar to classes in object-oriented programming languages, but in Go, they are simpler and more lightweight.</p>
+<p>Here's an example of defining a struct in Go:</p>
+<pre class="codehilite"><code class="language-go">type Person struct {
+    Name string
+    Age  int
+    Email string
 }
-In this case, the user can enter their name and age on the same line, separated by a space, and the input will be read correctly.</p>
-<p>Remember that the Scan() and Scanln() functions return the number of successfully scanned items and an error value, so it's important to check for any errors that may have occurred during the input reading process.</p>
-<h2 id="certainly-lets-break-down-the-fmtscan-function">Certainly! Let's break down the <code>fmt.Scan()</code> function:</h2>
-<ol>
-<li>
-<p><code>fmt.Scan(a ...any) (n int, err error)</code></p>
-</li>
-<li>
-<p>This is the function signature of <code>fmt.Scan()</code>.</p>
-</li>
-<li><code>a ...any</code> is a variadic parameter, which means it can accept any number of arguments of any type.</li>
-<li>
-<p>The function returns two values:</p>
-<ul>
-<li><code>n int</code>: The number of successfully scanned items.</li>
-<li><code>err error</code>: An error value, if any, that occurred during the scanning process.</li>
-</ul>
-</li>
-<li>
-<p><code>fmt.Scan(&amp;name, &amp;age)</code></p>
-</li>
-<li>
-<p>In this example, we're passing two variables, <code>name</code> and <code>age</code>, to the <code>Scan()</code> function.</p>
-</li>
-<li>The <code>&amp;</code> symbol is used to pass the address of the variables, so that the <code>Scan()</code> function can modify their values directly.</li>
-<li>
-<p>The <code>Scan()</code> function will read the user's input and store the values in the <code>name</code> and <code>age</code> variables.</p>
-</li>
-<li>
-<p><code>_, err := fmt.Scan(&amp;name, &amp;age)</code></p>
-</li>
-<li>
-<p>Here, we're using the short variable declaration syntax (<code>:=</code>) to declare two variables: <code>_</code> and <code>err</code>.</p>
-</li>
-<li>The <code>_</code> is an unnamed variable, which is used to discard the first return value (the number of successfully scanned items).</li>
-<li>
-<p>The <code>err</code> variable is used to store the error value returned by the <code>Scan()</code> function.</p>
-</li>
-<li>
-<p><code>if err != nil { ... }</code></p>
-</li>
-<li>
-<p>After calling <code>fmt.Scan()</code>, we check if an error occurred during the scanning process.</p>
-</li>
-<li>If <code>err</code> is not <code>nil</code>, it means an error occurred, and we can handle it accordingly (e.g., print an error message, return from the function, etc.).</li>
-</ol>
-<p>In summary, the <code>fmt.Scan()</code> function is used to read user input from the terminal and store the values in the provided variables. It returns the number of successfully scanned items and an error value, which you should always check to ensure that the input was read correctly.</p>
+</code></pre>
+
+<p>In this example, we define a <code>Person</code> struct with three fields: <code>Name</code>, <code>Age</code>, and <code>Email</code>. Each field has a name and a type.</p>
+<p>To create an instance of the <code>Person</code> struct, you can use the struct literal syntax:</p>
+<pre class="codehilite"><code class="language-go">person1 := Person{
+    Name: &quot;John Doe&quot;,
+    Age:  30,
+    Email: &quot;john@example.com&quot;,
+}
+</code></pre>
+
+<p>You can also create a new struct instance using the <code>new</code> keyword, and then assign values to the fields:</p>
+<pre class="codehilite"><code class="language-go">person2 := new(Person)
+person2.Name = &quot;Jane Smith&quot;
+person2.Age = 25
+person2.Email = &quot;jane@example.com&quot;
+</code></pre>
+
+<p>Once you have a struct instance, you can access its fields using the dot notation:</p>
+<pre class="codehilite"><code class="language-go">fmt.Println(person1.Name)    // Output: John Doe
+fmt.Println(person2.Age)     // Output: 25
+</code></pre>
+
+<p>Structs in Go can also have methods associated with them, which are functions that operate on instances of the struct. Here's an example:</p>
+<pre class="codehilite"><code class="language-go">type Person struct {
+    Name string
+    Age  int
+}
+
+func (p Person) Greet() string {
+    return &quot;Hi, my name is &quot; + p.Name
+}
+
+func main() {
+    person1 := Person{
+        Name: &quot;John Doe&quot;,
+        Age:  30,
+    }
+
+    greeting := person1.Greet()
+    fmt.Println(greeting) // Output: Hi, my name is John Doe
+}
+</code></pre>
+
+<p>In this example, we define a <code>Greet</code> method on the <code>Person</code> struct. Methods are defined similarly to functions, but they take a receiver argument (<code>p Person</code> in this case) which represents the instance of the struct on which the method is called.</p>
+<p>Structs in Go can be nested, meaning that you can have a struct field that is another struct type. This allows you to create complex data structures.</p>
+<pre class="codehilite"><code class="language-go">type Address struct {
+    Street string
+    City   string
+    State  string
+}
+
+type Person struct {
+    Name    string
+    Age     int
+    Address Address
+}
+</code></pre>
+
+<p>In this example, the <code>Person</code> struct has a field <code>Address</code> which is of type <code>Address</code> (another struct).</p>
+<p>Structs are widely used in Go for representing and organizing data in a structured way. They are lightweight and efficient, making them a powerful tool for building complex applications.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../docker/docker.html" class="btn btn-neutral float-left" title="Dockercompose"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="pointers-dereferencing.html" class="btn btn-neutral float-right" title="Pointers dereferencing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="methods.html" class="btn btn-neutral float-left" title="Methods"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="file-operations.html" class="btn btn-neutral float-right" title="File operations">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -191,10 +212,10 @@ In this case, the user can enter their name and age on the same line, separated 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../docker/docker.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="methods.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="pointers-dereferencing.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="file-operations.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
