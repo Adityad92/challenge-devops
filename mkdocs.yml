@@ -32,8 +32,16 @@ nav:
   # - Kubernetes:
   # - Proxy:
   - Golang:
-      - golang/lesson-1.md
+      - golang/func-breakdown.md
       - golang/pointers-dereferencing.md
+      - golang/methods.md
+      - golang/struct.md
+      - golang/file-operations.md
+      - golang/complex-struct.md
+      - golang/database-struct.md
+      - golang/db-connection.md
+      - golang/db-crud.md
+      - golang/json.md
   - Bash-Scripting: 
       - bash/special-variable.md
       - bash/conditional-expression.md
