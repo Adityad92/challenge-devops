@@ -31,7 +31,8 @@ nav:
   #   - variables: rendering/concept.md
   # - Kubernetes:
   # - Proxy:
-  # - Golang:
-  # - Bash-Scripting:
+  # - Golang:s
+  - Bash-Scripting: 
+      - bash/special-variable.md
   # - Monitoring:
   # - Logging:
