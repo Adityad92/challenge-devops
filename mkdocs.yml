@@ -31,8 +31,11 @@ nav:
   #   - variables: rendering/concept.md
   # - Kubernetes:
   # - Proxy:
-  # - Golang:s
+  - Golang:
+      - golang/lesson-1.md
+      - golang/pointers-dereferencing.md
   - Bash-Scripting: 
       - bash/special-variable.md
+      - bash/conditional-expression.md
   # - Monitoring:
   # - Logging:
