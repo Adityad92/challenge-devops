@@ -42,8 +42,18 @@ nav:
       - golang/db-connection.md
       - golang/db-crud.md
       - golang/json.md
-  - Bash-Scripting: 
+      - projects:
+        - golang/projects/1-Simple-CLI-Tool.md
+        - golang/projects/2-Web-Server-with-Basic-API.md
+        - golang/projects/3-Simple-Monitoring-Script.md
+        - golang/projects/4-Container-Image-Builder.md
+        - golang/projects/5-Simple-Chat-Server.md
+        - golang/projects/6-Data-Processing-Script.md
+        - golang/projects/7-color-print-message.md
+  - Bash-Scripting:
       - bash/special-variable.md
       - bash/conditional-expression.md
+      - bash/jq.md
+      - bash/yq.md
   # - Monitoring:
   # - Logging:
