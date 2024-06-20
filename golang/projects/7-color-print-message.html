@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>1. https://pkg.go.dev/github.com/fatih/color#pkg-overview - Challenge DevOps</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1. https://pkg.go.dev/github.com/fatih/color#pkg-overview";
+        var mkdocs_page_input_path = "golang/projects/7-color-print-message.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> Challenge DevOps
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">About Us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Code Rendering Types</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/concept.html">concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/CSR.html">CSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSR.html">SSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSG.html">SSG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/ISR.html">ISR</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Docker</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../docker/docker.html">Dockercompose</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Golang</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../func-breakdown.html">Func breakdown</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pointers-dereferencing.html">Pointers dereferencing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../struct.html">Struct</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file-operations.html">File operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../complex-struct.html">Complex struct</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../database-struct.html">Database struct</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../db-connection.html">Db connection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../db-crud.html">Db crud</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../json.html">Json</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">projects</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="3-Simple-Monitoring-Script.html">3 Simple Monitoring Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="4-Container-Image-Builder.html">4 Container Image Builder</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="5-Simple-Chat-Server.html">5 Simple Chat Server</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="6-Data-Processing-Script.html">6 Data Processing Script</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="7-color-print-message.html">1. https://pkg.go.dev/github.com/fatih/color#pkg-overview</a>
+    <ul class="current">
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../bash/special-variable.html">Special variable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../bash/conditional-expression.html">Conditional expression</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../bash/jq.html">Jq</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../bash/yq.html">Yq</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Challenge DevOps</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Golang</li>
+          <li class="breadcrumb-item">projects</li>
+      <li class="breadcrumb-item active">1. https://pkg.go.dev/github.com/fatih/color#pkg-overview</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-httpspkggodevgithubcomfatihcolorpkg-overview">1. https://pkg.go.dev/github.com/fatih/color#pkg-overview</h1>
+<p>// you can use github.com/fatih/color package as well</p>
+<pre class="codehilite"><code class="language-golang">    color.Green(&quot;Bright green color.&quot;)
+</code></pre>
+
+<h1 id="2-to-achieve-the-same-functionality-in-go-you-can-use-the-fmt-package-and-ansi-escape-codes-for-color-formatting-heres-the-equivalent-code-in-go">2. To achieve the same functionality in Go, you can use the <code>fmt</code> package and ANSI escape codes for color formatting. Here's the equivalent code in Go:</h1>
+<pre class="codehilite"><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func color(colorName string) {
+    switch colorName {
+    case &quot;red&quot;:
+        fmt.Print(&quot;\033[31m&quot;)
+    case &quot;green&quot;:
+        fmt.Print(&quot;\033[32m&quot;)
+    case &quot;yellow&quot;:
+        fmt.Print(&quot;\033[33m&quot;)
+    default:
+        fmt.Print(&quot;\033[0m&quot;)
+    }
+}
+
+func main() {
+    color(&quot;green&quot;)
+    fmt.Println(&quot;hello&quot;)
+    color(&quot;reset&quot;)
+}
+</code></pre>
+
+<p>Explanation:
+- The <code>color</code> function takes a <code>colorName</code> string parameter and uses a <code>switch</code> statement to determine the corresponding ANSI escape code for the color.
+- The ANSI escape codes are used to set the color of the text in the terminal:
+  - <code>\033[31m</code> sets the color to red.
+  - <code>\033[32m</code> sets the color to green.
+  - <code>\033[33m</code> sets the color to yellow.
+  - <code>\033[0m</code> resets the color to the default.
+- In the <code>main</code> function, we call the <code>color</code> function with the desired color name before printing the text.
+- After printing the colored text, we call <code>color("reset")</code> to reset the color to the default.</p>
+<p>Note: The ANSI escape codes used in this code are widely supported by most modern terminals. However, if you're using an older terminal or a terminal that doesn't support ANSI escape codes, the colors may not be displayed correctly.</p>
+<p>When you run this Go code, it will output "hello" in green color in the terminal.</p>
+<h2 id="the-ansi-escape-codes-used-for-coloring-the-text-in-the-terminal-are-part-of-the-ansi-american-national-standards-institute-standard-these-codes-are-not-specific-to-go-but-rather-a-widely-adopted-standard-for-controlling-text-formatting-colors-and-other-attributes-in-command-line-interfaces">The ANSI escape codes used for coloring the text in the terminal are part of the ANSI (American National Standards Institute) standard. These codes are not specific to Go, but rather a widely adopted standard for controlling text formatting, colors, and other attributes in command-line interfaces.</h2>
+<p>While there isn't a single official documentation for ANSI escape codes, you can find information about them from various sources. Here are a few links that provide detailed explanations and references for ANSI escape codes:</p>
+<ol>
+<li>
+<p>Wikipedia - ANSI escape code: 
+   https://en.wikipedia.org/wiki/ANSI_escape_code</p>
+</li>
+<li>
+<p>ASCII Table - ANSI Escape sequences:
+   https://ascii-table.com/ansi-escape-sequences.php</p>
+</li>
+<li>
+<p>Bash Hackers Wiki - ANSI Escape Sequences:
+   https://wiki.bash-hackers.org/scripting/terminalcodes</p>
+</li>
+<li>
+<p>Xterm Control Sequences:
+   https://invisible-island.net/xterm/ctlseqs/ctlseqs.html</p>
+</li>
+<li>
+<p>ANSI Escape Code - Colored Text:
+   https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797</p>
+</li>
+</ol>
+<p>These resources provide detailed information about ANSI escape codes, including the codes for different colors, text styles (bold, italic, underline), cursor movement, and more.</p>
+<p>Keep in mind that while ANSI escape codes are widely supported, their interpretation may vary slightly across different terminals and operating systems. It's always a good idea to test your code in the target environment to ensure the desired formatting is displayed correctly.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="6-Data-Processing-Script.html" class="btn btn-neutral float-left" title="6 Data Processing Script"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../bash/special-variable.html" class="btn btn-neutral float-right" title="Special variable">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Challenge DevOps Team</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="6-Data-Processing-Script.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../bash/special-variable.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
