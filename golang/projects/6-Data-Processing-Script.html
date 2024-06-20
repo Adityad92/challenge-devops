@@ -63,25 +63,31 @@
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../func-breakdown.html">Func breakdown</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../pointers-dereferencing.html">Pointers dereferencing</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../struct.html">Struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../file-operations.html">File operations</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../complex-struct.html">Complex struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../database-struct.html">Database struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-connection.html">Db connection</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-crud.html">Db crud</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../json.html">Json</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/yaml.html">Yaml</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">projects</a>
     <ul class="current">
@@ -104,13 +110,33 @@
               </ul>
               <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/special-variable.html">Special variable</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/conditional-expression.html">Conditional expression</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/jq.html">Jq</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/yq.html">Yq</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">https://www.squash.io/adding-color-to-bash-scripts-in-linux/</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -148,6 +174,181 @@
 </li>
 <li><strong>Learning:</strong>  This project introduces you to file I/O, data parsing, working with databases (e.g., MySQL, PostgreSQL), and data manipulation.</li>
 </ul>
+<p>Certainly! Let's write a Go script that processes data from a CSV file, performs transformations, and outputs the processed data to a new file. Here's an example implementation:</p>
+<pre class="codehilite"><code class="language-go">package main
+
+import (
+    &quot;encoding/csv&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+    &quot;strconv&quot;
+)
+
+type Record struct {
+    Name  string
+    Age   int
+    City  string
+    Score float64
+}
+
+func main() {
+    // Open the input CSV file
+    inputFile, err := os.Open(&quot;input.csv&quot;)
+    if err != nil {
+        fmt.Println(&quot;Error opening input file:&quot;, err)
+        return
+    }
+    defer inputFile.Close()
+
+    // Create a new CSV reader
+    reader := csv.NewReader(inputFile)
+
+    // Read all records from the CSV file
+    records, err := reader.ReadAll()
+    if err != nil {
+        fmt.Println(&quot;Error reading CSV records:&quot;, err)
+        return
+    }
+
+    // Parse and process the records
+    var processedRecords []Record
+    for _, record := range records[1:] { // Skip the header row
+        age, _ := strconv.Atoi(record[1])
+        score, _ := strconv.ParseFloat(record[3], 64)
+
+        if age &gt;= 18 &amp;&amp; score &gt;= 75.0 {
+            processedRecord := Record{
+                Name:  record[0],
+                Age:   age,
+                City:  record[2],
+                Score: score,
+            }
+            processedRecords = append(processedRecords, processedRecord)
+        }
+    }
+
+    // Create the output CSV file
+    outputFile, err := os.Create(&quot;output.csv&quot;)
+    if err != nil {
+        fmt.Println(&quot;Error creating output file:&quot;, err)
+        return
+    }
+    defer outputFile.Close()
+
+    // Create a new CSV writer
+    writer := csv.NewWriter(outputFile)
+    defer writer.Flush()
+
+    // Write the header row to the output file
+    header := []string{&quot;Name&quot;, &quot;Age&quot;, &quot;City&quot;, &quot;Score&quot;}
+    writer.Write(header)
+
+    // Write the processed records to the output file
+    for _, record := range processedRecords {
+        row := []string{
+            record.Name,
+            strconv.Itoa(record.Age),
+            record.City,
+            fmt.Sprintf(&quot;%.2f&quot;, record.Score),
+        }
+        writer.Write(row)
+    }
+
+    fmt.Println(&quot;Data processing completed. Output file generated.&quot;)
+}
+</code></pre>
+
+<p>Let's go through the code:</p>
+<ol>
+<li>
+<p>We define a <code>Record</code> struct that represents a single record with fields for name, age, city, and score.</p>
+</li>
+<li>
+<p>In the <code>main</code> function, we open the input CSV file named "input.csv" using <code>os.Open</code>. We defer the closing of the file to ensure it's properly closed.</p>
+</li>
+<li>
+<p>We create a new CSV reader using <code>csv.NewReader</code> to read the input file.</p>
+</li>
+<li>
+<p>We read all the records from the CSV file using <code>reader.ReadAll()</code>. This returns a 2D slice of strings representing the CSV data.</p>
+</li>
+<li>
+<p>We iterate over the records (skipping the header row) and parse the relevant fields. We convert the age to an integer and the score to a float64.</p>
+</li>
+<li>
+<p>We apply a filtering condition to the records. In this example, we only include records where the age is greater than or equal to 18 and the score is greater than or equal to 75.0.</p>
+</li>
+<li>
+<p>For each record that meets the filtering criteria, we create a new <code>Record</code> instance and append it to the <code>processedRecords</code> slice.</p>
+</li>
+<li>
+<p>We create a new output CSV file named "output.csv" using <code>os.Create</code>. We defer the closing of the file.</p>
+</li>
+<li>
+<p>We create a new CSV writer using <code>csv.NewWriter</code> to write the processed data to the output file.</p>
+</li>
+<li>
+<p>We write the header row to the output file using <code>writer.Write</code>.</p>
+</li>
+<li>
+<p>We iterate over the <code>processedRecords</code> slice and write each record as a row to the output file. We convert the age back to a string and format the score with two decimal places.</p>
+</li>
+<li>
+<p>Finally, we print a message indicating that the data processing is completed and the output file is generated.</p>
+</li>
+</ol>
+<p>To use this script:</p>
+<ol>
+<li>
+<p>Save the code in a file named <code>main.go</code>.</p>
+</li>
+<li>
+<p>Create an input CSV file named "input.csv" in the same directory as the script. The input file should have the following format:</p>
+</li>
+</ol>
+<pre class="codehilite"><code class="language-csv">Name,Age,City,Score
+John Doe,25,New York,85.5
+Jane Smith,17,London,92.0
+Alice Johnson,30,Paris,68.2
+Bob Williams,22,Tokyo,78.9
+</code></pre>
+
+<ol>
+<li>Run the script using the following command:</li>
+</ol>
+<pre class="codehilite"><code>go run main.go
+</code></pre>
+
+<ol>
+<li>The script will process the data from the input CSV file, apply the specified transformations (filtering records based on age and score), and generate an output CSV file named "output.csv" with the processed data.</li>
+</ol>
+<p>The output file will have the following format:</p>
+<pre class="codehilite"><code class="language-csv">Name,Age,City,Score
+John Doe,25,New York,85.50
+Bob Williams,22,Tokyo,78.90
+</code></pre>
+
+<p>This script demonstrates how to process data from a CSV file, perform transformations, and output the processed data to a new file. You can modify the script to handle different file formats (e.g., JSON), apply different transformations, or store the processed data in a database instead of a file.</p>
+<p>Remember to handle errors appropriately and provide meaningful error messages to the user.</p>
+<p>Here are a few additional points to consider:</p>
+<ul>
+<li>
+<p>If the input file is large, you might want to process the records in chunks or use a buffered reader to avoid loading the entire file into memory at once.</p>
+</li>
+<li>
+<p>You can extend the script to accept command-line arguments for specifying the input and output file paths, making it more flexible and reusable.</p>
+</li>
+<li>
+<p>If you need to perform more complex transformations or aggregations, you can utilize Go's data manipulation libraries or write custom functions to handle the specific requirements.</p>
+</li>
+<li>
+<p>When working with databases, you'll need to use the appropriate database driver and establish a connection to the database. You can then use SQL queries or an ORM (Object-Relational Mapping) library to interact with the database and store the processed data.</p>
+</li>
+<li>
+<p>It's important to validate and sanitize the input data to ensure data integrity and prevent security vulnerabilities, especially when dealing with user-provided data.</p>
+</li>
+</ul>
+<p>Feel free to customize and expand upon this script based on your specific data processing requirements.</p>
               
             </div>
           </div><footer>

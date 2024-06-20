@@ -63,25 +63,31 @@
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../func-breakdown.html">Func breakdown</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../pointers-dereferencing.html">Pointers dereferencing</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../struct.html">Struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../file-operations.html">File operations</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../complex-struct.html">Complex struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../database-struct.html">Database struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-connection.html">Db connection</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-crud.html">Db crud</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../json.html">Json</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/yaml.html">Yaml</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">projects</a>
     <ul class="current">
@@ -104,13 +110,33 @@
               </ul>
               <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/special-variable.html">Special variable</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/conditional-expression.html">Conditional expression</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/jq.html">Jq</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/yq.html">Yq</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">https://www.squash.io/adding-color-to-bash-scripts-in-linux/</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -147,6 +173,112 @@
 </li>
 <li><strong>Learning:</strong>  You'll learn how to work with web frameworks (e.g., Gin, Echo), handle HTTP requests and responses, and create basic APIs.</li>
 </ul>
+<p>Certainly! Let's build a simple web server with a basic REST API in Go. Here's an example:</p>
+<pre class="codehilite"><code class="language-go">package main
+
+import (
+    &quot;encoding/json&quot;
+    &quot;fmt&quot;
+    &quot;log&quot;
+    &quot;net/http&quot;
+    &quot;strconv&quot;
+)
+
+type Person struct {
+    ID   int    `json:&quot;id&quot;`
+    Name string `json:&quot;name&quot;`
+    Age  int    `json:&quot;age&quot;`
+}
+
+var people []Person
+
+func main() {
+    // Serve static files from the &quot;static&quot; directory
+    http.Handle(&quot;/&quot;, http.FileServer(http.Dir(&quot;static&quot;)))
+
+    // API endpoints
+    http.HandleFunc(&quot;/api/people&quot;, getPeople)
+    http.HandleFunc(&quot;/api/people/&quot;, getPersonByID)
+    http.HandleFunc(&quot;/api/calculate&quot;, calculate)
+
+    fmt.Println(&quot;Server is running on http://localhost:8080&quot;)
+    log.Fatal(http.ListenAndServe(&quot;:8080&quot;, nil))
+}
+
+func getPeople(w http.ResponseWriter, r *http.Request) {
+    json.NewEncoder(w).Encode(people)
+}
+
+func getPersonByID(w http.ResponseWriter, r *http.Request) {
+    id, err := strconv.Atoi(r.URL.Path[len(&quot;/api/people/&quot;):])
+    if err != nil {
+        http.Error(w, &quot;Invalid ID&quot;, http.StatusBadRequest)
+        return
+    }
+
+    for _, person := range people {
+        if person.ID == id {
+            json.NewEncoder(w).Encode(person)
+            return
+        }
+    }
+
+    http.Error(w, &quot;Person not found&quot;, http.StatusNotFound)
+}
+
+func calculate(w http.ResponseWriter, r *http.Request) {
+    num1, err := strconv.Atoi(r.URL.Query().Get(&quot;num1&quot;))
+    if err != nil {
+        http.Error(w, &quot;Invalid number&quot;, http.StatusBadRequest)
+        return
+    }
+
+    num2, err := strconv.Atoi(r.URL.Query().Get(&quot;num2&quot;))
+    if err != nil {
+        http.Error(w, &quot;Invalid number&quot;, http.StatusBadRequest)
+        return
+    }
+
+    result := num1 + num2
+    fmt.Fprintf(w, &quot;Result: %d&quot;, result)
+}
+</code></pre>
+
+<p>Let's go through the code:</p>
+<ol>
+<li>
+<p>We define a <code>Person</code> struct to represent a person with an ID, name, and age.</p>
+</li>
+<li>
+<p>In the <code>main</code> function, we set up the server and define the routes:</p>
+</li>
+<li>We use <code>http.Handle("/", http.FileServer(http.Dir("static")))</code> to serve static files from the "static" directory.</li>
+<li>
+<p>We define API endpoints using <code>http.HandleFunc</code> for getting all people, getting a person by ID, and performing a calculation.</p>
+</li>
+<li>
+<p>The <code>getPeople</code> function is an API endpoint that returns all the people as JSON.</p>
+</li>
+<li>
+<p>The <code>getPersonByID</code> function is an API endpoint that retrieves a person by their ID. It extracts the ID from the URL path, searches for the person in the <code>people</code> slice, and returns the person as JSON if found. If the person is not found, it returns a "Person not found" error with a 404 status code.</p>
+</li>
+<li>
+<p>The <code>calculate</code> function is an API endpoint that performs a simple calculation. It retrieves two numbers from the URL query parameters, adds them together, and returns the result.</p>
+</li>
+</ol>
+<p>To run this code:</p>
+<ol>
+<li>Create a directory named "static" in the same directory as your Go file.</li>
+<li>Place your static files (HTML, CSS, JavaScript) inside the "static" directory.</li>
+<li>Run the Go file using the command: <code>go run main.go</code>.</li>
+<li>Open a web browser and visit <code>http://localhost:8080</code> to access the static files.</li>
+<li>To test the API endpoints, you can use tools like cURL or Postman, or make requests from your JavaScript code.</li>
+</ol>
+<p>For example:
+- To get all people: <code>http://localhost:8080/api/people</code>
+- To get a person by ID: <code>http://localhost:8080/api/people/1</code>
+- To perform a calculation: <code>http://localhost:8080/api/calculate?num1=10&amp;num2=5</code></p>
+<p>Remember to populate the <code>people</code> slice with</p>
               
             </div>
           </div><footer>

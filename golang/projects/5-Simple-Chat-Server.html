@@ -63,25 +63,31 @@
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../func-breakdown.html">Func breakdown</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../pointers-dereferencing.html">Pointers dereferencing</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../struct.html">Struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../file-operations.html">File operations</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../complex-struct.html">Complex struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../database-struct.html">Database struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-connection.html">Db connection</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-crud.html">Db crud</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../json.html">Json</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/yaml.html">Yaml</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">projects</a>
     <ul class="current">
@@ -104,13 +110,33 @@
               </ul>
               <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/special-variable.html">Special variable</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/conditional-expression.html">Conditional expression</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/jq.html">Jq</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/yq.html">Yq</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">https://www.squash.io/adding-color-to-bash-scripts-in-linux/</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -148,6 +174,137 @@
 </li>
 <li><strong>Learning:</strong>  You'll learn about network programming, handling multiple connections, and using Go's goroutines and channels for concurrency.</li>
 </ul>
+<p>Certainly! Let's build a basic chat server in Go that utilizes concurrency features. Here's an example implementation:</p>
+<pre class="codehilite"><code class="language-go">package main
+
+import (
+    &quot;bufio&quot;
+    &quot;fmt&quot;
+    &quot;net&quot;
+    &quot;strings&quot;
+)
+
+type client struct {
+    conn net.Conn
+    name string
+    ch   chan&lt;- string
+}
+
+var (
+    entering = make(chan client)
+    leaving  = make(chan client)
+    messages = make(chan string)
+)
+
+func main() {
+    listener, err := net.Listen(&quot;tcp&quot;, &quot;:8080&quot;)
+    if err != nil {
+        fmt.Println(&quot;Error starting the server:&quot;, err)
+        return
+    }
+    defer listener.Close()
+
+    go broadcaster()
+
+    fmt.Println(&quot;Chat server started. Listening on port 8080...&quot;)
+
+    for {
+        conn, err := listener.Accept()
+        if err != nil {
+            fmt.Println(&quot;Error accepting connection:&quot;, err)
+            continue
+        }
+
+        go handleConnection(conn)
+    }
+}
+
+func broadcaster() {
+    clients := make(map[client]bool)
+
+    for {
+        select {
+        case msg := &lt;-messages:
+            for cli := range clients {
+                cli.ch &lt;- msg
+            }
+
+        case cli := &lt;-entering:
+            clients[cli] = true
+            var names []string
+            for c := range clients {
+                names = append(names, c.name)
+            }
+            cli.ch &lt;- fmt.Sprintf(&quot;Current users: %s&quot;, strings.Join(names, &quot;, &quot;))
+
+        case cli := &lt;-leaving:
+            delete(clients, cli)
+            close(cli.ch)
+        }
+    }
+}
+
+func handleConnection(conn net.Conn) {
+    ch := make(chan string)
+    go clientWriter(conn, ch)
+
+    who := conn.RemoteAddr().String()
+    cli := client{conn, who, ch}
+    entering &lt;- cli
+
+    input := bufio.NewScanner(conn)
+    for input.Scan() {
+        messages &lt;- fmt.Sprintf(&quot;%s: %s&quot;, cli.name, input.Text())
+    }
+
+    leaving &lt;- cli
+    conn.Close()
+}
+
+func clientWriter(conn net.Conn, ch &lt;-chan string) {
+    for msg := range ch {
+        fmt.Fprintln(conn, msg)
+    }
+}
+</code></pre>
+
+<p>Let's go through the code:</p>
+<ol>
+<li>
+<p>We define a <code>client</code> struct that represents a connected client. It contains the client's connection (<code>net.Conn</code>), name (initially set to the remote address), and a channel for sending messages to the client.</p>
+</li>
+<li>
+<p>We create three channels: <code>entering</code> for new clients joining, <code>leaving</code> for clients leaving, and <code>messages</code> for broadcasting messages to all clients.</p>
+</li>
+<li>
+<p>In the <code>main</code> function, we start a TCP server listening on port 8080. We launch a goroutine for the <code>broadcaster</code> function to handle message broadcasting.</p>
+</li>
+<li>
+<p>In the <code>broadcaster</code> function, we maintain a map of connected clients. We use a <code>select</code> statement to handle different events:</p>
+</li>
+<li>When a message is received on the <code>messages</code> channel, we iterate over all connected clients and send the message to their respective channels.</li>
+<li>When a new client joins (received on the <code>entering</code> channel), we add the client to the map and send a message to the client with the list of currently connected users.</li>
+<li>
+<p>When a client leaves (received on the <code>leaving</code> channel), we remove the client from the map and close their channel.</p>
+</li>
+<li>
+<p>The <code>handleConnection</code> function is called for each client connection. It creates a new channel for the client and starts a goroutine for the <code>clientWriter</code> function to handle sending messages to the client.</p>
+</li>
+<li>
+<p>In the <code>handleConnection</code> function, we read input from the client using a <code>bufio.Scanner</code>. Each line of input is sent as a message to the <code>messages</code> channel, prefixed with the client's name.</p>
+</li>
+<li>
+<p>When the client disconnects, we send the client to the <code>leaving</code> channel and close the connection.</p>
+</li>
+<li>
+<p>The <code>clientWriter</code> function receives messages from the client's channel and writes them to the client's connection.</p>
+</li>
+</ol>
+<p>To run the chat server, save the code in a file named <code>main.go</code> and execute the following command:</p>
+<pre class="codehilite"><code>go run main.go
+</code></pre>
+
+<p>The chat server will start listening on port 8080. Clients can connect to</p>
               
             </div>
           </div><footer>

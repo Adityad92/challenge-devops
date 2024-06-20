@@ -63,25 +63,31 @@
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../func-breakdown.html">Func breakdown</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../pointers-dereferencing.html">Pointers dereferencing</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../struct.html">Struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../file-operations.html">File operations</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../complex-struct.html">Complex struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../database-struct.html">Database struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-connection.html">Db connection</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-crud.html">Db crud</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../json.html">Json</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/yaml.html">Yaml</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">projects</a>
     <ul class="current">
@@ -104,13 +110,33 @@
               </ul>
               <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/special-variable.html">Special variable</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/conditional-expression.html">Conditional expression</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/jq.html">Jq</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/yq.html">Yq</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">https://www.squash.io/adding-color-to-bash-scripts-in-linux/</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -148,6 +174,181 @@
 </li>
 <li><strong>Learning:</strong>  You'll learn about Docker and containerization, working with Dockerfiles, and automating container image creation.</li>
 </ul>
+<p>Certainly! Let's build a tool in Go that creates Docker images for your application. Here's an example implementation:</p>
+<pre class="codehilite"><code class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;io/ioutil&quot;
+    &quot;log&quot;
+    &quot;os&quot;
+    &quot;os/exec&quot;
+    &quot;path/filepath&quot;
+)
+
+func main() {
+    // Check if the required arguments are provided
+    if len(os.Args) &lt; 4 {
+        fmt.Println(&quot;Usage: go run main.go &lt;app-directory&gt; &lt;base-image&gt; &lt;image-name&gt;&quot;)
+        os.Exit(1)
+    }
+
+    // Get the command-line arguments
+    appDir := os.Args[1]
+    baseImage := os.Args[2]
+    imageName := os.Args[3]
+
+    // Create a temporary directory for the Dockerfile
+    tempDir, err := ioutil.TempDir(&quot;&quot;, &quot;docker-build&quot;)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer os.RemoveAll(tempDir)
+
+    // Create the Dockerfile content
+    dockerfile := fmt.Sprintf(`
+FROM %s
+WORKDIR /app
+COPY . .
+RUN go build -o main .
+CMD [&quot;./main&quot;]
+`, baseImage)
+
+    // Write the Dockerfile to the temporary directory
+    dockerfilePath := filepath.Join(tempDir, &quot;Dockerfile&quot;)
+    err = ioutil.WriteFile(dockerfilePath, []byte(dockerfile), 0644)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // Copy the application code and dependencies to the temporary directory
+    err = copyDirectory(appDir, tempDir)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // Build the Docker image
+    buildCmd := exec.Command(&quot;docker&quot;, &quot;build&quot;, &quot;-t&quot;, imageName, tempDir)
+    buildCmd.Stdout = os.Stdout
+    buildCmd.Stderr = os.Stderr
+    err = buildCmd.Run()
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Printf(&quot;Docker image '%s' built successfully.\n&quot;, imageName)
+
+    // Push the Docker image to a registry (optional)
+    pushCmd := exec.Command(&quot;docker&quot;, &quot;push&quot;, imageName)
+    pushCmd.Stdout = os.Stdout
+    pushCmd.Stderr = os.Stderr
+    err = pushCmd.Run()
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Printf(&quot;Docker image '%s' pushed to the registry.\n&quot;, imageName)
+}
+
+func copyDirectory(src, dst string) error {
+    // Get the list of files and directories in the source directory
+    entries, err := ioutil.ReadDir(src)
+    if err != nil {
+        return err
+    }
+
+    // Create the destination directory if it doesn't exist
+    err = os.MkdirAll(dst, 0755)
+    if err != nil {
+        return err
+    }
+
+    // Copy each file and directory recursively
+    for _, entry := range entries {
+        srcPath := filepath.Join(src, entry.Name())
+        dstPath := filepath.Join(dst, entry.Name())
+
+        if entry.IsDir() {
+            err = copyDirectory(srcPath, dstPath)
+            if err != nil {
+                return err
+            }
+        } else {
+            err = copyFile(srcPath, dstPath)
+            if err != nil {
+                return err
+            }
+        }
+    }
+
+    return nil
+}
+
+func copyFile(src, dst string) error {
+    // Read the source file
+    data, err := ioutil.ReadFile(src)
+    if err != nil {
+        return err
+    }
+
+    // Write the data to the destination file
+    err = ioutil.WriteFile(dst, data, 0644)
+    if err != nil {
+        return err
+    }
+
+    return nil
+}
+</code></pre>
+
+<p>To use this tool:</p>
+<ol>
+<li>
+<p>Save the code in a file named <code>main.go</code>.</p>
+</li>
+<li>
+<p>Open a terminal and navigate to the directory containing <code>main.go</code>.</p>
+</li>
+<li>
+<p>Run the following command:</p>
+</li>
+</ol>
+<p><code>go run main.go &lt;app-directory&gt; &lt;base-image&gt; &lt;image-name&gt;</code></p>
+<p>Replace <code>&lt;app-directory&gt;</code> with the path to the directory containing your application code and dependencies, <code>&lt;base-image&gt;</code> with the desired base image (e.g., <code>golang:latest</code>), and <code>&lt;image-name&gt;</code> with the desired name for your Docker image (e.g., <code>myapp:v1</code>).</p>
+<p>Here's how the tool works:</p>
+<ol>
+<li>
+<p>It checks if the required command-line arguments are provided. If not, it displays the usage instructions and exits.</p>
+</li>
+<li>
+<p>It creates a temporary directory to store the generated Dockerfile and the copied application code.</p>
+</li>
+<li>
+<p>It generates the Dockerfile content based on the provided base image. The Dockerfile sets the working directory to <code>/app</code>, copies the application code and dependencies, builds the Go application, and sets the default command to run the built executable.</p>
+</li>
+<li>
+<p>It writes the generated Dockerfile to the temporary directory.</p>
+</li>
+<li>
+<p>It copies the application code and dependencies from the specified <code>&lt;app-directory&gt;</code> to the temporary directory using the <code>copyDirectory</code> function.</p>
+</li>
+<li>
+<p>It executes the <code>docker build</code> command to build the Docker image using the generated Dockerfile and the copied application code. The image is tagged with the provided <code>&lt;image-name&gt;</code>.</p>
+</li>
+<li>
+<p>If the build is successful, it displays a success message.</p>
+</li>
+<li>
+<p>Optionally, it executes the <code>docker push</code> command to push the built Docker image to a registry. Make sure you are logged in to the registry before running the tool.</p>
+</li>
+<li>
+<p>If the push is successful, it displays a success message.</p>
+</li>
+</ol>
+<p>The <code>copyDirectory</code> function recursively copies all files and directories from the source directory to the destination directory. It uses the <code>copyFile</code> function to copy individual files.</p>
+<p>Note: Make sure you have Docker installed and running on your machine before running this tool.</p>
+<p>This tool provides a basic framework for creating Docker images for your Go application. You can extend and customize it based on your specific requirements, such as adding more configuration options, handling different base images, or integrating with CI/CD pipelines.</p>
+<p>Remember to handle errors appropriately and provide meaningful error messages to the user.</p>
               
             </div>
           </div><footer>

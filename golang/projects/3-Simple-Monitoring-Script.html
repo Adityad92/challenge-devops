@@ -63,25 +63,31 @@
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../func-breakdown.html">Func breakdown</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../pointers-dereferencing.html">Pointers dereferencing</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../struct.html">Struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../file-operations.html">File operations</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../complex-struct.html">Complex struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../database-struct.html">Database struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-connection.html">Db connection</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-crud.html">Db crud</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../json.html">Json</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/yaml.html">Yaml</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">projects</a>
     <ul class="current">
@@ -104,13 +110,33 @@
               </ul>
               <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/special-variable.html">Special variable</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/conditional-expression.html">Conditional expression</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/jq.html">Jq</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/yq.html">Yq</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">https://www.squash.io/adding-color-to-bash-scripts-in-linux/</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -143,6 +169,101 @@
 <li><strong>Project:</strong> Create a script that monitors a system metric (e.g., CPU usage, disk space) and sends alerts if it exceeds a threshold.</li>
 <li><strong>Learning:</strong>  This project covers working with system metrics, setting up timers, and sending notifications (e.g., email, Slack).</li>
 </ul>
+<p>Certainly! Here's an example of a Go script that monitors CPU usage and sends alerts if it exceeds a specified threshold:</p>
+<pre class="codehilite"><code class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;log&quot;
+    &quot;os&quot;
+    &quot;time&quot;
+
+    &quot;github.com/shirou/gopsutil/cpu&quot;
+)
+
+func main() {
+    // Set the CPU usage threshold (in percentage)
+    threshold := 80.0
+
+    // Set the monitoring interval (in seconds)
+    interval := 5
+
+    // Set the email configuration
+    from := &quot;sender@example.com&quot;
+    to := &quot;recipient@example.com&quot;
+    subject := &quot;High CPU Usage Alert&quot;
+    smtpServer := &quot;smtp.example.com&quot;
+    smtpPort := 587
+    smtpUsername := &quot;your_username&quot;
+    smtpPassword := &quot;your_password&quot;
+
+    for {
+        // Get the current CPU usage
+        cpuPercent, err := cpu.Percent(0, false)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Check if the CPU usage exceeds the threshold
+        if cpuPercent[0] &gt; threshold {
+            // Send an email alert
+            message := fmt.Sprintf(&quot;CPU usage is %.2f%%. Threshold exceeded!&quot;, cpuPercent[0])
+            err := sendEmail(from, to, subject, message, smtpServer, smtpPort, smtpUsername, smtpPassword)
+            if err != nil {
+                log.Println(&quot;Failed to send email alert:&quot;, err)
+            } else {
+                log.Println(&quot;Email alert sent successfully.&quot;)
+            }
+        }
+
+        // Wait for the specified interval before checking again
+        time.Sleep(time.Duration(interval) * time.Second)
+    }
+}
+
+func sendEmail(from, to, subject, message, smtpServer string, smtpPort int, smtpUsername, smtpPassword string) error {
+    // Implement the email sending logic using the provided SMTP configuration
+    // You can use libraries like &quot;net/smtp&quot; or third-party packages for sending emails
+    // For simplicity, this example doesn't include the actual email sending code
+    fmt.Printf(&quot;Sending email from %s to %s with subject: %s\n&quot;, from, to, subject)
+    fmt.Printf(&quot;Message: %s\n&quot;, message)
+    return nil
+}
+</code></pre>
+
+<p>In this example:</p>
+<ol>
+<li>
+<p>We set the CPU usage threshold (in percentage) and the monitoring interval (in seconds) as variables.</p>
+</li>
+<li>
+<p>We configure the email settings, including the sender and recipient email addresses, subject, SMTP server details, and authentication credentials.</p>
+</li>
+<li>
+<p>We start an infinite loop that continuously monitors the CPU usage.</p>
+</li>
+<li>
+<p>Inside the loop, we use the <code>cpu.Percent</code> function from the <code>gopsutil</code> package to get the current CPU usage percentage.</p>
+</li>
+<li>
+<p>We check if the CPU usage exceeds the specified threshold.</p>
+</li>
+<li>
+<p>If the threshold is exceeded, we send an email alert using the <code>sendEmail</code> function. The email includes the current CPU usage percentage and a message indicating that the threshold has been exceeded.</p>
+</li>
+<li>
+<p>If the email is sent successfully, we log a success message. If there's an error sending the email, we log an error message.</p>
+</li>
+<li>
+<p>After each iteration, we wait for the specified interval using <code>time.Sleep</code> before checking the CPU usage again.</p>
+</li>
+<li>
+<p>The <code>sendEmail</code> function is a placeholder for the actual email sending logic. You'll need to implement the email sending functionality using libraries like <code>net/smtp</code> or third-party packages based on your requirements.</p>
+</li>
+</ol>
+<p>Note: Make sure to install the <code>gopsutil</code> package by running <code>go get github.com/shirou/gopsutil</code> before running the script.</p>
+<p>Remember to replace the email configuration values with your own SMTP server details and authentication credentials.</p>
+<p>This script provides a basic framework for monitoring CPU usage and sending alerts when a threshold is exceeded. You can extend it to monitor other system metrics, such as disk space or memory usage, by utilizing the appropriate functions from the <code>gopsutil</code> package or other system monitoring libraries.</p>
               
             </div>
           </div><footer>

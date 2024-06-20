@@ -63,25 +63,31 @@
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../func-breakdown.html">Func breakdown</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../pointers-dereferencing.html">Pointers dereferencing</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../struct.html">Struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../file-operations.html">File operations</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../complex-struct.html">Complex struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../database-struct.html">Database struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-connection.html">Db connection</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../db-crud.html">Db crud</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../json.html">Json</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../learning/yaml.html">Yaml</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">projects</a>
     <ul class="current">
@@ -104,13 +110,33 @@
               </ul>
               <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/special-variable.html">Special variable</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/conditional-expression.html">Conditional expression</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/jq.html">Jq</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../bash/yq.html">Yq</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">https://www.squash.io/adding-color-to-bash-scripts-in-linux/</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -148,11 +174,169 @@
 </li>
 <li><strong>Learning:</strong>  This project introduces you to basic Go syntax, handling command-line arguments, and interacting with the operating system.</li>
 </ul>
+<p>Great! Let's dive into the code for checking the status of a service and converting files between formats.</p>
+<p><strong>1. Checking the Status of a Service:</strong></p>
+<p>Here's an example of a Go program that checks the status of a web server by sending an HTTP request:</p>
+<pre class="codehilite"><code class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;net/http&quot;
+    &quot;os&quot;
+)
+
+func main() {
+    if len(os.Args) &lt; 2 {
+        fmt.Println(&quot;Please provide a URL as a command-line argument.&quot;)
+        os.Exit(1)
+    }
+
+    url := os.Args[1]
+
+    response, err := http.Get(url)
+    if err != nil {
+        fmt.Printf(&quot;Failed to check the status of %s: %s\n&quot;, url, err)
+        os.Exit(1)
+    }
+    defer response.Body.Close()
+
+    if response.StatusCode == http.StatusOK {
+        fmt.Printf(&quot;The service at %s is up and running.\n&quot;, url)
+    } else {
+        fmt.Printf(&quot;The service at %s is not responding properly. Status code: %d\n&quot;, url, response.StatusCode)
+    }
+}
+</code></pre>
+
+<p>To use this program, run it from the command line and provide the URL of the web server you want to check as a command-line argument. For example:</p>
+<pre class="codehilite"><code>go run main.go https://example.com
+</code></pre>
+
+<p>The program will send an HTTP GET request to the specified URL and check the response status code. If the status code is 200 (OK), it means the service is up and running. Otherwise, it will display an appropriate message indicating that the service is not responding properly.</p>
+<p><strong>2. Converting Files Between Formats:</strong></p>
+<p>Here's an example of a Go program that converts a text file to JSON format:</p>
+<pre class="codehilite"><code class="language-go">package main
+
+import (
+    &quot;encoding/json&quot;
+    &quot;fmt&quot;
+    &quot;io/ioutil&quot;
+    &quot;os&quot;
+)
+
+func main() {
+    if len(os.Args) &lt; 3 {
+        fmt.Println(&quot;Please provide the input text file and output JSON file as command-line arguments.&quot;)
+        os.Exit(1)
+    }
+
+    inputFile := os.Args[1]
+    outputFile := os.Args[2]
+
+    data, err := ioutil.ReadFile(inputFile)
+    if err != nil {
+        fmt.Printf(&quot;Failed to read the input file: %s\n&quot;, err)
+        os.Exit(1)
+    }
+
+    var jsonData interface{}
+    err = json.Unmarshal(data, &amp;jsonData)
+    if err != nil {
+        fmt.Printf(&quot;Failed to parse the input file as JSON: %s\n&quot;, err)
+        os.Exit(1)
+    }
+
+    jsonOutput, err := json.MarshalIndent(jsonData, &quot;&quot;, &quot;  &quot;)
+    if err != nil {
+        fmt.Printf(&quot;Failed to convert the data to JSON: %s\n&quot;, err)
+        os.Exit(1)
+    }
+
+    err = ioutil.WriteFile(outputFile, jsonOutput, 0644)
+    if err != nil {
+        fmt.Printf(&quot;Failed to write the JSON output to file: %s\n&quot;, err)
+        os.Exit(1)
+    }
+
+    fmt.Printf(&quot;Successfully converted %s to JSON format. Output written to %s\n&quot;, inputFile, outputFile)
+}
+</code></pre>
+
+<p>To use this program, run it from the command line and provide the input text file and the desired output JSON file as command-line arguments. For example:</p>
+<pre class="codehilite"><code>go run main.go input.txt output.json
+</code></pre>
+
+<p>The program will read the contents of the input text file, parse it as JSON, and then write the formatted JSON data to the specified output file.</p>
+<p>Make sure to handle errors appropriately and provide meaningful error messages to the user.</p>
+<p>These examples demonstrate basic implementations of checking the status of a service and converting files between formats using Go. You can extend and customize these programs based on your specific requirements.</p>
+<p><strong>3. generates random passwords:</strong></p>
+<pre class="codehilite"><code class="language-go">package main
+
+import (
+    &quot;flag&quot;
+    &quot;fmt&quot;
+    &quot;math/rand&quot;
+    &quot;time&quot;
+)
+
+const charset = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&amp;*()-_=+[]{}|;:,.&lt;&gt;?&quot;
+
+func main() {
+    var length int
+    flag.IntVar(&amp;length, &quot;length&quot;, 12, &quot;Length of the password&quot;)
+    flag.Parse()
+
+    rand.Seed(time.Now().UnixNano())
+
+    password := make([]byte, length)
+    for i := range password {
+        password[i] = charset[rand.Intn(len(charset))]
+    }
+
+    fmt.Printf(&quot;Generated Password: %s\n&quot;, string(password))
+}
+</code></pre>
+
+<p>To run this code, save it to a file named <code>password_generator.go</code> and execute the following command in the terminal:</p>
+<pre class="codehilite"><code>go run password_generator.go -length=16
+</code></pre>
+
+<p>This will generate a random password of length 16. You can change the length by modifying the value passed to the <code>-length</code> flag.</p>
+<p>Let's break down the code:</p>
+<ol>
+<li>
+<p>We import the necessary packages: <code>flag</code> for parsing command-line flags, <code>fmt</code> for formatting output, <code>math/rand</code> for generating random numbers, and <code>time</code> for seeding the random number generator.</p>
+</li>
+<li>
+<p>We define a constant <code>charset</code> that contains the characters to be used in the password generation.</p>
+</li>
+<li>
+<p>In the <code>main</code> function, we declare a variable <code>length</code> to store the desired length of the password. We use <code>flag.IntVar</code> to bind the <code>length</code> variable to the <code>-length</code> command-line flag, with a default value of 12.</p>
+</li>
+<li>
+<p>We call <code>flag.Parse()</code> to parse the command-line flags.</p>
+</li>
+<li>
+<p>We seed the random number generator using the current time as the seed value. This ensures that each run of the program generates a different set of random numbers.</p>
+</li>
+<li>
+<p>We create a byte slice <code>password</code> of the specified length to store the generated password.</p>
+</li>
+<li>
+<p>We use a <code>for</code> loop to iterate over each index of the <code>password</code> slice. In each iteration, we generate a random index using <code>rand.Intn(len(charset))</code> and assign the corresponding character from the <code>charset</code> to the current index of the <code>password</code> slice.</p>
+</li>
+<li>
+<p>Finally, we print the generated password using <code>fmt.Printf</code>.</p>
+</li>
+</ol>
+<p>This is a simple example of a CLI tool that generates random passwords. You can extend this project by adding more options, such as specifying the character set to use, saving the generated passwords to a file, or integrating with a password manager.</p>
+<p>Remember to handle errors appropriately and add necessary validations and error handling in a real-world application.</p>
+<p>I hope this helps you get started with your Go project! Let me know if you have any further questions.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../json.html" class="btn btn-neutral float-left" title="Json"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../learning/yaml.html" class="btn btn-neutral float-left" title="Yaml"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="2-Web-Server-with-Basic-API.html" class="btn btn-neutral float-right" title="2 Web Server with Basic API">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -177,7 +361,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../json.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../learning/yaml.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="2-Web-Server-with-Basic-API.html" style="color: #fcfcfc">Next &raquo;</a></span>

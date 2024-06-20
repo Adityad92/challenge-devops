@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
-      <link rel="shortcut icon" href="../img/favicon.ico" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>File operations - Challenge DevOps</title>
-    <link rel="stylesheet" href="../css/theme.css" />
-    <link rel="stylesheet" href="../css/theme_extra.css" />
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
         var mkdocs_page_name = "File operations";
-        var mkdocs_page_input_path = "golang/file-operations.md";
+        var mkdocs_page_input_path = "golang/learning/file-operations.md";
         var mkdocs_page_url = null;
       </script>
     
     <!--[if lt IE 9]>
-      <script src="../js/html5shiv.min.js"></script>
+      <script src="../../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
@@ -30,9 +30,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../index.html" class="icon icon-home"> Challenge DevOps
+          <a href="../../index.html" class="icon icon-home"> Challenge DevOps
         </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -40,79 +40,105 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../index.html">About Us</a>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">About Us</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Code Rendering Types</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../rendering/concept.html">concept</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/concept.html">concept</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../rendering/CSR.html">CSR</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/CSR.html">CSR</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../rendering/SSR.html">SSR</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSR.html">SSR</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../rendering/SSG.html">SSG</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSG.html">SSG</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../rendering/ISR.html">ISR</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/ISR.html">ISR</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Docker</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../docker/docker.html">Dockercompose</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../docker/docker.html">Dockercompose</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="methods.html">Methods</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="struct.html">Struct</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="file-operations.html">File operations</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">learning</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="file-operations.html">File operations</a>
     <ul class="current">
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="complex-struct.html">Complex struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="database-struct.html">Database struct</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="db-connection.html">Db connection</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="db-crud.html">Db crud</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="yaml.html">Yaml</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="projects/1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="projects/2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="projects/3-Simple-Monitoring-Script.html">3 Simple Monitoring Script</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/3-Simple-Monitoring-Script.html">3 Simple Monitoring Script</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="projects/4-Container-Image-Builder.html">4 Container Image Builder</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/4-Container-Image-Builder.html">4 Container Image Builder</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="projects/5-Simple-Chat-Server.html">5 Simple Chat Server</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/5-Simple-Chat-Server.html">5 Simple Chat Server</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="projects/6-Data-Processing-Script.html">6 Data Processing Script</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/6-Data-Processing-Script.html">6 Data Processing Script</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="projects/7-color-print-message.html">1. https://pkg.go.dev/github.com/fatih/color#pkg-overview</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/7-color-print-message.html">1. https://pkg.go.dev/github.com/fatih/color#pkg-overview</a>
                 </li>
     </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../bash/special-variable.html">Special variable</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../bash/conditional-expression.html">Conditional expression</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../bash/jq.html">Jq</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../bash/yq.html">Yq</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">https://www.squash.io/adding-color-to-bash-scripts-in-linux/</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -122,14 +148,15 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Challenge DevOps</a>
+          <a href="../../index.html">Challenge DevOps</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
+          <li class="breadcrumb-item">learning</li>
       <li class="breadcrumb-item active">File operations</li>
     <li class="wy-breadcrumbs-aside">
     </li>
@@ -430,11 +457,11 @@ func main() {
     
   </span>
 </div>
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "..";</script>
-    <script src="../js/theme_extra.js"></script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/main.js"></script>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
