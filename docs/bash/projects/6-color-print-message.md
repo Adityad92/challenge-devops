@@ -1,13 +1,14 @@
-# https://www.squash.io/adding-color-to-bash-scripts-in-linux/
-# https://manned.org/tput.1
-# # Set color variables
-# RED=$(tput setaf 1)
-# GREEN=$(tput setaf 2)
-# YELLOW=$(tput setaf 3)
-# RESET=$(tput sgr0)
+**https://www.squash.io/adding-color-to-bash-scripts-in-linux/**
+**https://manned.org/tput.1**
 
-# tput setaf 2
-# echo "hello"
+**Set color variables**
+**RED=$(tput setaf 1)**
+**GREEN=$(tput setaf 2)**
+**YELLOW=$(tput setaf 3)**
+**RESET=$(tput sgr0)**
+
+**tput setaf 2**
+**echo "hello"**
 
 ```bash
 #!/bin/bash

@@ -15,11 +15,11 @@ plugins:
 nav:
   - About Us: index.md
   - Code Rendering Types:
-    - concept: rendering/concept.md
-    - CSR: rendering/CSR.md
-    - SSR: rendering/SSR.md
-    - SSG: rendering/SSG.md
-    - ISR: rendering/ISR.md
+    - rendering/concept.md
+    - rendering/CSR.md
+    - rendering/SSR.md
+    - rendering/SSG.md
+    - rendering/ISR.md
   - Docker:
     - Dockercompose: docker/docker.md
   #   - Docker networking: rendering/concept.md
