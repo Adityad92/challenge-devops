@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Yq - Challenge DevOps</title>
+    <title>3 ansible features - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Yq";
-        var mkdocs_page_input_path = "bash/learning/yq.md";
+        var mkdocs_page_name = "3 ansible features";
+        var mkdocs_page_input_path = "ansible/learning/3-ansible-features.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -109,32 +109,32 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">learning</a>
-    <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="special-variable.html">Special variable</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="conditional-expression.html">Conditional expression</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="jq.html">Jq</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="yq.html">Yq</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
                 </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../projects/1-File-Organizer.html">1 File Organizer</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projects/2-System-Monitor.html">2 System Monitor</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projects/3-Backup-Script.html">3 Backup Script</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projects/6-color-print-message.html">6 color print message</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">6 color print message</a>
                 </li>
     </ul>
                   </li>
@@ -153,9 +153,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Bash-Scripting</li>
-          <li class="breadcrumb-item">learning</li>
-      <li class="breadcrumb-item active">Yq</li>
+      <li class="breadcrumb-item active">3 ansible features</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -164,20 +162,104 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <ul>
-<li><strong>yq (YAML):</strong>  yq is a similar tool for YAML. It provides similar functionality to jq for processing YAML data.</li>
+                <p>Certainly! I'll explain these Ansible concepts aligned with the 80-20 principle, focusing on the most impactful aspects that will give you the majority of practical value.  </p>
+<h3 id="variables">Variables</h3>
+<p>Variables in Ansible are how you deal with differences between systems. They allow you to manage specific configuration values that may vary from host to host.  </p>
+<p><strong>Defining Variables:</strong><br />
+You can define variables in several places within Ansible:  </p>
+<ul>
+<li>In the inventory file.  </li>
+<li>Directly in playbooks.  </li>
+<li>In separate variable files (often within a role).  </li>
+<li>Passed at the command line when running playbooks.  </li>
 </ul>
-<p><strong>Example using yq (YAML):</strong></p>
-<pre class="codehilite"><code class="language-bash"># Extract the &quot;host&quot; field from a YAML file
-yq '.host' data.yaml
+<p><strong>Example in a Playbook:</strong>  </p>
+<pre class="codehilite"><code class="language-yaml">---  
+- hosts: webservers  
+  vars:  
+    http_port: 80  
+    max_clients: 200  
+  tasks:  
+    - name: Set up web server  
+      ansible.builtin.template:  
+        src: templates/httpd.conf.j2  
+        dest: /etc/httpd/conf/httpd.conf  
 </code></pre>
+
+<p>In this example, <code>http_port</code> and <code>max_clients</code> are variables that are used in the template for the web server configuration.  </p>
+<h3 id="modules">Modules</h3>
+<p>Modules are the units of work in Ansible. They can do anything from checking the status of a service to installing a package.  </p>
+<p><strong>Commonly Used Modules:</strong>  </p>
+<ul>
+<li><code>ansible.builtin.command</code> or <code>ansible.builtin.shell</code>: Execute commands.  </li>
+<li><code>ansible.builtin.copy</code>: Copy files from the local machine to the target.  </li>
+<li><code>ansible.builtin.file</code>: Manage files and file properties.  </li>
+<li><code>ansible.builtin.template</code>: Template a file out to a remote server.  </li>
+<li><code>ansible.builtin.apt</code> or <code>ansible.builtin.yum</code>: Manage packages.  </li>
+</ul>
+<p><strong>Example of Using a Module:</strong>  </p>
+<pre class="codehilite"><code class="language-yaml">tasks:  
+  - name: Install Apache  
+    ansible.builtin.yum:  
+      name: httpd  
+      state: present  
+</code></pre>
+
+<p>Here, <code>ansible.builtin.yum</code> is the module used to install the Apache package (<code>httpd</code>).  </p>
+<h3 id="roles">Roles</h3>
+<p>Roles are organizational units in Ansible that allow you to bundle tasks, handlers, files, templates, and variables into a reusable package.  </p>
+<p><strong>Creating a Role:</strong><br />
+Use the <code>ansible-galaxy</code> command to create a new role structure:  </p>
+<pre class="codehilite"><code>ansible-galaxy init myrole  
+</code></pre>
+
+<p>This will create a directory structure under <code>myrole</code> with subdirectories for each type of content (tasks, handlers, etc.).  </p>
+<p><strong>Using a Role in a Playbook:</strong>  </p>
+<pre class="codehilite"><code class="language-yaml">---  
+- hosts: webservers  
+  roles:  
+    - myrole  
+</code></pre>
+
+<p>Roles allow you to keep your playbooks clean and manageable by abstracting the complexity into easily reusable directories.  </p>
+<h3 id="templates">Templates</h3>
+<p>Templates in Ansible use the Jinja2 templating language to render files. They are particularly useful for managing configuration files.  </p>
+<p><strong>Creating a Template:</strong><br />
+You would create a template file (<code>httpd.conf.j2</code>) with configuration settings, using Jinja2 syntax for variables and control structures. For instance:  </p>
+<pre class="codehilite"><code class="language-jinja">ServerRoot &quot;/etc/httpd&quot;  
+Listen {{ http_port }}  
+MaxClients {{ max_clients }}  
+&lt;Directory &quot;/var/www/html&quot;&gt;  
+    AllowOverride None  
+    Require all granted  
+&lt;/Directory&gt;  
+</code></pre>
+
+<p>In this example, <code>{{ http_port }}</code> and <code>{{ max_clients }}</code> are template variables that will be replaced with the respective Ansible variables' values when the template is rendered.  </p>
+<p><strong>Using Templates in Playbooks:</strong><br />
+You can use the <code>ansible.builtin.template</code> module to apply the template to your target hosts:  </p>
+<pre class="codehilite"><code class="language-yaml">tasks:  
+  - name: Configure web server  
+    ansible.builtin.template:  
+      src: templates/httpd.conf.j2  
+      dest: /etc/httpd/conf/httpd.conf  
+</code></pre>
+
+<p>This task takes the <code>httpd.conf.j2</code> template, fills in the variable values, and copies the resulting file to the specified destination on the remote server.  </p>
+<h3 id="bringing-it-all-together-with-the-80-20-principle">Bringing It All Together with the 80-20 Principle:</h3>
+<p>By grasping these four concepts, you've covered a significant portion of the Ansible functionality that you'll use in most situations:  </p>
+<ol>
+<li><strong>Variables</strong> - Customize playbooks to work across different environments.  </li>
+<li><strong>Modules</strong> - Perform specific tasks on the managed nodes.  </li>
+<li><strong>Roles</strong> - Organize complex playbooks into reusable and shareable components.  </li>
+<li><strong>Templates</strong> - Dynamically generate configuration files using variables.  </li>
+</ol>
+<p>To put the 80-20 principle into practice with Ansible, focus on mastering these elements by creating a few roles that encapsulate common tasks you expect to perform regularly. Use variables to adjust the behavior of these roles for different environments, and employ templates to handle configuration files that require dynamic content.   </p>
+<p>Experiment with different modules to see how they can automate tasks you typically handle manually. For instance, if you often install software packages, get comfortable with the <code>apt</code> or <code>yum</code> modules (depending on your target systems). If you manage user accounts, familiarize yourself with the <code>user</code> module.  </p>
+<p>As you gain confidence with these core features, you'll find that you can handle a wide range of automation tasks efficiently. Remember to reference the Ansible documentation for detailed information on each module and feature. Keep practicing by automating more of your routine tasks, and you'll be well on your way to becoming proficient in Ansible.</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="jq.html" class="btn btn-neutral float-left" title="Jq"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../projects/1-File-Organizer.html" class="btn btn-neutral float-right" title="1 File Organizer">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -200,10 +282,6 @@ yq '.host' data.yaml
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="jq.html" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../projects/1-File-Organizer.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

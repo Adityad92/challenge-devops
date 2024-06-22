@@ -45,7 +45,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Code Rendering Types</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/concept.html">concept</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/concept.html">Web Rendering Strategies</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../rendering/CSR.html">CSR</a>
                   </li>
@@ -134,7 +134,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">https://www.squash.io/adding-color-to-bash-scripts-in-linux/</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">6 color print message</a>
                 </li>
     </ul>
                   </li>
@@ -172,9 +172,7 @@
 <li>Generating random passwords</li>
 </ul>
 </li>
-<li><strong>Learning:</strong>  This project introduces you to basic Go syntax, handling command-line arguments, and interacting with the operating system.</li>
 </ul>
-<p>Great! Let's dive into the code for checking the status of a service and converting files between formats.</p>
 <p><strong>1. Checking the Status of a Service:</strong></p>
 <p>Here's an example of a Go program that checks the status of a web server by sending an HTTP request:</p>
 <pre class="codehilite"><code class="language-go">package main
@@ -273,26 +271,36 @@ func main() {
 <pre class="codehilite"><code class="language-go">package main
 
 import (
-    &quot;flag&quot;
-    &quot;fmt&quot;
-    &quot;math/rand&quot;
-    &quot;time&quot;
+    &quot;flag&quot;      // Importing the flag package to handle command-line options
+    &quot;fmt&quot;       // Importing the fmt package for formatted I/O
+    &quot;math/rand&quot; // Importing the rand package to generate random numbers
+    &quot;time&quot;      // Importing the time package to get the current time
 )
 
+// Define a constant string containing all possible characters for the password
 const charset = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&amp;*()-_=+[]{}|;:,.&lt;&gt;?&quot;
 
 func main() {
-    var length int
+    var length int // Declare a variable to store the length of the password
+    // Define a command-line flag for password length with a default value of 12
     flag.IntVar(&amp;length, &quot;length&quot;, 12, &quot;Length of the password&quot;)
+    // Parse the command-line flags
     flag.Parse()
 
-    rand.Seed(time.Now().UnixNano())
+    // Get the current Unix timestamp in nanoseconds to use as a seed for the random generator
+    seed := time.Now().UnixNano()
+    // Create a new random number generator seeded with the current time
+    rng := rand.New(rand.NewSource(seed))
 
+    // Create a byte slice to hold the generated password, with the specified length
     password := make([]byte, length)
+    // Loop through each position in the password
     for i := range password {
-        password[i] = charset[rand.Intn(len(charset))]
+        // Assign a random character from the charset to the current position in the password
+        password[i] = charset[rng.Intn(len(charset))]
     }
 
+    // Print the generated password
     fmt.Printf(&quot;Generated Password: %s\n&quot;, string(password))
 }
 </code></pre>
