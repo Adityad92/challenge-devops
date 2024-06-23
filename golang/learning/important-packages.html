@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Func breakdown - Challenge DevOps</title>
+    <title>Important packages - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Func breakdown";
-        var mkdocs_page_input_path = "golang/learning/func-breakdown.md";
+        var mkdocs_page_name = "Important packages";
+        var mkdocs_page_input_path = "golang/learning/important-packages.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -87,11 +87,9 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">learning</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="important-packages.html">Important packages</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="important-packages.html">Important packages</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="func-breakdown.html">Func breakdown</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
                 </li>
@@ -205,7 +203,7 @@
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
           <li class="breadcrumb-item">learning</li>
-      <li class="breadcrumb-item active">Func breakdown</li>
+      <li class="breadcrumb-item active">Important packages</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -214,73 +212,153 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="variable-address-passing">Variable address passing</h2>
-<p>In this example, we have two variables, name and age, that we want to read from the terminal. Here's how it works:</p>
-<p>We use the fmt.Print() function to prompt the user to enter their name.
-We then use fmt.Scan(&amp;name) to read the user's input and store it in the name variable. The &amp; symbol is used to pass the address of the variable to the Scan() function.
-We check for any errors that may have occurred during the input reading process using the returned error value.
-We repeat the same process for the age variable, using fmt.Scan(&amp;age) to read the user's input.
-Finally, we use fmt.Printf() to print the user's name and age.
-Alternatively, you can use the fmt.Scanln() function, which reads input until a newline character is encountered:</p>
-<p>fmt.Print("Enter your name and age: ")
-_, err := fmt.Scanln(&amp;name, &amp;age)
-if err != nil {
-    fmt.Println("Error:", err)
-    return
-}
-In this case, the user can enter their name and age on the same line, separated by a space, and the input will be read correctly.</p>
-<p>Remember that the Scan() and Scanln() functions return the number of successfully scanned items and an error value, so it's important to check for any errors that may have occurred during the input reading process.</p>
-<h2 id="certainly-lets-break-down-the-fmtscan-function">Certainly! Let's break down the <code>fmt.Scan()</code> function:</h2>
+                <p>Certainly! The 80-20 principle suggests that we should focus on the most valuable 20% of something that gives us 80% of the results. With that in mind, I'll explain the most important and commonly used features of the packages you've listed:  </p>
 <ol>
+<li><code>fmt</code>:  </li>
+<li><strong>Primary Use</strong>: Printing formatted output and reading input.  </li>
 <li>
-<p><code>fmt.Scan(a ...any) (n int, err error)</code></p>
-</li>
-<li>
-<p>This is the function signature of <code>fmt.Scan()</code>.</p>
-</li>
-<li><code>a ...any</code> is a variadic parameter, which means it can accept any number of arguments of any type.</li>
-<li>
-<p>The function returns two values:</p>
+<p><strong>Key Functions</strong>:  </p>
 <ul>
-<li><code>n int</code>: The number of successfully scanned items.</li>
-<li><code>err error</code>: An error value, if any, that occurred during the scanning process.</li>
+<li><code>fmt.Println()</code>: Print with a newline.  </li>
+<li><code>fmt.Printf()</code>: Print formatted strings, using verbs like <code>%s</code> for strings, <code>%d</code> for integers, etc.  </li>
+<li><code>fmt.Sprintf()</code>: Format strings without printing, often used to create strings with variables.</li>
+<li><code>fmt.Scan(), fmt.Scanln(), fmt.Scanf()</code>: These functions are used to read formatted input from the standard input (os.Stdin).</li>
+<li><code>fmt.Errorf()</code>: Creates a new error with a formatted message, often used in error handling. </li>
 </ul>
 </li>
 <li>
-<p><code>fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><code>log</code>:  </p>
+</li>
+<li><strong>Primary Use</strong>: Logging with timestamps and configurable output destinations.  </li>
+<li>
+<p><strong>Key Functions</strong>:  </p>
+<ul>
+<li><code>log.Println()</code>: Log a message with a timestamp.  </li>
+<li><code>log.Fatal()</code>: Log a message and then call <code>os.Exit(1)</code>.  </li>
+</ul>
 </li>
 <li>
-<p>In this example, we're passing two variables, <code>name</code> and <code>age</code>, to the <code>Scan()</code> function.</p>
+<p><code>os</code>:  </p>
 </li>
-<li>The <code>&amp;</code> symbol is used to pass the address of the variables, so that the <code>Scan()</code> function can modify their values directly.</li>
+<li><strong>Primary Use</strong>: Interacting with operating system functionality.  </li>
 <li>
-<p>The <code>Scan()</code> function will read the user's input and store the values in the <code>name</code> and <code>age</code> variables.</p>
-</li>
-<li>
-<p><code>_, err := fmt.Scan(&amp;name, &amp;age)</code></p>
-</li>
-<li>
-<p>Here, we're using the short variable declaration syntax (<code>:=</code>) to declare two variables: <code>_</code> and <code>err</code>.</p>
-</li>
-<li>The <code>_</code> is an unnamed variable, which is used to discard the first return value (the number of successfully scanned items).</li>
-<li>
-<p>The <code>err</code> variable is used to store the error value returned by the <code>Scan()</code> function.</p>
-</li>
-<li>
-<p><code>if err != nil { ... }</code></p>
+<p><strong>Key Functions</strong>:  </p>
+<ul>
+<li><code>os.Open()</code>: Open a file.  </li>
+<li><code>os.Getenv()</code>: Get an environment variable.  </li>
+<li><code>os.Exit()</code>: Exit the program with a status code.</li>
+<li><code>os.ReadFile()</code>: Read the entire contents of a file into a byte slice.</li>
+<li><code>os.WriteFile()</code>: Write data to a file, creating it if necessary.</li>
+<li><code>os.Create()</code>: Create a new file or truncate an existing file.</li>
+<li><code>os.Stat()</code>: Retrieve file or directory information.  </li>
+</ul>
 </li>
 <li>
-<p>After calling <code>fmt.Scan()</code>, we check if an error occurred during the scanning process.</p>
+<p><code>os/exec</code>:  </p>
 </li>
-<li>If <code>err</code> is not <code>nil</code>, it means an error occurred, and we can handle it accordingly (e.g., print an error message, return from the function, etc.).</li>
+<li><strong>Primary Use</strong>: Executing external commands.  </li>
+<li>
+<p><strong>Key Functions</strong>:  </p>
+<ul>
+<li><code>exec.Command()</code>: Create a new command.  </li>
+<li><code>cmd.Run()</code>: Run the command and wait for it to finish.  </li>
+</ul>
+</li>
+<li>
+<p><code>path/filepath</code>:  </p>
+</li>
+<li><strong>Primary Use</strong>: Manipulating file paths in a way compatible with the operating system.  </li>
+<li>
+<p><strong>Key Functions</strong>:  </p>
+<ul>
+<li><code>filepath.Abs()</code>: Get the absolute path.  </li>
+<li><code>filepath.Join()</code>: Join path elements into a single path.  </li>
+</ul>
+</li>
+<li>
+<p><code>encoding/json</code>:  </p>
+</li>
+<li><strong>Primary Use</strong>: Encoding and decoding JSON data.  </li>
+<li>
+<p><strong>Key Functions</strong>:  </p>
+<ul>
+<li><code>json.Marshal()</code>: Convert a Go struct or map into JSON.  </li>
+<li><code>json.Unmarshal()</code>: Parse JSON into a Go struct or map. </li>
+<li><code>json.NewEncoder()</code>: Create a new JSON encoder that writes to an io.Writer, such as an http.ResponseWriter.</li>
+<li><code>json.NewDecoder()</code>: Create a new JSON decoder that reads from an io.Reader, such as an http.Request.Body. </li>
+</ul>
+</li>
+<li>
+<p><code>net/http</code>:  </p>
+</li>
+<li><strong>Primary Use</strong>: Building HTTP clients and servers.  </li>
+<li>
+<p><strong>Key Functions</strong>:  </p>
+<ul>
+<li><code>http.ListenAndServe()</code>: Start an HTTP server.  </li>
+<li><code>http.Get()</code>: Make a GET request.</li>
+<li><code>http.HandleFunc()</code>: Register a handler function for a given pattern with the default ServeMux.</li>
+<li><code>http.Client</code>: Make custom HTTP requests, manage cookies, timeouts, and redirection policies.</li>
+</ul>
+</li>
+<li>
+<p><code>strconv</code>:  </p>
+</li>
+<li><strong>Primary Use</strong>: Converting between strings and other types.  </li>
+<li>
+<p><strong>Key Functions</strong>:  </p>
+<ul>
+<li><code>strconv.Atoi()</code>: Convert a string to an int.  </li>
+<li><code>strconv.Itoa()</code>: Convert an int to a string.  </li>
+</ul>
+</li>
+<li>
+<p><code>sync</code>:  </p>
+</li>
+<li><strong>Primary Use</strong>: Synchronization primitives like mutexes and wait groups.  </li>
+<li>
+<p><strong>Key Functions</strong>:  </p>
+<ul>
+<li><code>sync.Mutex</code>: A mutual exclusion lock.  </li>
+<li><code>sync.WaitGroup</code>: Wait for a collection of goroutines to finish.  </li>
+</ul>
+</li>
+<li>
+<p><code>context</code>:  </p>
+<ul>
+<li><strong>Primary Use</strong>: Passing request-scoped values, cancelation signals, and deadlines across API boundaries.  </li>
+<li><strong>Key Functions</strong>:  </li>
+<li><code>context.Background()</code>: Returns an empty context, typically used at the start of a request.  </li>
+<li><code>context.WithCancel()</code>: Creates a context that can be canceled.  </li>
+</ul>
+</li>
+<li>
+<p><code>time</code>:  </p>
+<ul>
+<li><strong>Primary Use</strong>: Measuring and displaying time.  </li>
+<li><strong>Key Functions</strong>:  </li>
+<li><code>time.Now()</code>: Get the current time.  </li>
+<li><code>time.Sleep()</code>: Pause for a duration.  </li>
+</ul>
+</li>
+<li>
+<p><code>encoding/csv</code>:  </p>
+<ul>
+<li><strong>Primary Use</strong>: Reading and writing CSV files.  </li>
+<li><strong>Key Functions</strong>:  </li>
+<li><code>csv.NewReader()</code>: Create a new CSV reader.  </li>
+<li><code>csv.NewWriter()</code>: Create a new CSV writer.</li>
+<li><code>csv.Reader.Read()</code>: Read a single record from CSV.</li>
+<li><code>csv.Writer.Write()</code>: Write a single record to CSV.</li>
+</ul>
+</li>
 </ol>
-<p>In summary, the <code>fmt.Scan()</code> function is used to read user input from the terminal and store the values in the provided variables. It returns the number of successfully scanned items and an error value, which you should always check to ensure that the input was read correctly.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="important-packages.html" class="btn btn-neutral float-left" title="Important packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="pointers-dereferencing.html" class="btn btn-neutral float-right" title="Pointers dereferencing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../ansible/projects/5-run-nginx-container.html" class="btn btn-neutral float-left" title="5 run nginx container"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="func-breakdown.html" class="btn btn-neutral float-right" title="Func breakdown">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -304,10 +382,10 @@ In this case, the user can enter their name and age on the same line, separated 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="important-packages.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../ansible/projects/5-run-nginx-container.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="pointers-dereferencing.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="func-breakdown.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

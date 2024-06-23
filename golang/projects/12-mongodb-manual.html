@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>5 Simple Chat Server - Challenge DevOps</title>
+    <title>12 mongodb manual - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "5 Simple Chat Server";
-        var mkdocs_page_input_path = "golang/projects/5-Simple-Chat-Server.md";
+        var mkdocs_page_name = "12 mongodb manual";
+        var mkdocs_page_input_path = "golang/projects/12-mongodb-manual.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -84,7 +84,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../learning/important-packages.html">Important packages</a>
@@ -129,8 +129,8 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
-    <ul>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">projects</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
@@ -147,7 +147,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="11-contact-list-csv.html">11 contact list csv</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="12-mongodb-manual.html">12 mongodb manual</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="12-mongodb-manual.html">12 mongodb manual</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="13-mongoDB-API.html">13 mongoDB API</a>
                 </li>
@@ -201,7 +201,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">5 Simple Chat Server</li>
+          <li class="breadcrumb-item">Golang</li>
+          <li class="breadcrumb-item">projects</li>
+      <li class="breadcrumb-item active">12 mongodb manual</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -210,150 +212,120 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><strong>5. Simple Chat Server:</strong></p>
-<ul>
-<li><strong>Project:</strong> Build a basic chat server using Go's concurrency features. This server can:<ul>
-<li>Accept connections from multiple clients.</li>
-<li>Allow clients to send and receive messages.</li>
-<li>Handle message broadcasting to all connected clients.</li>
-</ul>
-</li>
-<li><strong>Learning:</strong>  You'll learn about network programming, handling multiple connections, and using Go's goroutines and channels for concurrency.</li>
-</ul>
-<p>Certainly! Let's build a basic chat server in Go that utilizes concurrency features. Here's an example implementation:</p>
-<pre class="codehilite"><code class="language-go">package main
-
-import (
-    &quot;bufio&quot;
-    &quot;fmt&quot;
-    &quot;net&quot;
-    &quot;strings&quot;
-)
-
-type client struct {
-    conn net.Conn
-    name string
-    ch   chan&lt;- string
-}
-
-var (
-    entering = make(chan client)
-    leaving  = make(chan client)
-    messages = make(chan string)
-)
-
-func main() {
-    listener, err := net.Listen(&quot;tcp&quot;, &quot;:8080&quot;)
-    if err != nil {
-        fmt.Println(&quot;Error starting the server:&quot;, err)
-        return
-    }
-    defer listener.Close()
-
-    go broadcaster()
-
-    fmt.Println(&quot;Chat server started. Listening on port 8080...&quot;)
-
-    for {
-        conn, err := listener.Accept()
-        if err != nil {
-            fmt.Println(&quot;Error accepting connection:&quot;, err)
-            continue
-        }
-
-        go handleConnection(conn)
-    }
-}
-
-func broadcaster() {
-    clients := make(map[client]bool)
-
-    for {
-        select {
-        case msg := &lt;-messages:
-            for cli := range clients {
-                cli.ch &lt;- msg
-            }
-
-        case cli := &lt;-entering:
-            clients[cli] = true
-            var names []string
-            for c := range clients {
-                names = append(names, c.name)
-            }
-            cli.ch &lt;- fmt.Sprintf(&quot;Current users: %s&quot;, strings.Join(names, &quot;, &quot;))
-
-        case cli := &lt;-leaving:
-            delete(clients, cli)
-            close(cli.ch)
-        }
-    }
-}
-
-func handleConnection(conn net.Conn) {
-    ch := make(chan string)
-    go clientWriter(conn, ch)
-
-    who := conn.RemoteAddr().String()
-    cli := client{conn, who, ch}
-    entering &lt;- cli
-
-    input := bufio.NewScanner(conn)
-    for input.Scan() {
-        messages &lt;- fmt.Sprintf(&quot;%s: %s&quot;, cli.name, input.Text())
-    }
-
-    leaving &lt;- cli
-    conn.Close()
-}
-
-func clientWriter(conn net.Conn, ch &lt;-chan string) {
-    for msg := range ch {
-        fmt.Fprintln(conn, msg)
-    }
-}
-</code></pre>
-
-<p>Let's go through the code:</p>
+                <p>Certainly! To work with MongoDB from a Go application, you will need to use a MongoDB driver. The official MongoDB Go Driver is the recommended way to interact with MongoDB from Go.  </p>
+<p>Here are the basic steps to get started with the MongoDB Go Driver:  </p>
 <ol>
-<li>
-<p>We define a <code>client</code> struct that represents a connected client. It contains the client's connection (<code>net.Conn</code>), name (initially set to the remote address), and a channel for sending messages to the client.</p>
-</li>
-<li>
-<p>We create three channels: <code>entering</code> for new clients joining, <code>leaving</code> for clients leaving, and <code>messages</code> for broadcasting messages to all clients.</p>
-</li>
-<li>
-<p>In the <code>main</code> function, we start a TCP server listening on port 8080. We launch a goroutine for the <code>broadcaster</code> function to handle message broadcasting.</p>
-</li>
-<li>
-<p>In the <code>broadcaster</code> function, we maintain a map of connected clients. We use a <code>select</code> statement to handle different events:</p>
-</li>
-<li>When a message is received on the <code>messages</code> channel, we iterate over all connected clients and send the message to their respective channels.</li>
-<li>When a new client joins (received on the <code>entering</code> channel), we add the client to the map and send a message to the client with the list of currently connected users.</li>
-<li>
-<p>When a client leaves (received on the <code>leaving</code> channel), we remove the client from the map and close their channel.</p>
-</li>
-<li>
-<p>The <code>handleConnection</code> function is called for each client connection. It creates a new channel for the client and starts a goroutine for the <code>clientWriter</code> function to handle sending messages to the client.</p>
-</li>
-<li>
-<p>In the <code>handleConnection</code> function, we read input from the client using a <code>bufio.Scanner</code>. Each line of input is sent as a message to the <code>messages</code> channel, prefixed with the client's name.</p>
-</li>
-<li>
-<p>When the client disconnects, we send the client to the <code>leaving</code> channel and close the connection.</p>
-</li>
-<li>
-<p>The <code>clientWriter</code> function receives messages from the client's channel and writes them to the client's connection.</p>
-</li>
+<li><strong>Install the MongoDB Go Driver</strong>  </li>
 </ol>
-<p>To run the chat server, save the code in a file named <code>main.go</code> and execute the following command:</p>
-<pre class="codehilite"><code>go run main.go
+<p>You can install the MongoDB Go Driver by using <code>go get</code> to download the package from the official repository.  </p>
+<pre class="codehilite"><code class="language-sh">go get go.mongodb.org/mongo-driver/mongo  
 </code></pre>
 
-<p>The chat server will start listening on port 8080. Clients can connect to</p>
+<ol>
+<li><strong>Connecting to MongoDB</strong>  </li>
+</ol>
+<p>Certainly! Below is a complete Go application that demonstrates how to connect to MongoDB, perform CRUD operations, and handle errors properly. Please note that this is a simplified example meant for educational purposes.  </p>
+<pre class="codehilite"><code class="language-go">package main  
+
+import (  
+    &quot;context&quot;  
+    &quot;fmt&quot;  
+    &quot;log&quot;  
+    &quot;time&quot;  
+
+    &quot;go.mongodb.org/mongo-driver/bson&quot;  
+    &quot;go.mongodb.org/mongo-driver/mongo&quot;  
+    &quot;go.mongodb.org/mongo-driver/mongo/options&quot;  
+)  
+
+func main() {  
+    // Set client options  
+    clientOptions := options.Client().ApplyURI(&quot;mongodb://localhost:27017&quot;)  
+
+    // Connect to MongoDB  
+    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)  
+    defer cancel()  
+
+    client, err := mongo.Connect(ctx, clientOptions)  
+    if err != nil {  
+        log.Fatalf(&quot;Error connecting to MongoDB: %v&quot;, err)  
+    }  
+
+    // Check the connection  
+    err = client.Ping(ctx, nil)  
+    if err != nil {  
+        log.Fatalf(&quot;Error pinging MongoDB: %v&quot;, err)  
+    }  
+    fmt.Println(&quot;Connected to MongoDB!&quot;)  
+
+    // You are now connected to MongoDB!  
+    // Remember to defer the disconnect operation  
+    defer func() {  
+        if err = client.Disconnect(ctx); err != nil {  
+            log.Fatalf(&quot;Error disconnecting from MongoDB: %v&quot;, err)  
+        }  
+    }()  
+
+    // Get a handle for your collection  
+    collection := client.Database(&quot;phonebook&quot;).Collection(&quot;contacts&quot;)  
+
+    // Some sample data  
+    person := bson.D{  
+        {Key: &quot;name&quot;, Value: &quot;John Doe&quot;},  
+        {Key: &quot;phone&quot;, Value: &quot;123-456-7890&quot;},  
+    }  
+
+    // Insert a single document  
+    insertResult, err := collection.InsertOne(ctx, person)  
+    if err != nil {  
+        log.Fatalf(&quot;Error inserting document: %v&quot;, err)  
+    }  
+    fmt.Println(&quot;Inserted document:&quot;, insertResult.InsertedID)  
+
+    // Find a document  
+    var result bson.D // or bson.M if you prefer map style  
+    err = collection.FindOne(ctx, bson.D{{Key: &quot;name&quot;, Value: &quot;John Doe&quot;}}).Decode(&amp;result)  
+    if err != nil {  
+        log.Fatalf(&quot;Error finding document: %v&quot;, err)  
+    }  
+    fmt.Println(&quot;Found document:&quot;, result)  
+
+    // Update a document  
+    update := bson.D{  
+        {Key: &quot;$set&quot;, Value: bson.D{  
+            {Key: &quot;phone&quot;, Value: &quot;987-654-3210&quot;},  
+        }},  
+    }  
+    updateResult, err := collection.UpdateOne(ctx, bson.D{{Key: &quot;name&quot;, Value: &quot;John Doe&quot;}}, update)  
+    if err != nil {  
+        log.Fatalf(&quot;Error updating document: %v&quot;, err)  
+    }  
+    fmt.Printf(&quot;Matched %v document and updated %v document.\n&quot;, updateResult.MatchedCount, updateResult.ModifiedCount)  
+
+    // Delete a document  
+    deleteResult, err := collection.DeleteOne(ctx, bson.D{{Key: &quot;name&quot;, Value: &quot;John Doe&quot;}})  
+    if err != nil {  
+        log.Fatalf(&quot;Error deleting document: %v&quot;, err)  
+    }  
+    fmt.Printf(&quot;Deleted %v documents in the contacts collection\n&quot;, deleteResult.DeletedCount)  
+}  
+</code></pre>
+
+<p>Before running this Go program, make sure that you have MongoDB running and accessible at <code>mongodb://localhost:27017</code>, as specified in the <code>clientOptions</code>.  </p>
+<p>To run the code, save it to a <code>.go</code> file (for example, <code>main.go</code>), and then execute the following commands in your terminal:  </p>
+<pre class="codehilite"><code class="language-sh">go mod init mymongoproject  
+go mod tidy  
+go run main.go  
+</code></pre>
+
+<p>These commands will initialize a new Go module (necessary for dependency management), download the MongoDB Go Driver, and run your Go application, respectively.</p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="11-contact-list-csv.html" class="btn btn-neutral float-left" title="11 contact list csv"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="13-mongoDB-API.html" class="btn btn-neutral float-right" title="13 mongoDB API">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -376,6 +348,10 @@ func clientWriter(conn net.Conn, ch &lt;-chan string) {
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="11-contact-list-csv.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="13-mongoDB-API.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

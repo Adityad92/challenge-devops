@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Func breakdown - Challenge DevOps</title>
+    <title>Encoding json - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Func breakdown";
-        var mkdocs_page_input_path = "golang/learning/func-breakdown.md";
+        var mkdocs_page_name = "Encoding json";
+        var mkdocs_page_input_path = "golang/learning/encoding-json.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -89,9 +89,7 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="important-packages.html">Important packages</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="func-breakdown.html">Func breakdown</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
                 </li>
@@ -119,7 +117,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="path-filepath.html">Path filepath</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="encoding-json.html">Encoding json</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="encoding-json.html">Encoding json</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="net-http.html">Net http</a>
                 </li>
@@ -205,7 +203,7 @@
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
           <li class="breadcrumb-item">learning</li>
-      <li class="breadcrumb-item active">Func breakdown</li>
+      <li class="breadcrumb-item active">Encoding json</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -214,73 +212,182 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="variable-address-passing">Variable address passing</h2>
-<p>In this example, we have two variables, name and age, that we want to read from the terminal. Here's how it works:</p>
-<p>We use the fmt.Print() function to prompt the user to enter their name.
-We then use fmt.Scan(&amp;name) to read the user's input and store it in the name variable. The &amp; symbol is used to pass the address of the variable to the Scan() function.
-We check for any errors that may have occurred during the input reading process using the returned error value.
-We repeat the same process for the age variable, using fmt.Scan(&amp;age) to read the user's input.
-Finally, we use fmt.Printf() to print the user's name and age.
-Alternatively, you can use the fmt.Scanln() function, which reads input until a newline character is encountered:</p>
-<p>fmt.Print("Enter your name and age: ")
-_, err := fmt.Scanln(&amp;name, &amp;age)
-if err != nil {
-    fmt.Println("Error:", err)
-    return
-}
-In this case, the user can enter their name and age on the same line, separated by a space, and the input will be read correctly.</p>
-<p>Remember that the Scan() and Scanln() functions return the number of successfully scanned items and an error value, so it's important to check for any errors that may have occurred during the input reading process.</p>
-<h2 id="certainly-lets-break-down-the-fmtscan-function">Certainly! Let's break down the <code>fmt.Scan()</code> function:</h2>
+                <p>The <code>encoding/json</code> package in Go is used for encoding and decoding JSON data. Using the 80-20 principle, we can concentrate on the most essential functions and types that will cover the majority of JSON-related tasks.  </p>
 <ol>
+<li><strong>Marshaling and Unmarshaling</strong>:  </li>
+<li><code>json.Marshal(v interface{}) ([]byte, error)</code>: Converts a Go value to JSON. This is your go-to function for creating JSON from Go data structures.  </li>
 <li>
-<p><code>fmt.Scan(a ...any) (n int, err error)</code></p>
+<p><code>json.Unmarshal(data []byte, v interface{}) error</code>: Parses JSON data and stores the result in the value pointed to by <code>v</code>. Use this to convert JSON into Go data structures.  </p>
 </li>
 <li>
-<p>This is the function signature of <code>fmt.Scan()</code>.</p>
+<p><strong>Working with JSON Streams</strong>:  </p>
 </li>
-<li><code>a ...any</code> is a variadic parameter, which means it can accept any number of arguments of any type.</li>
+<li><code>json.NewEncoder(w io.Writer) *json.Encoder</code>: Creates a new encoder that writes to <code>w</code>. Use this when you want to stream JSON data to an <code>io.Writer</code> such as an <code>http.ResponseWriter</code> or a file.  </li>
 <li>
-<p>The function returns two values:</p>
-<ul>
-<li><code>n int</code>: The number of successfully scanned items.</li>
-<li><code>err error</code>: An error value, if any, that occurred during the scanning process.</li>
-</ul>
+<p><code>json.NewDecoder(r io.Reader) *json.Decoder</code>: Creates a new decoder that reads from <code>r</code>. Use this when you want to decode JSON data from an <code>io.Reader</code> like <code>http.Request.Body</code> or a file.  </p>
 </li>
 <li>
-<p><code>fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><strong>Tags for Struct Fields</strong>:  </p>
 </li>
 <li>
-<p>In this example, we're passing two variables, <code>name</code> and <code>age</code>, to the <code>Scan()</code> function.</p>
-</li>
-<li>The <code>&amp;</code> symbol is used to pass the address of the variables, so that the <code>Scan()</code> function can modify their values directly.</li>
-<li>
-<p>The <code>Scan()</code> function will read the user's input and store the values in the <code>name</code> and <code>age</code> variables.</p>
+<p>Struct tags like <code>json:"fieldname,omitempty"</code> can be used to control how the fields of a Go struct are encoded to or decoded from JSON. These tags can specify JSON field names, omitempty behavior, and more.  </p>
 </li>
 <li>
-<p><code>_, err := fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><strong>Pretty Printing</strong>:  </p>
 </li>
-<li>
-<p>Here, we're using the short variable declaration syntax (<code>:=</code>) to declare two variables: <code>_</code> and <code>err</code>.</p>
-</li>
-<li>The <code>_</code> is an unnamed variable, which is used to discard the first return value (the number of successfully scanned items).</li>
-<li>
-<p>The <code>err</code> variable is used to store the error value returned by the <code>Scan()</code> function.</p>
-</li>
-<li>
-<p><code>if err != nil { ... }</code></p>
-</li>
-<li>
-<p>After calling <code>fmt.Scan()</code>, we check if an error occurred during the scanning process.</p>
-</li>
-<li>If <code>err</code> is not <code>nil</code>, it means an error occurred, and we can handle it accordingly (e.g., print an error message, return from the function, etc.).</li>
+<li><code>json.MarshalIndent(v interface{}, prefix, indent string) ([]byte, error)</code>: Similar to <code>json.Marshal</code> but with formatted output. Use this when you need human-readable JSON.  </li>
 </ol>
-<p>In summary, the <code>fmt.Scan()</code> function is used to read user input from the terminal and store the values in the provided variables. It returns the number of successfully scanned items and an error value, which you should always check to ensure that the input was read correctly.</p>
+<p><strong>Scenarios</strong>:  </p>
+<ul>
+<li><strong>Converting Go Structures to JSON (Marshaling)</strong>: When you need to send a Go data structure as a JSON response over HTTP or save it to a file, use <code>json.Marshal</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">type Person struct {  
+    Name    string `json:&quot;name&quot;`  
+    Age     int    `json:&quot;age&quot;`  
+    Address string `json:&quot;address,omitempty&quot;`  
+}  
+
+person := Person{Name: &quot;Alice&quot;, Age: 30}  
+jsonData, err := json.Marshal(person)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(string(jsonData)) // Output: {&quot;name&quot;:&quot;Alice&quot;,&quot;age&quot;:30}  
+</code></pre>
+
+<ul>
+<li><strong>Reading JSON into Go Structures (Unmarshaling)</strong>: When you receive JSON data from an API call or load a JSON file, use <code>json.Unmarshal</code> to convert it into a Go data structure.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">jsonData := []byte(`{&quot;name&quot;:&quot;Bob&quot;,&quot;age&quot;:25}`)  
+var person Person  
+err := json.Unmarshal(jsonData, &amp;person)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Printf(&quot;%+v\n&quot;, person) // Output: {Name:Bob Age:25 Address:}  
+</code></pre>
+
+<ul>
+<li><strong>Streaming JSON Output</strong>: When responding to an HTTP request with JSON, use <code>json.NewEncoder</code> to write JSON directly to the response writer.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">http.HandleFunc(&quot;/person&quot;, func(w http.ResponseWriter, r *http.Request) {  
+    person := Person{Name: &quot;Charlie&quot;, Age: 35}  
+    w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)  
+    err := json.NewEncoder(w).Encode(person)  
+    if err != nil {  
+        http.Error(w, err.Error(), http.StatusInternalServerError)  
+    }  
+})  
+</code></pre>
+
+<ul>
+<li><strong>Streaming JSON Input</strong>: When reading JSON data from an HTTP request, use <code>json.NewDecoder</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">http.HandleFunc(&quot;/person&quot;, func(w http.ResponseWriter, r *http.Request) {  
+    var person Person  
+    err := json.NewDecoder(r.Body).Decode(&amp;person)  
+    if err != nil {  
+        http.Error(w, err.Error(), http.StatusBadRequest)  
+        return  
+    }  
+    // Process person...  
+})  
+</code></pre>
+
+<ul>
+<li><strong>Pretty Printing JSON</strong> (Continued): Use <code>json.MarshalIndent</code> to generate indented JSON output.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">person := Person{Name: &quot;Dave&quot;, Age: 40}  
+jsonData, err := json.MarshalIndent(person, &quot;&quot;, &quot;  &quot;)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(string(jsonData))  
+// Output:  
+// {  
+//   &quot;name&quot;: &quot;Dave&quot;,  
+//   &quot;age&quot;: 40  
+// }  
+</code></pre>
+
+<ul>
+<li><strong>Custom JSON Encoding/Decoding</strong>: If you have custom types or need to process JSON in a non-standard way, you can implement the <code>json.Marshaler</code> and <code>json.Unmarshaler</code> interfaces for your types.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">type UnixTime time.Time  
+
+func (t UnixTime) MarshalJSON() ([]byte, error) {  
+    return json.Marshal(time.Time(t).Unix())  
+}  
+
+func (t *UnixTime) UnmarshalJSON(data []byte) error {  
+    var unixTime int64  
+    if err := json.Unmarshal(data, &amp;unixTime); err != nil {  
+        return err  
+    }  
+    *t = UnixTime(time.Unix(unixTime, 0))  
+    return nil  
+}  
+
+// Usage  
+timestamp := UnixTime(time.Now())  
+jsonData, err := json.Marshal(timestamp)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(string(jsonData)) // Output: Unix timestamp as a JSON number  
+</code></pre>
+
+<ul>
+<li><strong>Omitting Empty Fields</strong>: To exclude fields with zero values from the JSON output, use the <code>omitempty</code> tag option.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">type Config struct {  
+    Enabled bool   `json:&quot;enabled&quot;`  
+    Path    string `json:&quot;path,omitempty&quot;`  
+}  
+
+config := Config{Enabled: true}  
+jsonData, err := json.Marshal(config)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(string(jsonData)) // Output: {&quot;enabled&quot;:true}  
+</code></pre>
+
+<ul>
+<li><strong>Decoding Large JSON Documents</strong>: If you are dealing with a large JSON document and want to avoid loading it entirely into memory, use <code>json.Decoder</code> with <code>Token</code> to process the JSON incrementally.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">jsonData := `{&quot;name&quot;: &quot;Eve&quot;, &quot;hobbies&quot;: [&quot;Cycling&quot;, &quot;Hiking&quot;]}`  
+decoder := json.NewDecoder(strings.NewReader(jsonData))  
+
+// Read the JSON tokens one by one  
+for decoder.More() {  
+    token, err := decoder.Token()  
+    if err != nil {  
+        log.Fatal(err)  
+    }  
+    fmt.Println(token)  
+}  
+</code></pre>
+
+<ul>
+<li><strong>Handling Unknown JSON Fields</strong>: If you have JSON data that may have unknown fields, use a <code>map[string]interface{}</code> or a struct with embedded <code>json.RawMessage</code> to capture them.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">var data map[string]interface{}  
+jsonData := []byte(`{&quot;name&quot;:&quot;Frank&quot;,&quot;age&quot;:50,&quot;city&quot;:&quot;New York&quot;}`)  
+err := json.Unmarshal(jsonData, &amp;data)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(data) // Output: map with name, age, and city keys  
+</code></pre>
+
+<p>These are some of the primary functions and scenarios you will encounter when working with JSON in Go. By mastering these aspects of the <code>encoding/json</code> package, you'll be able to handle most of the JSON processing tasks in your Go applications. Remember that JSON marshaling and unmarshaling can be a source of runtime errors, so always check your error values and be mindful of the data types you're using for JSON encoding and decoding.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="important-packages.html" class="btn btn-neutral float-left" title="Important packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="pointers-dereferencing.html" class="btn btn-neutral float-right" title="Pointers dereferencing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="path-filepath.html" class="btn btn-neutral float-left" title="Path filepath"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="net-http.html" class="btn btn-neutral float-right" title="Net http">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -304,10 +411,10 @@ In this case, the user can enter their name and age on the same line, separated 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="important-packages.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="path-filepath.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="pointers-dereferencing.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="net-http.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

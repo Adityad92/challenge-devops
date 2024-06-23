@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Func breakdown - Challenge DevOps</title>
+    <title>Context - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Func breakdown";
-        var mkdocs_page_input_path = "golang/learning/func-breakdown.md";
+        var mkdocs_page_name = "Context";
+        var mkdocs_page_input_path = "golang/learning/context.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -89,9 +89,7 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="important-packages.html">Important packages</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="func-breakdown.html">Func breakdown</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
                 </li>
@@ -125,7 +123,9 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="strconv.html">Strconv</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="context.html">Context</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="context.html">Context</a>
+    <ul class="current">
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="strings.html">Strings</a>
                 </li>
@@ -205,7 +205,7 @@
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
           <li class="breadcrumb-item">learning</li>
-      <li class="breadcrumb-item active">Func breakdown</li>
+      <li class="breadcrumb-item active">Context</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -214,73 +214,148 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="variable-address-passing">Variable address passing</h2>
-<p>In this example, we have two variables, name and age, that we want to read from the terminal. Here's how it works:</p>
-<p>We use the fmt.Print() function to prompt the user to enter their name.
-We then use fmt.Scan(&amp;name) to read the user's input and store it in the name variable. The &amp; symbol is used to pass the address of the variable to the Scan() function.
-We check for any errors that may have occurred during the input reading process using the returned error value.
-We repeat the same process for the age variable, using fmt.Scan(&amp;age) to read the user's input.
-Finally, we use fmt.Printf() to print the user's name and age.
-Alternatively, you can use the fmt.Scanln() function, which reads input until a newline character is encountered:</p>
-<p>fmt.Print("Enter your name and age: ")
-_, err := fmt.Scanln(&amp;name, &amp;age)
-if err != nil {
-    fmt.Println("Error:", err)
-    return
-}
-In this case, the user can enter their name and age on the same line, separated by a space, and the input will be read correctly.</p>
-<p>Remember that the Scan() and Scanln() functions return the number of successfully scanned items and an error value, so it's important to check for any errors that may have occurred during the input reading process.</p>
-<h2 id="certainly-lets-break-down-the-fmtscan-function">Certainly! Let's break down the <code>fmt.Scan()</code> function:</h2>
+                <p>The <code>context</code> package in Go is used to carry deadlines, cancellation signals, and other request-scoped values across API boundaries and between processes. Understanding and using the <code>context</code> package effectively is essential for writing reliable and maintainable concurrent code in Go.  </p>
+<p>Here's an overview of the <code>context</code> package following the 80-20 principle, where 20% of the concepts you learn will cover 80% of your use cases:  </p>
+<h3 id="core-concepts">Core Concepts</h3>
+<ol>
+<li><strong>Context Types</strong>:  </li>
+<li><code>context.Background()</code>: The root context, which is never canceled and has no values or deadlines. It is typically used in main functions, initialization, and tests.  </li>
+<li>
+<p><code>context.TODO()</code>: A placeholder context when you're unsure what to use or plan to add a proper context later.  </p>
+</li>
+<li>
+<p><strong>Deriving Contexts</strong>:  </p>
+</li>
+<li><code>context.WithCancel(parent Context)</code>: Creates a new context that you can cancel manually using the <code>cancel()</code> function it returns.  </li>
+<li><code>context.WithDeadline(parent Context, deadline time.Time)</code>: Creates a context that automatically cancels at the specified deadline time.  </li>
+<li><code>context.WithTimeout(parent Context, timeout time.Duration)</code>: Similar to <code>WithDeadline</code> but specifies a duration after which to cancel, starting from now.  </li>
+<li><code>context.WithValue(parent Context, key, val interface{})</code>: Creates a context that carries a key-value pair. It's used to pass request-scoped data.  </li>
+</ol>
+<h3 id="common-scenarios">Common Scenarios</h3>
 <ol>
 <li>
-<p><code>fmt.Scan(a ...any) (n int, err error)</code></p>
+<p><strong>Timeouts</strong>: Use <code>context.WithTimeout</code> to prevent your application from hanging indefinitely. For example, set a timeout on HTTP requests or database calls.  </p>
 </li>
 <li>
-<p>This is the function signature of <code>fmt.Scan()</code>.</p>
-</li>
-<li><code>a ...any</code> is a variadic parameter, which means it can accept any number of arguments of any type.</li>
-<li>
-<p>The function returns two values:</p>
-<ul>
-<li><code>n int</code>: The number of successfully scanned items.</li>
-<li><code>err error</code>: An error value, if any, that occurred during the scanning process.</li>
-</ul>
+<p><strong>Cancellation Propagation</strong>: Use <code>context.WithCancel</code> when you need to stop work in a goroutine based on an external event, like user cancellation or shutdown signals.  </p>
 </li>
 <li>
-<p><code>fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><strong>Request-scoped Data</strong>: Use <code>context.WithValue</code> to pass data that is specific to a request's lifecycle, such as authentication credentials or trace IDs.  </p>
 </li>
 <li>
-<p>In this example, we're passing two variables, <code>name</code> and <code>age</code>, to the <code>Scan()</code> function.</p>
+<p><strong>Deadlines</strong>: Use <code>context.WithDeadline</code> when you have a fixed point in time by which the work must be completed, such as a timestamp indicating when a reservation expires.  </p>
 </li>
-<li>The <code>&amp;</code> symbol is used to pass the address of the variables, so that the <code>Scan()</code> function can modify their values directly.</li>
-<li>
-<p>The <code>Scan()</code> function will read the user's input and store the values in the <code>name</code> and <code>age</code> variables.</p>
-</li>
-<li>
-<p><code>_, err := fmt.Scan(&amp;name, &amp;age)</code></p>
-</li>
-<li>
-<p>Here, we're using the short variable declaration syntax (<code>:=</code>) to declare two variables: <code>_</code> and <code>err</code>.</p>
-</li>
-<li>The <code>_</code> is an unnamed variable, which is used to discard the first return value (the number of successfully scanned items).</li>
-<li>
-<p>The <code>err</code> variable is used to store the error value returned by the <code>Scan()</code> function.</p>
-</li>
-<li>
-<p><code>if err != nil { ... }</code></p>
-</li>
-<li>
-<p>After calling <code>fmt.Scan()</code>, we check if an error occurred during the scanning process.</p>
-</li>
-<li>If <code>err</code> is not <code>nil</code>, it means an error occurred, and we can handle it accordingly (e.g., print an error message, return from the function, etc.).</li>
 </ol>
-<p>In summary, the <code>fmt.Scan()</code> function is used to read user input from the terminal and store the values in the provided variables. It returns the number of successfully scanned items and an error value, which you should always check to ensure that the input was read correctly.</p>
+<h3 id="best-practices">Best Practices</h3>
+<ul>
+<li>Always pass context as the first parameter of a function.  </li>
+<li>Contexts should not be stored in structures; they should be passed along the call stack.  </li>
+<li>Values stored in context with <code>context.WithValue</code> should be used sparingly and only for data that is truly request-scoped.  </li>
+<li>Avoid using <code>context.TODO()</code> as a long-term solution; it's intended as a temporary placeholder.  </li>
+</ul>
+<h3 id="example-usage">Example Usage</h3>
+<p>Here's an example of how you might use a context with a timeout in a hypothetical function that makes an HTTP request:  </p>
+<pre class="codehilite"><code class="language-go">package main  
+
+import (  
+    &quot;context&quot;  
+    &quot;fmt&quot;  
+    &quot;net/http&quot;  
+    &quot;time&quot;  
+)  
+
+func fetchWithTimeout(ctx context.Context, url string) (*http.Response, error) {  
+    // Create a new context with a timeout of 2 seconds  
+    ctx, cancel := context.WithTimeout(ctx, 2*time.Second)  
+    defer cancel() // Make sure to cancel the context to free resources  
+
+    // Make a request with the context  
+    req, _ := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)  
+    client := &amp;http.Client{}  
+    return client.Do(req)  
+}  
+
+func main() {  
+    ctx := context.Background() // Use background context as the root  
+
+    // Call fetchWithTimeout and pass the context  
+    resp, err := fetchWithTimeout(ctx, &quot;http://example.com&quot;)  
+    if err != nil {  
+        fmt.Println(&quot;Request failed:&quot;, err)  
+        return  
+    }  
+    defer resp.Body.Close() // Don't forget to close the response body  
+
+    fmt.Println(&quot;Response status code:&quot;, resp.StatusCode)  
+}  
+</code></pre>
+
+<p>In this example, <code>fetchWithTimeout</code> will cancel the HTTP request if it takes longer than 2 seconds. This is a common pattern to prevent your application from hanging indefinitely if an external resource is slow or unresponsive.  </p>
+<h3 id="advanced-usage">Advanced Usage</h3>
+<p>Sometimes, you'll want to combine contexts or react to their cancellation. Here's a more advanced example that demonstrates waiting for multiple contexts to be done using <code>select</code>:  </p>
+<pre class="codehilite"><code class="language-go">package main  
+
+import (  
+    &quot;context&quot;  
+    &quot;fmt&quot;  
+    &quot;time&quot;  
+)  
+
+func operation1(ctx context.Context) {  
+    select {  
+    case &lt;-time.After(2 * time.Second):  
+        fmt.Println(&quot;Operation 1 completed&quot;)  
+    case &lt;-ctx.Done():  
+        fmt.Println(&quot;Operation 1 cancelled&quot;)  
+    }  
+}  
+
+func operation2(ctx context.Context) {  
+    select {  
+    case &lt;-time.After(100 * time.Millisecond):  
+        fmt.Println(&quot;Operation 2 completed&quot;)  
+    case &lt;-ctx.Done():  
+        fmt.Println(&quot;Operation 2 cancelled&quot;)  
+    }  
+}  
+
+func main() {  
+    // Root context  
+    rootCtx := context.Background()  
+
+    // Context with a timeout, all operations must be done within this time frame  
+    ctx, cancel := context.WithTimeout(rootCtx, 1*time.Second)  
+    defer cancel()  
+
+    // Run two operations with the same context  
+    go operation1(ctx)  
+    go operation2(ctx)  
+
+    // Wait for the context to be cancelled (i.e., when the timeout is reached)  
+    &lt;-ctx.Done()  
+
+    // The ctx.Err() will contain the reason why the context was cancelled  
+    fmt.Println(&quot;Main: all operations done or cancelled due to&quot;, ctx.Err())  
+}  
+</code></pre>
+
+<p>In this example, <code>operation1</code> and <code>operation2</code> are simulated operations that will complete after a certain amount of time or when the context is cancelled, whichever comes first. The main function creates a context with a 1-second timeout and launches both operations with this context. When the timeout is reached, the context's <code>Done</code> channel is closed, and the operations are cancelled if they haven't completed yet. The main function then prints the reason for the cancellation, which would be a deadline exceeded error in this case.  </p>
+<h3 id="understanding-cancellation">Understanding Cancellation</h3>
+<p>It's important to understand that cancelling a context does not stop the goroutines that are running; it merely signals them to stop. It's up to the goroutine to respect the context's <code>Done</code> channel and cease operations in a timely manner. This means you must always check for context cancellation in any potentially long-running or blocking operations.  </p>
+<h3 id="context-in-real-world-applications">Context in Real-world Applications</h3>
+<p>In real-world applications, context is often used to manage cancellation and timeouts across API boundaries, such as:  </p>
+<ul>
+<li>In HTTP servers, to handle request cancellation and set request deadlines.  </li>
+<li>In gRPC, where each RPC call has its own context passed to it that can be used to control the lifecycle of that RPC.  </li>
+<li>In cloud services clients, to set deadlines for cloud operations and to pass cancellation signals to long-running tasks.  </li>
+</ul>
+<p>By using the context package properly, you can write robust and concurrent code that gracefully handles cancellation, deadlines, and passing request-scoped values.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="important-packages.html" class="btn btn-neutral float-left" title="Important packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="pointers-dereferencing.html" class="btn btn-neutral float-right" title="Pointers dereferencing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="strconv.html" class="btn btn-neutral float-left" title="Strconv"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="strings.html" class="btn btn-neutral float-right" title="Strings">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -304,10 +379,10 @@ In this case, the user can enter their name and age on the same line, separated 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="important-packages.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="strconv.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="pointers-dereferencing.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="strings.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

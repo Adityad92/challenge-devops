@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Func breakdown - Challenge DevOps</title>
+    <title>Path filepath - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Func breakdown";
-        var mkdocs_page_input_path = "golang/learning/func-breakdown.md";
+        var mkdocs_page_name = "Path filepath";
+        var mkdocs_page_input_path = "golang/learning/path-filepath.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -89,9 +89,7 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="important-packages.html">Important packages</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="func-breakdown.html">Func breakdown</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
                 </li>
@@ -117,7 +115,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="os-exec.html">Os exec</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="path-filepath.html">Path filepath</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="path-filepath.html">Path filepath</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="encoding-json.html">Encoding json</a>
                 </li>
@@ -205,7 +203,7 @@
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
           <li class="breadcrumb-item">learning</li>
-      <li class="breadcrumb-item active">Func breakdown</li>
+      <li class="breadcrumb-item active">Path filepath</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -214,73 +212,146 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="variable-address-passing">Variable address passing</h2>
-<p>In this example, we have two variables, name and age, that we want to read from the terminal. Here's how it works:</p>
-<p>We use the fmt.Print() function to prompt the user to enter their name.
-We then use fmt.Scan(&amp;name) to read the user's input and store it in the name variable. The &amp; symbol is used to pass the address of the variable to the Scan() function.
-We check for any errors that may have occurred during the input reading process using the returned error value.
-We repeat the same process for the age variable, using fmt.Scan(&amp;age) to read the user's input.
-Finally, we use fmt.Printf() to print the user's name and age.
-Alternatively, you can use the fmt.Scanln() function, which reads input until a newline character is encountered:</p>
-<p>fmt.Print("Enter your name and age: ")
-_, err := fmt.Scanln(&amp;name, &amp;age)
-if err != nil {
-    fmt.Println("Error:", err)
-    return
-}
-In this case, the user can enter their name and age on the same line, separated by a space, and the input will be read correctly.</p>
-<p>Remember that the Scan() and Scanln() functions return the number of successfully scanned items and an error value, so it's important to check for any errors that may have occurred during the input reading process.</p>
-<h2 id="certainly-lets-break-down-the-fmtscan-function">Certainly! Let's break down the <code>fmt.Scan()</code> function:</h2>
+                <p>The <code>path/filepath</code> package in Go provides functions for manipulating filename paths in a way that is compatible with the target operating system's file paths. When applying the 80-20 principle, we focus on the most commonly used functions that handle the majority of path manipulation tasks.  </p>
 <ol>
+<li><strong>Joining and Splitting Paths</strong>:  </li>
+<li><code>filepath.Join(elem ...string) string</code>: Combines any number of path elements into a single path, adding a separator if necessary. It's the go-to function for building file paths in a cross-platform way.  </li>
 <li>
-<p><code>fmt.Scan(a ...any) (n int, err error)</code></p>
+<p><code>filepath.Split(path string) (dir, file string)</code>: Splits a path into a directory and file component.  </p>
 </li>
 <li>
-<p>This is the function signature of <code>fmt.Scan()</code>.</p>
-</li>
-<li><code>a ...any</code> is a variadic parameter, which means it can accept any number of arguments of any type.</li>
-<li>
-<p>The function returns two values:</p>
-<ul>
-<li><code>n int</code>: The number of successfully scanned items.</li>
-<li><code>err error</code>: An error value, if any, that occurred during the scanning process.</li>
-</ul>
+<p><strong>Cleaning Paths</strong>:  </p>
 </li>
 <li>
-<p><code>fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><code>filepath.Clean(path string) string</code>: Returns the shortest path equivalent to the given path by purely lexical processing. It removes redundant separators and resolves any "." or ".." elements.  </p>
 </li>
 <li>
-<p>In this example, we're passing two variables, <code>name</code> and <code>age</code>, to the <code>Scan()</code> function.</p>
+<p><strong>Absolute and Relative Paths</strong>:  </p>
 </li>
-<li>The <code>&amp;</code> symbol is used to pass the address of the variables, so that the <code>Scan()</code> function can modify their values directly.</li>
+<li><code>filepath.Abs(path string) (string, error)</code>: Converts a relative path to an absolute path.  </li>
 <li>
-<p>The <code>Scan()</code> function will read the user's input and store the values in the <code>name</code> and <code>age</code> variables.</p>
-</li>
-<li>
-<p><code>_, err := fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><code>filepath.Rel(basepath, targpath string) (string, error)</code>: Returns a relative path that is lexically equivalent to <code>targpath</code> when joined to <code>basepath</code>.  </p>
 </li>
 <li>
-<p>Here, we're using the short variable declaration syntax (<code>:=</code>) to declare two variables: <code>_</code> and <code>err</code>.</p>
+<p><strong>Working with Directories</strong>:  </p>
 </li>
-<li>The <code>_</code> is an unnamed variable, which is used to discard the first return value (the number of successfully scanned items).</li>
+<li><code>filepath.Dir(path string) string</code>: Returns all but the last element of the path, typically the path's directory.  </li>
 <li>
-<p>The <code>err</code> variable is used to store the error value returned by the <code>Scan()</code> function.</p>
-</li>
-<li>
-<p><code>if err != nil { ... }</code></p>
+<p><code>filepath.Base(path string) string</code>: Returns the last element of the path.  </p>
 </li>
 <li>
-<p>After calling <code>fmt.Scan()</code>, we check if an error occurred during the scanning process.</p>
+<p><strong>File Extension Handling</strong>:  </p>
 </li>
-<li>If <code>err</code> is not <code>nil</code>, it means an error occurred, and we can handle it accordingly (e.g., print an error message, return from the function, etc.).</li>
+<li>
+<p><code>filepath.Ext(path string) string</code>: Returns the file name extension used by the path.  </p>
+</li>
+<li>
+<p><strong>Globbing</strong>:  </p>
+</li>
+<li>
+<p><code>filepath.Glob(pattern string) ([]string, error)</code>: Returns the names of all files matching the specified pattern (wildcards are allowed).  </p>
+</li>
+<li>
+<p><strong>Walking a Directory Tree</strong>:  </p>
+</li>
+<li><code>filepath.Walk(root string, walkFn filepath.WalkFunc) error</code>: Walks the file tree rooted at <code>root</code>, calling <code>walkFn</code> for each file or directory in the tree, including <code>root</code>.  </li>
 </ol>
-<p>In summary, the <code>fmt.Scan()</code> function is used to read user input from the terminal and store the values in the provided variables. It returns the number of successfully scanned items and an error value, which you should always check to ensure that the input was read correctly.</p>
+<p><strong>Scenarios</strong>:  </p>
+<ul>
+<li><strong>Constructing File Paths</strong>: When you need to build file paths dynamically, such as when creating files in a directory or accessing nested resources, use <code>filepath.Join</code> to ensure the paths are constructed correctly for the OS.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">configDir := &quot;/etc/myapp&quot;  
+configFile := &quot;config.json&quot;  
+path := filepath.Join(configDir, configFile)  
+fmt.Println(path) // Output: /etc/myapp/config.json on Unix-like OS  
+</code></pre>
+
+<ul>
+<li><strong>Cleaning and Normalizing Paths</strong>: Use <code>filepath.Clean</code> when you have a path that may contain unnecessary elements like ".." or "//", and you want to normalize it.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">dirtyPath := &quot;///some//path/..&quot;  
+cleanPath := filepath.Clean(dirtyPath)  
+fmt.Println(cleanPath) // Output: /some  
+</code></pre>
+
+<ul>
+<li><strong>Finding Files</strong>: If you need to find all files with a certain extension within a directory, use <code>filepath.Glob</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">files, err := filepath.Glob(&quot;/path/to/directory/*.txt&quot;)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(files) // Output: list of .txt files in the specified directory  
+</code></pre>
+
+<ul>
+<li><strong>Walking Directories</strong>: When you need to process all files in a directory and its subdirectories, use <code>filepath.Walk</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">err := filepath.Walk(&quot;/path/to/directory&quot;, func(path string, info os.FileInfo, err error) error {  
+    if err != nil {  
+        return err  
+    }  
+    fmt.Println(path, info.Size())  
+    return nil  
+})  
+if err != nil {  
+    log.Fatal(err)  
+}  
+</code></pre>
+
+<ul>
+<li><strong>Extracting File Information (Continued)</strong>:  </li>
+<li><code>filepath.Dir</code>, <code>filepath.Base</code>, and <code>filepath.Ext</code> to get different parts of the file path.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">fullPath := &quot;/path/to/file.txt&quot;  
+dir := filepath.Dir(fullPath)  
+base := filepath.Base(fullPath)  
+ext := filepath.Ext(fullPath)  
+
+fmt.Println(&quot;Directory:&quot;, dir)  // Output: /path/to  
+fmt.Println(&quot;File:&quot;, base)      // Output: file.txt  
+fmt.Println(&quot;Extension:&quot;, ext)  // Output: .txt  
+</code></pre>
+
+<ul>
+<li><strong>Determining Relative Paths</strong>: When you need to find the relative path between two file paths, for example, when generating URLs or reducing path length, use <code>filepath.Rel</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">basePath := &quot;/a&quot;  
+targetPath := &quot;/a/b/c/d.txt&quot;  
+relPath, err := filepath.Rel(basePath, targetPath)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(relPath) // Output: b/c/d.txt  
+</code></pre>
+
+<ul>
+<li><strong>Handling Absolute Paths</strong>: Use <code>filepath.Abs</code> to ensure you have an absolute path, which might be necessary when working with libraries that require absolute paths or for consistent path handling.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">relPath := &quot;file.txt&quot;  
+absPath, err := filepath.Abs(relPath)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(absPath) // Output: absolute path to file.txt  
+</code></pre>
+
+<ul>
+<li><strong>Splitting Paths</strong>: If you need to separate a file name from its directory path, use <code>filepath.Split</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">fullPath := &quot;/path/to/file.txt&quot;  
+dir, file := filepath.Split(fullPath)  
+fmt.Println(&quot;Directory:&quot;, dir)  // Output: /path/to/  
+fmt.Println(&quot;File:&quot;, file)      // Output: file.txt  
+</code></pre>
+
+<p>These functions and scenarios represent the most common ways developers interact with file paths. By understanding and utilizing these aspects of the <code>path/filepath</code> package, you can handle the vast majority of file path operations in a cross-platform and reliable manner. Remember that file path manipulation is a common source of bugs, especially when dealing with different operating systems, so always prefer using the <code>filepath</code> package over string manipulation to ensure your code is robust and portable.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="important-packages.html" class="btn btn-neutral float-left" title="Important packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="pointers-dereferencing.html" class="btn btn-neutral float-right" title="Pointers dereferencing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="os-exec.html" class="btn btn-neutral float-left" title="Os exec"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="encoding-json.html" class="btn btn-neutral float-right" title="Encoding json">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -304,10 +375,10 @@ In this case, the user can enter their name and age on the same line, separated 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="important-packages.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="os-exec.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="pointers-dereferencing.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="encoding-json.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

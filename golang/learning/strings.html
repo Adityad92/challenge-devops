@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Func breakdown - Challenge DevOps</title>
+    <title>Strings - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Func breakdown";
-        var mkdocs_page_input_path = "golang/learning/func-breakdown.md";
+        var mkdocs_page_name = "Strings";
+        var mkdocs_page_input_path = "golang/learning/strings.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -89,9 +89,7 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="important-packages.html">Important packages</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="func-breakdown.html">Func breakdown</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
                 </li>
@@ -127,7 +125,9 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="context.html">Context</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="strings.html">Strings</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="strings.html">Strings</a>
+    <ul class="current">
+    </ul>
                 </li>
     </ul>
                   </li>
@@ -205,7 +205,7 @@
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
           <li class="breadcrumb-item">learning</li>
-      <li class="breadcrumb-item active">Func breakdown</li>
+      <li class="breadcrumb-item active">Strings</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -214,73 +214,154 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="variable-address-passing">Variable address passing</h2>
-<p>In this example, we have two variables, name and age, that we want to read from the terminal. Here's how it works:</p>
-<p>We use the fmt.Print() function to prompt the user to enter their name.
-We then use fmt.Scan(&amp;name) to read the user's input and store it in the name variable. The &amp; symbol is used to pass the address of the variable to the Scan() function.
-We check for any errors that may have occurred during the input reading process using the returned error value.
-We repeat the same process for the age variable, using fmt.Scan(&amp;age) to read the user's input.
-Finally, we use fmt.Printf() to print the user's name and age.
-Alternatively, you can use the fmt.Scanln() function, which reads input until a newline character is encountered:</p>
-<p>fmt.Print("Enter your name and age: ")
-_, err := fmt.Scanln(&amp;name, &amp;age)
-if err != nil {
-    fmt.Println("Error:", err)
-    return
-}
-In this case, the user can enter their name and age on the same line, separated by a space, and the input will be read correctly.</p>
-<p>Remember that the Scan() and Scanln() functions return the number of successfully scanned items and an error value, so it's important to check for any errors that may have occurred during the input reading process.</p>
-<h2 id="certainly-lets-break-down-the-fmtscan-function">Certainly! Let's break down the <code>fmt.Scan()</code> function:</h2>
+                <p>The <code>strings</code> package in Go provides functions to manipulate UTF-8 encoded strings. By following the 80-20 principle, we can focus on the most commonly used functions that will cater to a majority of your string manipulation needs.  </p>
+<h3 id="core-functions">Core Functions</h3>
+<ol>
+<li><strong>Checking and Searching</strong>:  </li>
+<li><code>strings.Contains(s, substr string) bool</code>: Check if <code>s</code> contains <code>substr</code>.  </li>
+<li><code>strings.HasPrefix(s, prefix string) bool</code>: Check if <code>s</code> starts with <code>prefix</code>.  </li>
+<li><code>strings.HasSuffix(s, suffix string) bool</code>: Check if <code>s</code> ends with <code>suffix</code>.  </li>
+<li>
+<p><code>strings.Index(s, substr string) int</code>: Find the index of the first occurrence of <code>substr</code> in <code>s</code>.  </p>
+</li>
+<li>
+<p><strong>String Modification</strong>:  </p>
+</li>
+<li><code>strings.ToLower(s string) string</code>: Convert <code>s</code> to lowercase.  </li>
+<li><code>strings.ToUpper(s string) string</code>: Convert <code>s</code> to uppercase.  </li>
+<li><code>strings.TrimSpace(s string) string</code>: Remove leading and trailing whitespace.  </li>
+<li>
+<p><code>strings.Replace(s, old, new string, n int) string</code>: Replace occurrences of <code>old</code> with <code>new</code> in <code>s</code>, <code>n</code> times (<code>-1</code> for all).  </p>
+</li>
+<li>
+<p><strong>Splitting and Joining</strong>:  </p>
+</li>
+<li><code>strings.Split(s, sep string) []string</code>: Split <code>s</code> into a slice of substrings separated by <code>sep</code>.  </li>
+<li>
+<p><code>strings.Join(elems []string, sep string) string</code>: Join elements of <code>elems</code> into a single string separated by <code>sep</code>.  </p>
+</li>
+<li>
+<p><strong>String Building</strong>:  </p>
+</li>
+<li><code>strings.Builder</code>: A mutable string builder that minimizes memory copying.  </li>
+</ol>
+<h3 id="common-scenarios">Common Scenarios</h3>
 <ol>
 <li>
-<p><code>fmt.Scan(a ...any) (n int, err error)</code></p>
+<p><strong>Parsing and Tokenization</strong>: Use <code>strings.Split</code> when you need to parse CSV input, tokenize a string, or break down a path into segments.  </p>
 </li>
 <li>
-<p>This is the function signature of <code>fmt.Scan()</code>.</p>
-</li>
-<li><code>a ...any</code> is a variadic parameter, which means it can accept any number of arguments of any type.</li>
-<li>
-<p>The function returns two values:</p>
-<ul>
-<li><code>n int</code>: The number of successfully scanned items.</li>
-<li><code>err error</code>: An error value, if any, that occurred during the scanning process.</li>
-</ul>
+<p><strong>Trimming</strong>: Use <code>strings.TrimSpace</code> and related functions like <code>strings.Trim</code> or <code>strings.TrimSuffix</code> to clean up user input or remove unwanted characters.  </p>
 </li>
 <li>
-<p><code>fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><strong>Case Insensitivity</strong>: Use <code>strings.EqualFold</code> for case-insensitive string comparison, which is more reliable than comparing lowercased or uppercased versions.  </p>
 </li>
 <li>
-<p>In this example, we're passing two variables, <code>name</code> and <code>age</code>, to the <code>Scan()</code> function.</p>
-</li>
-<li>The <code>&amp;</code> symbol is used to pass the address of the variables, so that the <code>Scan()</code> function can modify their values directly.</li>
-<li>
-<p>The <code>Scan()</code> function will read the user's input and store the values in the <code>name</code> and <code>age</code> variables.</p>
+<p><strong>String Replacement</strong>: Use <code>strings.Replace</code> or <code>strings.ReplaceAll</code> to sanitize strings, remove unwanted characters, or perform templating operations.  </p>
 </li>
 <li>
-<p><code>_, err := fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><strong>Building Strings</strong>: Use <code>strings.Builder</code> for efficient string concatenation in a loop, which is more performant than using the <code>+</code> operator.  </p>
 </li>
-<li>
-<p>Here, we're using the short variable declaration syntax (<code>:=</code>) to declare two variables: <code>_</code> and <code>err</code>.</p>
-</li>
-<li>The <code>_</code> is an unnamed variable, which is used to discard the first return value (the number of successfully scanned items).</li>
-<li>
-<p>The <code>err</code> variable is used to store the error value returned by the <code>Scan()</code> function.</p>
-</li>
-<li>
-<p><code>if err != nil { ... }</code></p>
-</li>
-<li>
-<p>After calling <code>fmt.Scan()</code>, we check if an error occurred during the scanning process.</p>
-</li>
-<li>If <code>err</code> is not <code>nil</code>, it means an error occurred, and we can handle it accordingly (e.g., print an error message, return from the function, etc.).</li>
 </ol>
-<p>In summary, the <code>fmt.Scan()</code> function is used to read user input from the terminal and store the values in the provided variables. It returns the number of successfully scanned items and an error value, which you should always check to ensure that the input was read correctly.</p>
+<h3 id="example-usage">Example Usage</h3>
+<p>Here are some examples illustrating how you might use these functions:  </p>
+<p><strong>Checking for Substrings</strong>:  </p>
+<pre class="codehilite"><code class="language-go">s := &quot;Hello, World!&quot;  
+fmt.Println(strings.Contains(s, &quot;World&quot;)) // true  
+fmt.Println(strings.HasPrefix(s, &quot;Hello&quot;)) // true  
+fmt.Println(strings.HasSuffix(s, &quot;!&quot;)) // true  
+</code></pre>
+
+<p><strong>Modifying Strings</strong>:  </p>
+<pre class="codehilite"><code class="language-go">s := &quot;   Go is Awesome!   &quot;  
+fmt.Println(strings.ToLower(s)) // &quot;   go is awesome!   &quot;  
+fmt.Println(strings.ToUpper(s)) // &quot;   GO IS AWESOME!   &quot;  
+fmt.Println(strings.TrimSpace(s)) // &quot;Go is Awesome!&quot;  
+</code></pre>
+
+<p><strong>Splitting and Joining</strong>:  </p>
+<pre class="codehilite"><code class="language-go">csv := &quot;red,green,blue&quot;  
+colors := strings.Split(csv, &quot;,&quot;)  
+fmt.Println(colors) // [&quot;red&quot; &quot;green&quot; &quot;blue&quot;]  
+
+colorString := strings.Join(colors, &quot;;&quot;)  
+fmt.Println(colorString) // &quot;red;green;blue&quot;  
+</code></pre>
+
+<p><strong>String Building</strong>:  </p>
+<pre class="codehilite"><code class="language-go">var sb strings.Builder  
+for i := 0; i &lt; 5; i++ {  
+    sb.WriteString(&quot;a&quot;)  
+}  
+fmt.Println(sb.String()) // &quot;aaaaa&quot;  
+</code></pre>
+
+<h3 id="best-practices">Best Practices</h3>
+<ul>
+<li>Use <code>strings.Builder</code> for concatenating strings in loops to avoid unnecessary memory allocation.  </li>
+<li>Prefer <code>strings.Contains</code> over <code>strings.Index</code> when you only need to check the existence of a substring and don't need the position.  </li>
+<li>Use <code>strings.Join</code> instead of concatenating strings with <code>+</code> in a loop when combining a slice of strings, as it is more efficient.  </li>
+<li>When trimming strings, be explicit about what you want to trim (<code>TrimSpace</code>, <code>TrimRight</code>, <code>TrimLeft</code>, etc.) to avoid unexpected behavior.  </li>
+</ul>
+<h3 id="more-examples">More Examples</h3>
+<p><strong>Replacing Substrings</strong>:  </p>
+<pre class="codehilite"><code class="language-go">s := &quot;The rain in Spain falls mainly in the plain.&quot;  
+fmt.Println(strings.Replace(s, &quot;in&quot;, &quot;on&quot;, 2)) // &quot;The raon on Spaon falls mainly in the plain.&quot;  
+fmt.Println(strings.ReplaceAll(s, &quot;in&quot;, &quot;on&quot;)) // &quot;The raon on Spaon falls maonly on the plaon.&quot;  
+</code></pre>
+
+<p><strong>Case Insensitive Comparison</strong>:  </p>
+<pre class="codehilite"><code class="language-go">s1 := &quot;GoLang&quot;  
+s2 := &quot;golang&quot;  
+fmt.Println(strings.EqualFold(s1, s2)) // true  
+</code></pre>
+
+<p><strong>Trimming Specific Characters</strong>:  </p>
+<pre class="codehilite"><code class="language-go">s := &quot;!!!Go!!!&quot;  
+fmt.Println(strings.Trim(s, &quot;!&quot;)) // &quot;Go&quot;  
+</code></pre>
+
+<p><strong>Extracting Substrings</strong>:  </p>
+<pre class="codehilite"><code class="language-go">s := &quot;file.txt&quot;  
+if dot := strings.LastIndex(s, &quot;.&quot;); dot &gt;= 0 {  
+    ext := s[dot:]  
+    fmt.Println(ext) // &quot;.txt&quot;  
+}  
+</code></pre>
+
+<p><strong>Iterating Over Strings</strong>:  </p>
+<pre class="codehilite"><code class="language-go">s := &quot;Hello, 世界&quot;  
+for i, r := range s {  
+    fmt.Printf(&quot;%d: %q\n&quot;, i, r)  
+}  
+// Output:  
+// 0: 'H'  
+// 1: 'e'  
+// 2: 'l'  
+// ...  
+// 7: '世'  
+// 10: '界'  
+</code></pre>
+
+<p>In this example, <code>range</code> iterates over the string by runes, not bytes, which is important for proper Unicode handling.  </p>
+<h3 id="advanced-usage">Advanced Usage</h3>
+<p>The <code>strings</code> package also provides functions for more advanced scenarios, such as:  </p>
+<ul>
+<li><code>strings.NewReader(s string) *Reader</code>: Create a new <code>strings.Reader</code>, which implements the <code>io.Reader</code>, <code>io.ReaderAt</code>, <code>io.Seeker</code>, and <code>io.WriterTo</code> interfaces.  </li>
+<li><code>strings.Fields(s string) []string</code>: Split <code>s</code> into a slice of substrings separated by any whitespace (like <code>Split</code>, but with automatic whitespace handling).  </li>
+<li><code>strings.Map(mapping func(rune) rune, s string) string</code>: Return a new string with the result of applying the <code>mapping</code> function to each rune.  </li>
+</ul>
+<h3 id="handling-unicode">Handling Unicode</h3>
+<p>When working with Unicode strings, it's important to consider that characters may be represented by multiple bytes. Functions like <code>strings.IndexRune</code> and <code>strings.Count</code> take this into account and operate on runes rather than bytes, making them safe for Unicode strings.  </p>
+<h3 id="performance-considerations">Performance Considerations</h3>
+<p>Using the <code>strings</code> package functions is generally efficient for typical use cases. However, when working with very large strings or in performance-critical code, it is wise to be mindful of memory allocations. The <code>strings.Builder</code> type is particularly useful in such scenarios, as it minimizes memory copying and allocations.  </p>
+<p>By understanding and utilizing these functions and best practices, you can handle most string manipulation tasks in Go effectively. Remember, the <code>strings</code> package functions are safe for use with UTF-8 encoded strings, which is the default string encoding in Go.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="important-packages.html" class="btn btn-neutral float-left" title="Important packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="pointers-dereferencing.html" class="btn btn-neutral float-right" title="Pointers dereferencing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="context.html" class="btn btn-neutral float-left" title="Context"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../projects/1-Simple-CLI-Tool.html" class="btn btn-neutral float-right" title="1 Simple CLI Tool">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -304,10 +385,10 @@ In this case, the user can enter their name and age on the same line, separated 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="important-packages.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="context.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="pointers-dereferencing.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../projects/1-Simple-CLI-Tool.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

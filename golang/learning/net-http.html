@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Func breakdown - Challenge DevOps</title>
+    <title>Net http - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Func breakdown";
-        var mkdocs_page_input_path = "golang/learning/func-breakdown.md";
+        var mkdocs_page_name = "Net http";
+        var mkdocs_page_input_path = "golang/learning/net-http.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -89,9 +89,7 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="important-packages.html">Important packages</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="func-breakdown.html">Func breakdown</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
                 </li>
@@ -121,7 +119,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="encoding-json.html">Encoding json</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="net-http.html">Net http</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="net-http.html">Net http</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="strconv.html">Strconv</a>
                 </li>
@@ -205,7 +203,7 @@
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
           <li class="breadcrumb-item">learning</li>
-      <li class="breadcrumb-item active">Func breakdown</li>
+      <li class="breadcrumb-item active">Net http</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -214,73 +212,205 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="variable-address-passing">Variable address passing</h2>
-<p>In this example, we have two variables, name and age, that we want to read from the terminal. Here's how it works:</p>
-<p>We use the fmt.Print() function to prompt the user to enter their name.
-We then use fmt.Scan(&amp;name) to read the user's input and store it in the name variable. The &amp; symbol is used to pass the address of the variable to the Scan() function.
-We check for any errors that may have occurred during the input reading process using the returned error value.
-We repeat the same process for the age variable, using fmt.Scan(&amp;age) to read the user's input.
-Finally, we use fmt.Printf() to print the user's name and age.
-Alternatively, you can use the fmt.Scanln() function, which reads input until a newline character is encountered:</p>
-<p>fmt.Print("Enter your name and age: ")
-_, err := fmt.Scanln(&amp;name, &amp;age)
-if err != nil {
-    fmt.Println("Error:", err)
-    return
-}
-In this case, the user can enter their name and age on the same line, separated by a space, and the input will be read correctly.</p>
-<p>Remember that the Scan() and Scanln() functions return the number of successfully scanned items and an error value, so it's important to check for any errors that may have occurred during the input reading process.</p>
-<h2 id="certainly-lets-break-down-the-fmtscan-function">Certainly! Let's break down the <code>fmt.Scan()</code> function:</h2>
+                <p>The <code>net/http</code> package in Go is a powerful tool for building HTTP clients and servers. By focusing on the 80-20 principle, we'll cover the most common and useful features that will handle the majority of HTTP-related tasks.  </p>
 <ol>
+<li><strong>Creating HTTP Servers</strong>:  </li>
+<li><code>http.ListenAndServe(addr string, handler http.Handler) error</code>: Starts an HTTP server with a given address and handler. The handler is usually nil, which means to use <code>http.DefaultServeMux</code>.  </li>
 <li>
-<p><code>fmt.Scan(a ...any) (n int, err error)</code></p>
+<p><code>http.HandleFunc(pattern string, handler func(http.ResponseWriter, *http.Request))</code>: Registers a handler function for a given pattern with the default serve mux.  </p>
 </li>
 <li>
-<p>This is the function signature of <code>fmt.Scan()</code>.</p>
+<p><strong>Handling HTTP Requests</strong>:  </p>
 </li>
-<li><code>a ...any</code> is a variadic parameter, which means it can accept any number of arguments of any type.</li>
+<li><code>http.Request</code>: Represents an HTTP request received by a server or sent by a client.  </li>
 <li>
-<p>The function returns two values:</p>
-<ul>
-<li><code>n int</code>: The number of successfully scanned items.</li>
-<li><code>err error</code>: An error value, if any, that occurred during the scanning process.</li>
-</ul>
+<p><code>http.ResponseWriter</code>: An interface used by an HTTP handler to construct an HTTP response.  </p>
 </li>
 <li>
-<p><code>fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><strong>Creating HTTP Clients</strong>:  </p>
+</li>
+<li><code>http.Get(url string) (resp *http.Response, err error)</code>: Sends an HTTP GET request.  </li>
+<li>
+<p><code>http.Post(url, contentType string, body io.Reader) (resp *http.Response, err error)</code>: Sends an HTTP POST request.  </p>
 </li>
 <li>
-<p>In this example, we're passing two variables, <code>name</code> and <code>age</code>, to the <code>Scan()</code> function.</p>
+<p><strong>Working with HTTP Responses</strong>:  </p>
 </li>
-<li>The <code>&amp;</code> symbol is used to pass the address of the variables, so that the <code>Scan()</code> function can modify their values directly.</li>
-<li>
-<p>The <code>Scan()</code> function will read the user's input and store the values in the <code>name</code> and <code>age</code> variables.</p>
-</li>
-<li>
-<p><code>_, err := fmt.Scan(&amp;name, &amp;age)</code></p>
-</li>
-<li>
-<p>Here, we're using the short variable declaration syntax (<code>:=</code>) to declare two variables: <code>_</code> and <code>err</code>.</p>
-</li>
-<li>The <code>_</code> is an unnamed variable, which is used to discard the first return value (the number of successfully scanned items).</li>
-<li>
-<p>The <code>err</code> variable is used to store the error value returned by the <code>Scan()</code> function.</p>
-</li>
-<li>
-<p><code>if err != nil { ... }</code></p>
-</li>
-<li>
-<p>After calling <code>fmt.Scan()</code>, we check if an error occurred during the scanning process.</p>
-</li>
-<li>If <code>err</code> is not <code>nil</code>, it means an error occurred, and we can handle it accordingly (e.g., print an error message, return from the function, etc.).</li>
+<li><code>http.Response</code>: Represents the response from an HTTP server.  </li>
 </ol>
-<p>In summary, the <code>fmt.Scan()</code> function is used to read user input from the terminal and store the values in the provided variables. It returns the number of successfully scanned items and an error value, which you should always check to ensure that the input was read correctly.</p>
+<p><strong>Scenarios</strong>:  </p>
+<ul>
+<li><strong>Setting Up a Simple Web Server</strong>: When you want to serve HTTP requests in Go, use <code>http.ListenAndServe</code> and <code>http.HandleFunc</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">http.HandleFunc(&quot;/hello&quot;, func(w http.ResponseWriter, r *http.Request) {  
+    fmt.Fprintln(w, &quot;Hello, World!&quot;)  
+})  
+
+err := http.ListenAndServe(&quot;:8080&quot;, nil)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+</code></pre>
+
+<ul>
+<li><strong>Reading Request Data</strong>: To read data from an HTTP request, such as query parameters or the request body, use the <code>http.Request</code> object.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">http.HandleFunc(&quot;/greet&quot;, func(w http.ResponseWriter, r *http.Request) {  
+    name := r.URL.Query().Get(&quot;name&quot;)  
+    if name == &quot;&quot; {  
+        name = &quot;Guest&quot;  
+    }  
+    fmt.Fprintf(w, &quot;Hello, %s!&quot;, name)  
+})  
+</code></pre>
+
+<ul>
+<li><strong>Sending an HTTP GET Request</strong>: When your application needs to retrieve data from an external service, use <code>http.Get</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">resp, err := http.Get(&quot;http://example.com&quot;)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+defer resp.Body.Close()  
+body, err := ioutil.ReadAll(resp.Body)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(string(body))  
+</code></pre>
+
+<ul>
+<li><strong>Sending an HTTP POST Request</strong>: Use <code>http.Post</code> to send data to an external service.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">formData := url.Values{&quot;key&quot;: {&quot;Value&quot;}, &quot;id&quot;: {&quot;123&quot;}}  
+resp, err := http.Post(&quot;http://example.com/post&quot;, &quot;application/x-www-form-urlencoded&quot;, strings.NewReader(formData.Encode()))  
+if err != nil {  
+    log.Fatal(err)  
+}  
+defer resp.Body.Close()  
+body, err := ioutil.ReadAll(resp.Body)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(string(body))  
+</code></pre>
+
+<ul>
+<li><strong>Creating a Custom HTTP Client</strong>: If you need to customize the HTTP client, for instance, to add timeouts, use <code>http.Client</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">client := &amp;http.Client{Timeout: time.Second * 10}  
+resp, err := client.Get(&quot;http://example.com&quot;)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+defer resp.Body.Close()  
+// ... read resp.Body as before  
+</code></pre>
+
+<ul>
+<li><strong>Handling JSON Responses</strong>: When dealing with JSON APIs, you'll often need to decode JSON from the response body.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">type ApiResponse struct {  
+    Data string `json:&quot;data&quot;`  
+}  
+
+resp, err := http.Get(&quot;http://example.com/api&quot;)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+defer resp.Body.Close()  
+
+var apiResp ApiResponse  
+err = json.NewDecoder(resp.Body).Decode(&amp;apiResp) 
+
+type ApiResponse struct {  
+    Data string `json:&quot;data&quot;`  
+}  
+
+resp, err := http.Get(&quot;http://example.com/api&quot;)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+defer resp.Body.Close()  
+
+var apiResp ApiResponse  
+err = json.NewDecoder(resp.Body).Decode(&amp;apiResp)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(apiResp.Data)  
+</code></pre>
+
+<ul>
+<li><strong>Working with HTTP Headers</strong>: To set or read HTTP headers, use the <code>Header</code> map in both the <code>http.Request</code> and <code>http.Response</code> structs.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">// Setting request headers  
+req, err := http.NewRequest(&quot;GET&quot;, &quot;http://example.com&quot;, nil)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+req.Header.Set(&quot;Authorization&quot;, &quot;Bearer your-token&quot;)  
+
+// Sending the request  
+client := &amp;http.Client{}  
+resp, err := client.Do(req)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+defer resp.Body.Close()  
+
+// Reading response headers  
+contentType := resp.Header.Get(&quot;Content-Type&quot;)  
+fmt.Println(&quot;Content-Type:&quot;, contentType)  
+</code></pre>
+
+<ul>
+<li><strong>Serving Static Files</strong>: To serve static files such as JavaScript, CSS, and images, use <code>http.FileServer</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">http.Handle(&quot;/&quot;, http.FileServer(http.Dir(&quot;/public&quot;)))  
+
+err := http.ListenAndServe(&quot;:8080&quot;, nil)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+</code></pre>
+
+<ul>
+<li><strong>Creating Middlewares</strong>: Middlewares are handlers that wrap other handlers to perform additional functions like logging, authentication, etc.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">func loggingMiddleware(next http.Handler) http.Handler {  
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {  
+        log.Printf(&quot;Request received: %s %s&quot;, r.Method, r.URL.Path)  
+        next.ServeHTTP(w, r) // Call the next handler  
+    })  
+}  
+
+http.Handle(&quot;/&quot;, loggingMiddleware(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {  
+    fmt.Fprintln(w, &quot;This is the main handler!&quot;)  
+})))  
+
+err := http.ListenAndServe(&quot;:8080&quot;, nil)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+</code></pre>
+
+<ul>
+<li><strong>Using HTTPS</strong>: To serve traffic over HTTPS, use <code>http.ListenAndServeTLS</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">err := http.ListenAndServeTLS(&quot;:443&quot;, &quot;server.crt&quot;, &quot;server.key&quot;, nil)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+</code></pre>
+
+<p>These examples showcase the most common use cases for the <code>net/http</code> package in Go. By mastering these fundamental patterns, you can handle a wide range of HTTP operations, from simple server setups to complex client requests. Always be mindful of error handling and resource management, such as closing response bodies and setting appropriate timeouts for your HTTP clients.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="important-packages.html" class="btn btn-neutral float-left" title="Important packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="pointers-dereferencing.html" class="btn btn-neutral float-right" title="Pointers dereferencing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="encoding-json.html" class="btn btn-neutral float-left" title="Encoding json"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="strconv.html" class="btn btn-neutral float-right" title="Strconv">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -304,10 +434,10 @@ In this case, the user can enter their name and age on the same line, separated 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="important-packages.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="encoding-json.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="pointers-dereferencing.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="strconv.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

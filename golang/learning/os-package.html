@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Func breakdown - Challenge DevOps</title>
+    <title>Os package - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Func breakdown";
-        var mkdocs_page_input_path = "golang/learning/func-breakdown.md";
+        var mkdocs_page_name = "Os package";
+        var mkdocs_page_input_path = "golang/learning/os-package.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -89,9 +89,7 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="important-packages.html">Important packages</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="func-breakdown.html">Func breakdown</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
                 </li>
@@ -113,7 +111,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="yaml.html">Yaml</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="os-package.html">Os package</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="os-package.html">Os package</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="os-exec.html">Os exec</a>
                 </li>
@@ -205,7 +203,7 @@
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
           <li class="breadcrumb-item">learning</li>
-      <li class="breadcrumb-item active">Func breakdown</li>
+      <li class="breadcrumb-item active">Os package</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -214,73 +212,110 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="variable-address-passing">Variable address passing</h2>
-<p>In this example, we have two variables, name and age, that we want to read from the terminal. Here's how it works:</p>
-<p>We use the fmt.Print() function to prompt the user to enter their name.
-We then use fmt.Scan(&amp;name) to read the user's input and store it in the name variable. The &amp; symbol is used to pass the address of the variable to the Scan() function.
-We check for any errors that may have occurred during the input reading process using the returned error value.
-We repeat the same process for the age variable, using fmt.Scan(&amp;age) to read the user's input.
-Finally, we use fmt.Printf() to print the user's name and age.
-Alternatively, you can use the fmt.Scanln() function, which reads input until a newline character is encountered:</p>
-<p>fmt.Print("Enter your name and age: ")
-_, err := fmt.Scanln(&amp;name, &amp;age)
-if err != nil {
-    fmt.Println("Error:", err)
-    return
-}
-In this case, the user can enter their name and age on the same line, separated by a space, and the input will be read correctly.</p>
-<p>Remember that the Scan() and Scanln() functions return the number of successfully scanned items and an error value, so it's important to check for any errors that may have occurred during the input reading process.</p>
-<h2 id="certainly-lets-break-down-the-fmtscan-function">Certainly! Let's break down the <code>fmt.Scan()</code> function:</h2>
+                <p>The <code>os</code> package in Go provides a platform-independent interface to operating system functionality. The 80-20 principle applied to the <code>os</code> package suggests that we focus on the most commonly used functions that provide the majority of practical utility. Here are key functions and scenarios where you might use them:  </p>
 <ol>
+<li><strong>File Operations</strong>:  </li>
+<li><code>os.Create(name string) (*os.File, error)</code>: Creates a new file or truncates an existing one. It's commonly used when you need to write to a new file.  </li>
+<li><code>os.Open(name string) (*os.File, error)</code>: Opens a file in read-only mode. Use this when you need to read from a file.  </li>
+<li><code>os.OpenFile(name string, flag int, perm FileMode) (*os.File, error)</code>: Opens a file with specified flags (e.g., read/write, append mode) and permissions.  </li>
+<li><code>os.ReadFile(name string) ([]byte, error)</code>: Reads the entire contents of a file into a byte slice. It's a convenient way to read small files.  </li>
 <li>
-<p><code>fmt.Scan(a ...any) (n int, err error)</code></p>
+<p><code>os.WriteFile(name string, data []byte, perm FileMode) error</code>: Writes data to a file with the specified permissions. Like <code>ReadFile</code>, it's convenient for small files.  </p>
 </li>
 <li>
-<p>This is the function signature of <code>fmt.Scan()</code>.</p>
+<p><strong>File and Directory Information</strong>:  </p>
 </li>
-<li><code>a ...any</code> is a variadic parameter, which means it can accept any number of arguments of any type.</li>
+<li><code>os.Stat(name string) (FileInfo, error)</code>: Returns a <code>FileInfo</code> object which provides information about a file.  </li>
 <li>
-<p>The function returns two values:</p>
-<ul>
-<li><code>n int</code>: The number of successfully scanned items.</li>
-<li><code>err error</code>: An error value, if any, that occurred during the scanning process.</li>
-</ul>
+<p><code>os.IsNotExist(err error) bool</code>: Checks if an error is due to a file not existing.  </p>
 </li>
 <li>
-<p><code>fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><strong>Environment Variables</strong>:  </p>
+</li>
+<li><code>os.Getenv(key string) string</code>: Retrieves the value of an environment variable.  </li>
+<li><code>os.Setenv(key, value string) error</code>: Sets the value of an environment variable.  </li>
+<li><code>os.LookupEnv(key string) (string, bool)</code>: Looks up an environment variable and reports whether it was found.  </li>
+<li>
+<p><code>os.Environ() []string</code>: Returns a copy of strings representing the environment, in the form "key=value".  </p>
 </li>
 <li>
-<p>In this example, we're passing two variables, <code>name</code> and <code>age</code>, to the <code>Scan()</code> function.</p>
+<p><strong>Process Management</strong>:  </p>
 </li>
-<li>The <code>&amp;</code> symbol is used to pass the address of the variables, so that the <code>Scan()</code> function can modify their values directly.</li>
+<li><code>os.Exit(code int)</code>: Exits the current program with the given status code. It's commonly used to terminate the program after an error or when a CLI tool has finished execution.  </li>
+<li><code>os.Getpid() int</code>: Returns the process ID of the caller.  </li>
 <li>
-<p>The <code>Scan()</code> function will read the user's input and store the values in the <code>name</code> and <code>age</code> variables.</p>
-</li>
-<li>
-<p><code>_, err := fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><code>os.Getppid() int</code>: Returns the process ID of the caller's parent.  </p>
 </li>
 <li>
-<p>Here, we're using the short variable declaration syntax (<code>:=</code>) to declare two variables: <code>_</code> and <code>err</code>.</p>
+<p><strong>Working Directory</strong>:  </p>
 </li>
-<li>The <code>_</code> is an unnamed variable, which is used to discard the first return value (the number of successfully scanned items).</li>
+<li><code>os.Getwd() (dir string, err error)</code>: Returns a string containing the current working directory.  </li>
 <li>
-<p>The <code>err</code> variable is used to store the error value returned by the <code>Scan()</code> function.</p>
-</li>
-<li>
-<p><code>if err != nil { ... }</code></p>
+<p><code>os.Chdir(dir string) error</code>: Changes the current working directory.  </p>
 </li>
 <li>
-<p>After calling <code>fmt.Scan()</code>, we check if an error occurred during the scanning process.</p>
+<p><strong>File Manipulation</strong>:  </p>
 </li>
-<li>If <code>err</code> is not <code>nil</code>, it means an error occurred, and we can handle it accordingly (e.g., print an error message, return from the function, etc.).</li>
+<li><code>os.Remove(name string) error</code>: Removes a file or empty directory.  </li>
+<li><code>os.RemoveAll(path string) error</code>: Removes a file or directory and any children it contains.  </li>
+<li>
+<p><code>os.Rename(oldpath, newpath string) error</code>: Renames (moves) a file.  </p>
+</li>
+<li>
+<p><strong>File Permissions</strong>:  </p>
+</li>
+<li><code>os.Chmod(name string, mode FileMode) error</code>: Changes the mode of the file to the specified mode.  </li>
+<li>
+<p><code>os.Chown(name string, uid, gid int) error</code>: Changes the numeric uid and gid of the named file.  </p>
+</li>
+<li>
+<p><strong>File Handling</strong>:  </p>
+</li>
+<li><code>os.File</code>: Represents an open file descriptor. It has methods for I/O operations (<code>Read</code>, <code>Write</code>, <code>Close</code>, etc.).  </li>
 </ol>
-<p>In summary, the <code>fmt.Scan()</code> function is used to read user input from the terminal and store the values in the provided variables. It returns the number of successfully scanned items and an error value, which you should always check to ensure that the input was read correctly.</p>
+<p><strong>Scenarios</strong>:  </p>
+<ul>
+<li>
+<p><strong>Reading and Writing Files</strong>: You're writing a program that needs to read configuration from a file and write logs. You'd use <code>os.Open</code> to read the config and <code>os.Create</code> along with <code>os.File.Write</code> to write logs.</p>
+</li>
+<li>
+<p><strong>Environment Configuration</strong>: You're deploying an application that needs to access environment variables to configure itself. Use <code>os.Getenv</code> to access these variables.</p>
+</li>
+<li>
+<p><strong>Checking File Existence</strong>: Before processing a file, you need to check if it exists to avoid errors. You can use <code>os.Stat</code> and check if <code>os.IsNotExist(err)</code> returns <code>true</code>.  </p>
+</li>
+<li>
+<p><strong>Temporary Files and Directories</strong>: When you need to create temporary files or directories for processing data without affecting the permanent file system, you can use <code>os.CreateTemp</code> and <code>os.MkdirTemp</code>.  </p>
+</li>
+<li>
+<p><strong>Command-Line Utilities</strong>: If you're building a command-line tool, you might use <code>os.Args</code> to access command-line arguments and <code>os.Exit</code> to terminate the program after displaying help text or upon completion of the command execution.  </p>
+</li>
+<li>
+<p><strong>File System Navigation</strong>: When your application needs to change its current working directory to access files in a different location, use <code>os.Chdir</code>. To get the current directory for displaying paths or for logging, use <code>os.Getwd</code>.  </p>
+</li>
+<li>
+<p><strong>Cross-Platform Compatibility</strong>: If you're developing a program that needs to work across different operating systems, you'll use <code>os</code> package functions to handle file paths (<code>os.PathSeparator</code>, <code>os.PathListSeparator</code>) and line endings (<code>os.PathSeparator</code>) in a cross-platform manner.  </p>
+</li>
+<li>
+<p><strong>File Permissions</strong>: If your application manages file access, such as a web server that writes to the public directory, you will need to manage file permissions using <code>os.Chmod</code> and possibly <code>os.Chown</code>.  </p>
+</li>
+<li>
+<p><strong>Process Information</strong>: In scenarios where you need to know about the current process or its parent, such as logging, monitoring, or managing subprocesses, you would use <code>os.Getpid</code> and <code>os.Getppid</code>.  </p>
+</li>
+<li>
+<p><strong>Handling Signals</strong>: For long-running processes or servers, you might need to handle system signals gracefully. The <code>os</code> package provides <code>os.Signal</code> and related functions in the <code>os/signal</code> subpackage for this purpose.  </p>
+</li>
+<li>
+<p><strong>File Cleanup</strong>: After processing files, you may need to clean up by removing temporary files or directories. You can use <code>os.Remove</code> for individual files or <code>os.RemoveAll</code> for directories and their contents.  </p>
+</li>
+</ul>
+<p>By using these functions, you can perform a wide variety of file and operating system operations that are crucial for most applications. The <code>os</code> package is one of the most frequently used packages in Go because it provides the essential tools for interacting with the underlying system in a way that is necessary for nearly all non-trivial programs.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="important-packages.html" class="btn btn-neutral float-left" title="Important packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="pointers-dereferencing.html" class="btn btn-neutral float-right" title="Pointers dereferencing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="yaml.html" class="btn btn-neutral float-left" title="Yaml"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="os-exec.html" class="btn btn-neutral float-right" title="Os exec">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -304,10 +339,10 @@ In this case, the user can enter their name and age on the same line, separated 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="important-packages.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="yaml.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="pointers-dereferencing.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="os-exec.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

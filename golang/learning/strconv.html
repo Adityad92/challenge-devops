@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Func breakdown - Challenge DevOps</title>
+    <title>Strconv - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Func breakdown";
-        var mkdocs_page_input_path = "golang/learning/func-breakdown.md";
+        var mkdocs_page_name = "Strconv";
+        var mkdocs_page_input_path = "golang/learning/strconv.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -89,9 +89,7 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="important-packages.html">Important packages</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="func-breakdown.html">Func breakdown</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="func-breakdown.html">Func breakdown</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="pointers-dereferencing.html">Pointers dereferencing</a>
                 </li>
@@ -123,7 +121,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="net-http.html">Net http</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="strconv.html">Strconv</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="strconv.html">Strconv</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="context.html">Context</a>
                 </li>
@@ -205,7 +203,7 @@
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Golang</li>
           <li class="breadcrumb-item">learning</li>
-      <li class="breadcrumb-item active">Func breakdown</li>
+      <li class="breadcrumb-item active">Strconv</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -214,73 +212,176 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="variable-address-passing">Variable address passing</h2>
-<p>In this example, we have two variables, name and age, that we want to read from the terminal. Here's how it works:</p>
-<p>We use the fmt.Print() function to prompt the user to enter their name.
-We then use fmt.Scan(&amp;name) to read the user's input and store it in the name variable. The &amp; symbol is used to pass the address of the variable to the Scan() function.
-We check for any errors that may have occurred during the input reading process using the returned error value.
-We repeat the same process for the age variable, using fmt.Scan(&amp;age) to read the user's input.
-Finally, we use fmt.Printf() to print the user's name and age.
-Alternatively, you can use the fmt.Scanln() function, which reads input until a newline character is encountered:</p>
-<p>fmt.Print("Enter your name and age: ")
-_, err := fmt.Scanln(&amp;name, &amp;age)
-if err != nil {
-    fmt.Println("Error:", err)
-    return
-}
-In this case, the user can enter their name and age on the same line, separated by a space, and the input will be read correctly.</p>
-<p>Remember that the Scan() and Scanln() functions return the number of successfully scanned items and an error value, so it's important to check for any errors that may have occurred during the input reading process.</p>
-<h2 id="certainly-lets-break-down-the-fmtscan-function">Certainly! Let's break down the <code>fmt.Scan()</code> function:</h2>
+                <p>The <code>strconv</code> package in Go provides functions for converting between strings and other basic data types. Applying the 80-20 principle to <code>strconv</code>, we can focus on the functions you'll use most of the time for handling string conversions.  </p>
 <ol>
+<li><strong>String to Integer</strong>:  </li>
+<li><code>strconv.Atoi(s string) (int, error)</code>: Converts a string to an <code>int</code>.  </li>
 <li>
-<p><code>fmt.Scan(a ...any) (n int, err error)</code></p>
+<p><code>strconv.ParseInt(s string, base int, bitSize int) (int64, error)</code>: Parses a string as an integer of the specified base and bit size.  </p>
 </li>
 <li>
-<p>This is the function signature of <code>fmt.Scan()</code>.</p>
+<p><strong>Integer to String</strong>:  </p>
 </li>
-<li><code>a ...any</code> is a variadic parameter, which means it can accept any number of arguments of any type.</li>
+<li><code>strconv.Itoa(i int) string</code>: Converts an integer to a string.  </li>
 <li>
-<p>The function returns two values:</p>
-<ul>
-<li><code>n int</code>: The number of successfully scanned items.</li>
-<li><code>err error</code>: An error value, if any, that occurred during the scanning process.</li>
-</ul>
+<p><code>strconv.FormatInt(i int64, base int) string</code>: Formats an integer as a string in the specified base.  </p>
 </li>
 <li>
-<p><code>fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><strong>String to Float</strong>:  </p>
 </li>
 <li>
-<p>In this example, we're passing two variables, <code>name</code> and <code>age</code>, to the <code>Scan()</code> function.</p>
-</li>
-<li>The <code>&amp;</code> symbol is used to pass the address of the variables, so that the <code>Scan()</code> function can modify their values directly.</li>
-<li>
-<p>The <code>Scan()</code> function will read the user's input and store the values in the <code>name</code> and <code>age</code> variables.</p>
+<p><code>strconv.ParseFloat(s string, bitSize int) (float64, error)</code>: Parses a string as a floating-point number with the specified bit size (32 or 64).  </p>
 </li>
 <li>
-<p><code>_, err := fmt.Scan(&amp;name, &amp;age)</code></p>
+<p><strong>Float to String</strong>:  </p>
 </li>
 <li>
-<p>Here, we're using the short variable declaration syntax (<code>:=</code>) to declare two variables: <code>_</code> and <code>err</code>.</p>
-</li>
-<li>The <code>_</code> is an unnamed variable, which is used to discard the first return value (the number of successfully scanned items).</li>
-<li>
-<p>The <code>err</code> variable is used to store the error value returned by the <code>Scan()</code> function.</p>
+<p><code>strconv.FormatFloat(f float64, fmt byte, prec, bitSize int) string</code>: Formats a floating-point number with the specified format, precision, and bit size.  </p>
 </li>
 <li>
-<p><code>if err != nil { ... }</code></p>
+<p><strong>Boolean Conversion</strong>:  </p>
 </li>
-<li>
-<p>After calling <code>fmt.Scan()</code>, we check if an error occurred during the scanning process.</p>
-</li>
-<li>If <code>err</code> is not <code>nil</code>, it means an error occurred, and we can handle it accordingly (e.g., print an error message, return from the function, etc.).</li>
+<li><code>strconv.ParseBool(str string) (bool, error)</code>: Converts a string to a boolean.  </li>
+<li><code>strconv.FormatBool(b bool) string</code>: Converts a boolean to a string.  </li>
 </ol>
-<p>In summary, the <code>fmt.Scan()</code> function is used to read user input from the terminal and store the values in the provided variables. It returns the number of successfully scanned items and an error value, which you should always check to ensure that the input was read correctly.</p>
+<p><strong>Scenarios</strong>:  </p>
+<ul>
+<li><strong>Converting a String to an Integer</strong>: Use <code>strconv.Atoi</code> when converting a decimal string to an <code>int</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">s := &quot;42&quot;  
+i, err := strconv.Atoi(s)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(i) // Output: 42  
+</code></pre>
+
+<ul>
+<li><strong>Parsing a Non-Decimal Integer String</strong>: Use <code>strconv.ParseInt</code> when you need to parse integers in bases other than 10 (e.g., hexadecimal, binary).  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">s := &quot;2A&quot;  
+i, err := strconv.ParseInt(s, 16, 64) // base 16 for hexadecimal  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(i) // Output: 42  
+</code></pre>
+
+<ul>
+<li><strong>Converting an Integer to a String</strong>: Use <code>strconv.Itoa</code> or <code>strconv.FormatInt</code> to convert an integer to a string.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">i := 42  
+s := strconv.Itoa(i)  
+fmt.Println(s) // Output: &quot;42&quot;  
+</code></pre>
+
+<ul>
+<li><strong>Converting a String to a Float</strong>: Use <code>strconv.ParseFloat</code> when you need to parse a string into a float.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">s := &quot;3.14&quot;  
+f, err := strconv.ParseFloat(s, 64)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(f) // Output: 3.14  
+</code></pre>
+
+<ul>
+<li><strong>Converting a Float to a String</strong>: Use <code>strconv.FormatFloat</code> to convert a float to a string with specific formatting options.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">f := 3.14159  
+s := strconv.FormatFloat(f, 'f', 2, 64) // 'f' for decimal, 2 digits after the decimal point  
+fmt.Println(s) // Output: &quot;3.14&quot;  
+</code></pre>
+
+<ul>
+<li><strong>Converting a String to a Boolean</strong>: Use <code>strconv.ParseBool</code> to interpret various string representations of boolean values.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">s := &quot;true&quot;  
+b, err := strconv.ParseBool(s)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(b) // Output: true  
+</code></pre>
+
+<ul>
+<li><strong>Converting a Boolean to a String</strong>: Use <code>strconv.FormatBool</code> to convert a boolean to its string representation.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">b := false  
+s := strconv.FormatBool(b)  
+fmt.Println(s) // Output: &quot;false&quot;  
+</code></pre>
+
+<p>These are the primary conversions you will often perform using the <code>strconv</code> package. By understanding and utilizing these functions, you can handle the majority of string conversion requirements in Go applications. Here are a few additional scenarios and tips:  </p>
+<ul>
+<li><strong>Handling Errors</strong>: Always check for errors after calling conversion functions, especially when dealing with user input or data that might be improperly formatted.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">s := &quot;not a number&quot;  
+if _, err := strconv.Atoi(s); err != nil {  
+    fmt.Println(s, &quot;is not an integer.&quot;)  
+}  
+</code></pre>
+
+<ul>
+<li><strong>Converting Signed and Unsigned Integers</strong>: You can use <code>strconv.FormatUint</code> for unsigned integers similar to <code>strconv.FormatInt</code>.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">u := uint64(42)  
+s := strconv.FormatUint(u, 10) // Base 10  
+fmt.Println(s) // Output: &quot;42&quot;  
+</code></pre>
+
+<ul>
+<li><strong>Parsing Integers with Error Handling</strong>: When parsing integers, handle the error and also consider checking if the parsed value fits in your desired range if you're going to use a smaller integer type.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">s := &quot;1024&quot;  
+if i, err := strconv.ParseInt(s, 10, 32); err == nil {  
+    // Use int32(i) safely within the int32 range  
+    fmt.Println(int32(i))  
+} else {  
+    fmt.Println(err)  
+}  
+</code></pre>
+
+<ul>
+<li><strong>Customizing Float to String Conversion</strong>: The <code>strconv.FormatFloat</code> function allows you to specify the format (<code>'f'</code>, <code>'b'</code>, <code>'e'</code>, <code>'g'</code>, or <code>'p'</code>) and precision. This gives you control over how the float is represented as a string.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">f := 3.1415926535  
+s := strconv.FormatFloat(f, 'e', 3, 64) // 'e' for scientific notation with 3 digits after the decimal  
+fmt.Println(s) // Output: &quot;3.142e+00&quot;  
+</code></pre>
+
+<ul>
+<li><strong>Parsing Floats with Error Handling</strong>: Similar to integer parsing, always handle the potential error when parsing floats.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">s := &quot;3.14&quot;  
+f, err := strconv.ParseFloat(s, 64)  
+if err != nil {  
+    log.Fatalf(&quot;Failed to parse float: %v&quot;, err)  
+}  
+fmt.Println(f)  
+</code></pre>
+
+<ul>
+<li><strong>Quoting and Unquoting Strings</strong>: The <code>strconv</code> package also provides functions for quoting (<code>Quote</code>, <code>QuoteRune</code>, etc.) and unquoting (<code>Unquote</code>, <code>UnquoteChar</code>, etc.) string literals, which can be useful when you need to ensure strings are properly escaped for inclusion in Go source code or JSON.  </li>
+</ul>
+<pre class="codehilite"><code class="language-go">q := strconv.Quote(&quot;Hello, \&quot;world\&quot;!&quot;)  
+fmt.Println(q) // Output: &quot;\&quot;Hello, \\\&quot;world\\\&quot;!\&quot;&quot;  
+
+uq, err := strconv.Unquote(q)  
+if err != nil {  
+    log.Fatal(err)  
+}  
+fmt.Println(uq) // Output: &quot;Hello, &quot;world&quot;!&quot;  
+</code></pre>
+
+<p>Remember that the <code>strconv</code> package is all about converting to and from string representations, which is a fundamental operation in many applications, especially those that involve data interchange with users, files, or network services. By focusing on the functions mentioned above, you'll be well-equipped to handle most of these conversion tasks efficiently and effectively.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="important-packages.html" class="btn btn-neutral float-left" title="Important packages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="pointers-dereferencing.html" class="btn btn-neutral float-right" title="Pointers dereferencing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="net-http.html" class="btn btn-neutral float-left" title="Net http"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="context.html" class="btn btn-neutral float-right" title="Context">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -304,10 +405,10 @@ In this case, the user can enter their name and age on the same line, separated 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="important-packages.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="net-http.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="pointers-dereferencing.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="context.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

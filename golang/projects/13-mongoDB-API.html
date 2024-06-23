@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>5 Simple Chat Server - Challenge DevOps</title>
+    <title>13 mongoDB API - Challenge DevOps</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "5 Simple Chat Server";
-        var mkdocs_page_input_path = "golang/projects/5-Simple-Chat-Server.md";
+        var mkdocs_page_name = "13 mongoDB API";
+        var mkdocs_page_input_path = "golang/projects/13-mongoDB-API.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -84,7 +84,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../learning/important-packages.html">Important packages</a>
@@ -129,8 +129,8 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
-    <ul>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">projects</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
@@ -149,7 +149,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="12-mongodb-manual.html">12 mongodb manual</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="13-mongoDB-API.html">13 mongoDB API</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="13-mongoDB-API.html">13 mongoDB API</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="14-midleware-okta.html">14 midleware okta</a>
                 </li>
@@ -201,7 +201,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">5 Simple Chat Server</li>
+          <li class="breadcrumb-item">Golang</li>
+          <li class="breadcrumb-item">projects</li>
+      <li class="breadcrumb-item active">13 mongoDB API</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -210,150 +212,205 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><strong>5. Simple Chat Server:</strong></p>
+                <p>Certainly! Below is the complete Go code to set up a simple RESTful API server that performs CRUD operations (Create, Read, Update, Delete) for customer data containing only <code>Name</code>, <code>Address</code>, and <code>Phone</code>.   </p>
+<pre class="codehilite"><code class="language-go">package main  
+
+import (  
+    &quot;context&quot;  
+    &quot;encoding/json&quot;  
+    &quot;fmt&quot;  
+    &quot;log&quot;  
+    &quot;net/http&quot;  
+    &quot;time&quot;  
+
+    &quot;github.com/gorilla/mux&quot; // You'll need to use the Gorilla Mux router, install it using: go get -u github.com/gorilla/mux  
+
+    &quot;go.mongodb.org/mongo-driver/bson&quot;  
+    &quot;go.mongodb.org/mongo-driver/bson/primitive&quot;  
+    &quot;go.mongodb.org/mongo-driver/mongo&quot;  
+    &quot;go.mongodb.org/mongo-driver/mongo/options&quot;  
+)  
+
+// Customer represents the customer data structure.  
+type Customer struct {  
+    ID      primitive.ObjectID `bson:&quot;_id,omitempty&quot;`  
+    Name    string             `bson:&quot;name&quot; json:&quot;name&quot;`  
+    Address string             `bson:&quot;address&quot; json:&quot;address&quot;`  
+    Phone   string             `bson:&quot;phone&quot; json:&quot;phone&quot;`  
+}  
+
+// getCustomerCollection connects to MongoDB and returns a customer collection.  
+func getCustomerCollection() *mongo.Collection {  
+    clientOptions := options.Client().ApplyURI(&quot;mongodb://localhost:27017&quot;)  
+    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)  
+    defer cancel()  
+
+    client, err := mongo.Connect(ctx, clientOptions)  
+    if err != nil {  
+        log.Fatal(err)  
+    }  
+
+    return client.Database(&quot;customerdb&quot;).Collection(&quot;customers&quot;)  
+}  
+
+// CreateCustomer inserts a new customer into the database.  
+func CreateCustomer(w http.ResponseWriter, r *http.Request) {  
+    w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)  
+    var customer Customer  
+    if err := json.NewDecoder(r.Body).Decode(&amp;customer); err != nil {  
+        http.Error(w, err.Error(), http.StatusBadRequest)  
+        return  
+    }  
+
+    collection := getCustomerCollection()  
+    ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)  
+    defer cancel()  
+
+    result, err := collection.InsertOne(ctx, customer)  
+    if err != nil {  
+        http.Error(w, err.Error(), http.StatusInternalServerError)  
+        return  
+    }  
+
+    json.NewEncoder(w).Encode(result)  
+}  
+
+// GetCustomers retrieves all customers from the database.  
+func GetCustomers(w http.ResponseWriter, r *http.Request) {  
+    w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)  
+    var customers []Customer  
+
+    collection := getCustomerCollection()  
+    ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)  
+    defer cancel()  
+
+    cursor, err := collection.Find(ctx, bson.M{})  
+    if err != nil {  
+        http.Error(w, err.Error(), http.StatusInternalServerError)  
+        return  
+    }  
+    defer cursor.Close(ctx)  
+
+    for cursor.Next(ctx) {  
+        var customer Customer  
+        cursor.Decode(&amp;customer)  
+        customers = append(customers, customer)  
+    }  
+
+    if err := cursor.Err(); err != nil {  
+        http.Error(w, err.Error(), http.StatusInternalServerError)  
+        return  
+    }  
+
+    json.NewEncoder(w).Encode(customers)  
+}  
+
+// GetCustomer retrieves a single customer by ID from the database.  
+func GetCustomer(w http.ResponseWriter, r *http.Request) {  
+    w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)  
+    params := mux.Vars(r)  
+    id, _ := primitive.ObjectIDFromHex(params[&quot;id&quot;])  
+
+    var customer Customer  
+
+    collection := getCustomerCollection()  
+    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)  
+    defer cancel()  
+
+    err := collection.FindOne(ctx, bson.M{&quot;_id&quot;: id}).Decode(&amp;customer)  
+    if err != nil {  
+        http.Error(w, err.Error(), http.StatusNotFound)  
+        return  
+    }  
+
+    json.NewEncoder(w).Encode(customer)  
+}  
+
+// UpdateCustomer updates an existing customer by ID in the database.  
+func UpdateCustomer(w http.ResponseWriter, r *http.Request) {  
+    w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)  
+    params := mux.Vars(r)  
+    id, _ := primitive.ObjectIDFromHex(params[&quot;id&quot;])  
+
+    var customer Customer  
+    if err := json.NewDecoder(r.Body).Decode(&amp;customer); err != nil {  
+        http.Error(w, err.Error(), http.StatusBadRequest)  
+        return  
+    }  
+
+    collection := getCustomerCollection()  
+    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)  
+    defer cancel()  
+
+    update := bson.M{  
+        &quot;$set&quot;: customer,  
+    }  
+
+    result, err := collection.UpdateByID(ctx, id, update)  
+    if err != nil {  
+        http.Error(w, err.Error(), http.StatusInternalServerError)  
+        return  
+    }  
+
+    json.NewEncoder(w).Encode(result)  
+}  
+
+// DeleteCustomer deletes a customer by ID from the database.  
+func DeleteCustomer(w http.ResponseWriter, r *http.Request) {  
+    w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)  
+    params := mux.Vars(r)  
+    id, _ := primitive.ObjectIDFromHex(params[&quot;id&quot;])  
+
+    collection := getCustomerCollection()  
+    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)  
+    defer cancel()  
+
+    result, err := collection.DeleteOne(ctx, bson.M{&quot;_id&quot;: id})  
+    if err != nil {  
+        http.Error(w, err.Error(), http.StatusInternalServerError)  
+        return  
+    }  
+
+    json.NewEncoder(w).Encode(result)  
+}  
+
+// main function to boot up everything  
+func main() {  
+    router := mux.NewRouter()  
+
+    router.HandleFunc(&quot;/customer&quot;, CreateCustomer).Methods(&quot;POST&quot;)  
+    router.HandleFunc(&quot;/customers&quot;, GetCustomers).Methods(&quot;GET&quot;)  
+    router.HandleFunc(&quot;/customer/{id}&quot;, GetCustomer).Methods(&quot;GET&quot;)  
+    router.HandleFunc(&quot;/customer/{id}&quot;, UpdateCustomer).Methods(&quot;PUT&quot;)  
+    router.HandleFunc(&quot;/customer/{id}&quot;, DeleteCustomer).Methods(&quot;DELETE&quot;)  
+
+    fmt.Println(&quot;Server is running at http://localhost:8000/&quot;)  
+    log.Fatal(http.ListenAndServe(&quot;:8000&quot;, router))  
+}  
+</code></pre>
+
+<p>This completes the implementation of all CRUD operations for the customer data structure containing <code>Name</code>, <code>Address</code>, and <code>Phone</code>. The main function uses the Gorilla Mux router to define the routes for each HTTP method corresponding to the CRUD operations.  </p>
+<p>Please note the following important points:  </p>
 <ul>
-<li><strong>Project:</strong> Build a basic chat server using Go's concurrency features. This server can:<ul>
-<li>Accept connections from multiple clients.</li>
-<li>Allow clients to send and receive messages.</li>
-<li>Handle message broadcasting to all connected clients.</li>
+<li>Before running this code, ensure you have MongoDB running on <code>localhost:27017</code> and have installed the Gorilla Mux package using <code>go get -u github.com/gorilla/mux</code>.  </li>
+<li>Proper error handling is implemented to respond with the appropriate HTTP status codes and error messages when something goes wrong.  </li>
+<li>The <code>main</code> function sets up the server to listen on <code>localhost</code> port <code>8000</code>, and the router handles different routes for different CRUD operations.  </li>
+<li>The <code>ID</code> field of <code>Customer</code> is of type <code>primitive.ObjectID</code>, which is used to uniquely identify documents in MongoDB. The <code>GetCustomer</code>, <code>UpdateCustomer</code>, and <code>DeleteCustomer</code> functions extract the <code>id</code> parameter from the URL to perform operations on specific documents.  </li>
 </ul>
-</li>
-<li><strong>Learning:</strong>  You'll learn about network programming, handling multiple connections, and using Go's goroutines and channels for concurrency.</li>
-</ul>
-<p>Certainly! Let's build a basic chat server in Go that utilizes concurrency features. Here's an example implementation:</p>
-<pre class="codehilite"><code class="language-go">package main
-
-import (
-    &quot;bufio&quot;
-    &quot;fmt&quot;
-    &quot;net&quot;
-    &quot;strings&quot;
-)
-
-type client struct {
-    conn net.Conn
-    name string
-    ch   chan&lt;- string
-}
-
-var (
-    entering = make(chan client)
-    leaving  = make(chan client)
-    messages = make(chan string)
-)
-
-func main() {
-    listener, err := net.Listen(&quot;tcp&quot;, &quot;:8080&quot;)
-    if err != nil {
-        fmt.Println(&quot;Error starting the server:&quot;, err)
-        return
-    }
-    defer listener.Close()
-
-    go broadcaster()
-
-    fmt.Println(&quot;Chat server started. Listening on port 8080...&quot;)
-
-    for {
-        conn, err := listener.Accept()
-        if err != nil {
-            fmt.Println(&quot;Error accepting connection:&quot;, err)
-            continue
-        }
-
-        go handleConnection(conn)
-    }
-}
-
-func broadcaster() {
-    clients := make(map[client]bool)
-
-    for {
-        select {
-        case msg := &lt;-messages:
-            for cli := range clients {
-                cli.ch &lt;- msg
-            }
-
-        case cli := &lt;-entering:
-            clients[cli] = true
-            var names []string
-            for c := range clients {
-                names = append(names, c.name)
-            }
-            cli.ch &lt;- fmt.Sprintf(&quot;Current users: %s&quot;, strings.Join(names, &quot;, &quot;))
-
-        case cli := &lt;-leaving:
-            delete(clients, cli)
-            close(cli.ch)
-        }
-    }
-}
-
-func handleConnection(conn net.Conn) {
-    ch := make(chan string)
-    go clientWriter(conn, ch)
-
-    who := conn.RemoteAddr().String()
-    cli := client{conn, who, ch}
-    entering &lt;- cli
-
-    input := bufio.NewScanner(conn)
-    for input.Scan() {
-        messages &lt;- fmt.Sprintf(&quot;%s: %s&quot;, cli.name, input.Text())
-    }
-
-    leaving &lt;- cli
-    conn.Close()
-}
-
-func clientWriter(conn net.Conn, ch &lt;-chan string) {
-    for msg := range ch {
-        fmt.Fprintln(conn, msg)
-    }
-}
+<p>You can run this code by saving it to a file (e.g., <code>main.go</code>), and then use the following commands in your terminal:  </p>
+<pre class="codehilite"><code class="language-sh">go mod init mycustomerapi  
+go mod tidy  
+go run main.go  
 </code></pre>
 
-<p>Let's go through the code:</p>
-<ol>
-<li>
-<p>We define a <code>client</code> struct that represents a connected client. It contains the client's connection (<code>net.Conn</code>), name (initially set to the remote address), and a channel for sending messages to the client.</p>
-</li>
-<li>
-<p>We create three channels: <code>entering</code> for new clients joining, <code>leaving</code> for clients leaving, and <code>messages</code> for broadcasting messages to all clients.</p>
-</li>
-<li>
-<p>In the <code>main</code> function, we start a TCP server listening on port 8080. We launch a goroutine for the <code>broadcaster</code> function to handle message broadcasting.</p>
-</li>
-<li>
-<p>In the <code>broadcaster</code> function, we maintain a map of connected clients. We use a <code>select</code> statement to handle different events:</p>
-</li>
-<li>When a message is received on the <code>messages</code> channel, we iterate over all connected clients and send the message to their respective channels.</li>
-<li>When a new client joins (received on the <code>entering</code> channel), we add the client to the map and send a message to the client with the list of currently connected users.</li>
-<li>
-<p>When a client leaves (received on the <code>leaving</code> channel), we remove the client from the map and close their channel.</p>
-</li>
-<li>
-<p>The <code>handleConnection</code> function is called for each client connection. It creates a new channel for the client and starts a goroutine for the <code>clientWriter</code> function to handle sending messages to the client.</p>
-</li>
-<li>
-<p>In the <code>handleConnection</code> function, we read input from the client using a <code>bufio.Scanner</code>. Each line of input is sent as a message to the <code>messages</code> channel, prefixed with the client's name.</p>
-</li>
-<li>
-<p>When the client disconnects, we send the client to the <code>leaving</code> channel and close the connection.</p>
-</li>
-<li>
-<p>The <code>clientWriter</code> function receives messages from the client's channel and writes them to the client's connection.</p>
-</li>
-</ol>
-<p>To run the chat server, save the code in a file named <code>main.go</code> and execute the following command:</p>
-<pre class="codehilite"><code>go run main.go
-</code></pre>
-
-<p>The chat server will start listening on port 8080. Clients can connect to</p>
+<p>This will start the server, and you can use tools like <code>curl</code> or Postman to test the API endpoints.</p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="12-mongodb-manual.html" class="btn btn-neutral float-left" title="12 mongodb manual"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="14-midleware-okta.html" class="btn btn-neutral float-right" title="14 midleware okta">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -376,6 +433,10 @@ func clientWriter(conn net.Conn, ch &lt;-chan string) {
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="12-mongodb-manual.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="14-midleware-okta.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
