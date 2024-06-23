@@ -1,4 +1,4 @@
-# Web Rendering Strategies
+**Web Rendering Strategies**
 
 ## Contents
 

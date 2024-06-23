@@ -1,4 +1,3 @@
-
 **Client-Side Rendering (CSR) with Create React App**
 
 For the CSR example, we'll use Create React App, which provides a production build process that generates optimized static files.

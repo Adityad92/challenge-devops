@@ -1,4 +1,3 @@
-
 **Incremental Static Regeneration (ISR)**
 
 For ISR, we'll use a combination of Nginx and a Next.js server to handle the static serving and incremental regeneration.

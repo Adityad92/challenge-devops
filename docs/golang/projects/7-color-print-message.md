@@ -1,4 +1,6 @@
-#  1. https://pkg.go.dev/github.com/fatih/color#pkg-overview
+**7: Color Print Message:**
+
+##  1. https://pkg.go.dev/github.com/fatih/color#pkg-overview
 
 // you can use github.com/fatih/color package as well
 ```golang
@@ -6,7 +8,7 @@
 ```
 
 
-# 2. To achieve the same functionality in Go, you can use the `fmt` package and ANSI escape codes for color formatting. Here's the equivalent code in Go:
+## 2. To achieve the same functionality in Go, you can use the `fmt` package and ANSI escape codes for color formatting. Here's the equivalent code in Go:
 
 ```go
 package main

@@ -20,8 +20,8 @@ nav:
     - rendering/SSR.md
     - rendering/SSG.md
     - rendering/ISR.md
-  - Docker:
-    - Dockercompose: docker/docker.md
+  # - Docker:
+  #   - Dockercompose: docker/docker.md
   #   - Docker networking: rendering/concept.md
   #   - volumes: rendering/concept.md
   #   - Environment variables: rendering/concept.md
@@ -31,8 +31,20 @@ nav:
   #   - variables: rendering/concept.md
   # - Kubernetes:
   # - Proxy:
+  - Ansible:
+    - learning:
+      - ansible/learning/1-overview.md
+      - ansible/learning/2-basic.md
+      - ansible/learning/3-ansible-features.md
+    - projects:
+      - ansible/projects/1-Web-Server-nginx.md
+      - ansible/projects/2-Managing-System-Packages.md
+      - ansible/projects/3-Configuring-a-Firewall.md
+      - ansible/projects/4-Web-App-Using-Docker.md
+      - ansible/projects/5-run-nginx-container.md
   - Golang:
     - learning:
+      - golang/learning/important-packages.md
       - golang/learning/func-breakdown.md
       - golang/learning/pointers-dereferencing.md
       - golang/learning/methods.md
@@ -44,14 +56,30 @@ nav:
       - golang/learning/db-crud.md
       - golang/learning/json.md
       - golang/learning/yaml.md
+      - golang/learning/os-package.md
+      - golang/learning/os-exec.md
+      - golang/learning/path-filepath.md
+      - golang/learning/encoding-json.md
+      - golang/learning/net-http.md
+      - golang/learning/strconv.md
+      - golang/learning/context.md
+      - golang/learning/strings.md
+
     - projects:
       - golang/projects/1-Simple-CLI-Tool.md
       - golang/projects/2-Web-Server-with-Basic-API.md
-      - golang/projects/3-Simple-Monitoring-Script.md
+      # - golang/projects/3-Simple-Monitoring-Script.md
       - golang/projects/4-Container-Image-Builder.md
-      - golang/projects/5-Simple-Chat-Server.md
-      - golang/projects/6-Data-Processing-Script.md
+      # - golang/projects/5-Simple-Chat-Server.md
+      # - golang/projects/6-Data-Processing-Script.md
       - golang/projects/7-color-print-message.md
+      - golang/projects/8-Currency-Conversion-API.md
+      - golang/projects/9.Todo-List-API.md
+      - golang/projects/10-Recipe-API.md
+      - golang/projects/11-contact-list-csv.md
+      - golang/projects/12-mongodb-manual.md
+      - golang/projects/13-mongoDB-API.md
+      - golang/projects/14-midleware-okta.md
   - Bash-Scripting:
     - learning:
       - bash/learning/special-variable.md

@@ -1,4 +1,3 @@
-
 **Static Site Generation (SSG)**
 
 1. Build the Next.js app for production:

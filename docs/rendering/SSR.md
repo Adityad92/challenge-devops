@@ -1,4 +1,3 @@
-
 **Server-Side Rendering (SSR) with Next.js**
 
 For the SSR example, we'll use Next.js, which provides both server-side rendering and static file serving.

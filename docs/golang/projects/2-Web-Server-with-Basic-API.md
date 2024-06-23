@@ -28,6 +28,14 @@ type Person struct {
 var people []Person
 
 func main() {
+
+	// // Populate the people slice with some initial data
+	// people = []Person{
+	// 	{ID: 1, Name: "John Doe", Age: 30},
+	// 	{ID: 2, Name: "Jane Smith", Age: 25},
+	// 	{ID: 3, Name: "Bob Johnson", Age: 40},
+	// }
+
     // Serve static files from the "static" directory
     http.Handle("/", http.FileServer(http.Dir("static")))
 
