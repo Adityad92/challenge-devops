@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Netstat - Challenge DevOps</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Netstat";
+        var mkdocs_page_input_path = "networking/learning/netstat.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> Challenge DevOps
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">About Us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Code Rendering Types</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/concept.html">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/CSR.html">CSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSR.html">SSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSG.html">SSG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/ISR.html">ISR</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Networking</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">learning</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="networking-overview.html">Networking overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="important-commands.html">Important commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="traceroute.html">Traceroute</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="netstat.html">Netstat</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="nslookup-dig.html">Nslookup dig</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ssh.html">Ssh</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="telnet.html">Telnet</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="nmap.html">Nmap</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="curl-wget.html">Curl wget</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/1-Setting-Up-a-Secure-VPN.html">1 Setting Up a Secure VPN</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Proxies</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/learning/overview.html">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/projects/1-Reverse-Proxy-Server-Nginx.html">1 Reverse Proxy Server Nginx</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/1-overview.html">1 overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/2-basic.html">2 basic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/3-ansible-features.html">3 ansible features</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/1-Web-Server-nginx.html">1 Web Server nginx</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/2-Managing-System-Packages.html">2 Managing System Packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/3-Configuring-a-Firewall.html">3 Configuring a Firewall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/4-Web-App-Using-Docker.html">4 Web App Using Docker</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/5-run-nginx-container.html">5 run nginx container</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Golang</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/important-packages.html">Important packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/yaml.html">Yaml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-package.html">Os package</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-exec.html">Os exec</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/path-filepath.html">Path filepath</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/encoding-json.html">Encoding json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/net-http.html">Net http</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strconv.html">Strconv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/context.html">Context</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strings.html">Strings</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/4-Container-Image-Builder.html">4 Container Image Builder</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/7-color-print-message.html">7 color print message</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/8-Currency-Conversion-API.html">8 Currency Conversion API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/9.Todo-List-API.html">9.Todo List API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/10-Recipe-API.html">10 Recipe API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/11-contact-list-csv.html">11 contact list csv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/12-mongodb-manual.html">12 mongodb manual</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/13-mongoDB-API.html">13 mongoDB API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/14-midleware-okta.html">14 midleware okta</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">6 color print message</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Challenge DevOps</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Networking</li>
+          <li class="breadcrumb-item">learning</li>
+      <li class="breadcrumb-item active">Netstat</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><code>netstat</code> is a command-line network utility that provides information and statistics about network connections, routing tables, interface statistics, masquerade connections, and multicast memberships. Here are some practical use cases for using <code>netstat</code>:</p>
+<ol>
+<li><strong>Checking Open Ports and Listening Services</strong>:</li>
+<li><strong>Example</strong>: To see which ports your system is listening on and which services are using them.</li>
+<li><strong>Command</strong>: <code>netstat -tuln</code></li>
+<li>
+<p><strong>Usage</strong>: This displays a list of all listening ports and the associated services, helping identify services running on the system.</p>
+</li>
+<li>
+<p><strong>Monitoring Active Network Connections</strong>:</p>
+</li>
+<li><strong>Example</strong>: To view active network connections and their states.</li>
+<li><strong>Command</strong>: <code>netstat -an</code></li>
+<li>
+<p><strong>Usage</strong>: This helps monitor the status of connections (e.g., ESTABLISHED, TIME_WAIT) and troubleshoot connectivity issues.</p>
+</li>
+<li>
+<p><strong>Identifying Network Utilization by Processes</strong>:</p>
+</li>
+<li><strong>Example</strong>: To find out which processes are using the network and how much data they are sending or receiving.</li>
+<li><strong>Command</strong>: <code>netstat -p</code></li>
+<li>
+<p><strong>Usage</strong>: Provides insight into network usage by each process, helping to identify potential bandwidth hogs or unauthorized network activity.</p>
+</li>
+<li>
+<p><strong>Viewing Routing Table Information</strong>:</p>
+</li>
+<li><strong>Example</strong>: To inspect the routing table to understand how packets are being routed within the network.</li>
+<li><strong>Command</strong>: <code>netstat -r</code></li>
+<li>
+<p><strong>Usage</strong>: Displays the kernel routing table, useful for diagnosing routing issues and understanding network topology.</p>
+</li>
+<li>
+<p><strong>Monitoring Network Interface Statistics</strong>:</p>
+</li>
+<li><strong>Example</strong>: To check statistics for all network interfaces on the system.</li>
+<li><strong>Command</strong>: <code>netstat -i</code></li>
+<li>
+<p><strong>Usage</strong>: Provides statistics such as the number of packets transmitted and received, errors, and collisions, helping to diagnose interface-related issues.</p>
+</li>
+<li>
+<p><strong>Tracking Network Errors</strong>:</p>
+</li>
+<li><strong>Example</strong>: To identify network errors and discarded packets.</li>
+<li><strong>Command</strong>: <code>netstat -s</code></li>
+<li>
+<p><strong>Usage</strong>: Displays network protocol statistics, including errors, which can help in diagnosing and resolving network problems.</p>
+</li>
+<li>
+<p><strong>Detecting Security Breaches</strong>:</p>
+</li>
+<li><strong>Example</strong>: To check for unusual network activity that might indicate a security breach.</li>
+<li><strong>Command</strong>: <code>netstat -anp</code></li>
+<li>
+<p><strong>Usage</strong>: Lists all active connections and the associated processes, helping to identify unauthorized access or suspicious activity.</p>
+</li>
+<li>
+<p><strong>Analyzing Network Performance</strong>:</p>
+</li>
+<li><strong>Example</strong>: To measure network performance and identify bottlenecks.</li>
+<li><strong>Command</strong>: <code>netstat -e</code></li>
+<li><strong>Usage</strong>: Displays Ethernet statistics, such as bytes and packets sent and received, which can be used to analyze network performance.</li>
+</ol>
+<h3 id="practical-scenarios-for-using-netstat">Practical Scenarios for Using Netstat</h3>
+<ol>
+<li><strong>Diagnosing Server Issues</strong>:</li>
+<li>If a web server is not responding, <code>netstat -tuln</code> can be used to verify if the server is listening on the correct port.</li>
+<li>
+<p>Example: <code>netstat -tuln | grep :80</code> to check if a web server is listening on port 80.</p>
+</li>
+<li>
+<p><strong>Monitoring Network Services</strong>:</p>
+</li>
+<li>Regularly using <code>netstat</code> to check for open ports can help ensure that only authorized services are running.</li>
+<li>
+<p>Example: <code>netstat -tuln</code> to list all listening services and their ports.</p>
+</li>
+<li>
+<p><strong>Detecting Malware or Intrusions</strong>:</p>
+</li>
+<li>Anomalies in network connections, such as unexpected listening ports or connections to suspicious IP addresses, can be detected with <code>netstat -anp</code>.</li>
+<li>
+<p>Example: <code>netstat -anp | grep ESTABLISHED</code> to check for established connections and the associated processes.</p>
+</li>
+<li>
+<p><strong>Network Troubleshooting</strong>:</p>
+</li>
+<li>To diagnose network issues, such as dropped connections or high latency, <code>netstat -s</code> can provide detailed protocol statistics.</li>
+<li>
+<p>Example: <code>netstat -s | grep -i 'packet'</code> to look for packet-related errors.</p>
+</li>
+<li>
+<p><strong>Ensuring Proper Configuration</strong>:</p>
+</li>
+<li>After configuring network services or firewalls, <code>netstat -r</code> can be used to verify that the routing table is correctly set up.</li>
+<li>Example: <code>netstat -r</code> to check the routing table entries.</li>
+</ol>
+<p>By using <code>netstat</code> in these ways, network administrators and users can effectively monitor, diagnose, and troubleshoot network-related issues, ensuring a secure and well-performing network environment.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="traceroute.html" class="btn btn-neutral float-left" title="Traceroute"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="nslookup-dig.html" class="btn btn-neutral float-right" title="Nslookup dig">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Challenge DevOps Team</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="traceroute.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="nslookup-dig.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

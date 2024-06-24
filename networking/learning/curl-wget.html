@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Curl wget - Challenge DevOps</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Curl wget";
+        var mkdocs_page_input_path = "networking/learning/curl-wget.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> Challenge DevOps
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">About Us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Code Rendering Types</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/concept.html">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/CSR.html">CSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSR.html">SSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSG.html">SSG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/ISR.html">ISR</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Networking</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">learning</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="networking-overview.html">Networking overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="important-commands.html">Important commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="traceroute.html">Traceroute</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="netstat.html">Netstat</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="nslookup-dig.html">Nslookup dig</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ssh.html">Ssh</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="telnet.html">Telnet</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="nmap.html">Nmap</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="curl-wget.html">Curl wget</a>
+    <ul class="current">
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/1-Setting-Up-a-Secure-VPN.html">1 Setting Up a Secure VPN</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Proxies</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/learning/overview.html">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/projects/1-Reverse-Proxy-Server-Nginx.html">1 Reverse Proxy Server Nginx</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/1-overview.html">1 overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/2-basic.html">2 basic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/3-ansible-features.html">3 ansible features</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/1-Web-Server-nginx.html">1 Web Server nginx</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/2-Managing-System-Packages.html">2 Managing System Packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/3-Configuring-a-Firewall.html">3 Configuring a Firewall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/4-Web-App-Using-Docker.html">4 Web App Using Docker</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/5-run-nginx-container.html">5 run nginx container</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Golang</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/important-packages.html">Important packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/yaml.html">Yaml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-package.html">Os package</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-exec.html">Os exec</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/path-filepath.html">Path filepath</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/encoding-json.html">Encoding json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/net-http.html">Net http</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strconv.html">Strconv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/context.html">Context</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strings.html">Strings</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/4-Container-Image-Builder.html">4 Container Image Builder</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/7-color-print-message.html">7 color print message</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/8-Currency-Conversion-API.html">8 Currency Conversion API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/9.Todo-List-API.html">9.Todo List API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/10-Recipe-API.html">10 Recipe API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/11-contact-list-csv.html">11 contact list csv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/12-mongodb-manual.html">12 mongodb manual</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/13-mongoDB-API.html">13 mongoDB API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/14-midleware-okta.html">14 midleware okta</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">6 color print message</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Challenge DevOps</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Networking</li>
+          <li class="breadcrumb-item">learning</li>
+      <li class="breadcrumb-item active">Curl wget</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><code>curl</code> and <code>wget</code> are command-line tools for transferring data over the internet using various protocols, primarily HTTP and HTTPS. Both tools are powerful and versatile, useful for a variety of tasks including downloading files, testing APIs, and automating web interactions. Here are practical use cases for each tool:</p>
+<h3 id="practical-use-cases-for-curl">Practical Use Cases for <code>curl</code></h3>
+<ol>
+<li><strong>Testing REST APIs</strong>:</li>
+<li><strong>Example</strong>: Send a GET request to an API endpoint.</li>
+<li><strong>Command</strong>: <code>curl https://api.example.com/resource</code></li>
+<li>
+<p><strong>Usage</strong>: Useful for developers to test and debug APIs by making requests and viewing responses directly from the command line.</p>
+</li>
+<li>
+<p><strong>Submitting Data to a Web Service</strong>:</p>
+</li>
+<li><strong>Example</strong>: Send a POST request with JSON data.</li>
+<li><strong>Command</strong>: <code>curl -X POST -H "Content-Type: application/json" -d '{"key":"value"}' https://api.example.com/resource</code></li>
+<li>
+<p><strong>Usage</strong>: Allows for submitting data to web services, useful for interacting with APIs that require data payloads.</p>
+</li>
+<li>
+<p><strong>Downloading Files</strong>:</p>
+</li>
+<li><strong>Example</strong>: Download a file from a URL.</li>
+<li><strong>Command</strong>: <code>curl -O https://example.com/file.zip</code></li>
+<li>
+<p><strong>Usage</strong>: Directly download files to the current directory, useful for fetching resources from the web.</p>
+</li>
+<li>
+<p><strong>Checking HTTP Headers</strong>:</p>
+</li>
+<li><strong>Example</strong>: View HTTP headers of a response.</li>
+<li><strong>Command</strong>: <code>curl -I https://example.com</code></li>
+<li>
+<p><strong>Usage</strong>: Retrieve and inspect HTTP headers, useful for debugging web server responses and configurations.</p>
+</li>
+<li>
+<p><strong>Automating Form Submissions</strong>:</p>
+</li>
+<li><strong>Example</strong>: Submit a form with POST data.</li>
+<li><strong>Command</strong>: <code>curl -d "username=user&amp;password=pass" -X POST https://example.com/login</code></li>
+<li>
+<p><strong>Usage</strong>: Automate form submissions for testing or scripting purposes.</p>
+</li>
+<li>
+<p><strong>Handling Authentication</strong>:</p>
+</li>
+<li><strong>Example</strong>: Access a resource with basic authentication.</li>
+<li><strong>Command</strong>: <code>curl -u username:password https://example.com/resource</code></li>
+<li>
+<p><strong>Usage</strong>: Access resources that require authentication, useful for scripts that need to login to services.</p>
+</li>
+<li>
+<p><strong>Testing Download Speeds</strong>:</p>
+</li>
+<li><strong>Example</strong>: Measure download speed of a file.</li>
+<li><strong>Command</strong>: <code>curl -o /dev/null https://example.com/largefile</code></li>
+<li><strong>Usage</strong>: Download a file and discard it to measure download speed, useful for network performance testing.</li>
+</ol>
+<h3 id="practical-use-cases-for-wget">Practical Use Cases for <code>wget</code></h3>
+<ol>
+<li><strong>Recursive Website Downloading</strong>:</li>
+<li><strong>Example</strong>: Download an entire website for offline browsing.</li>
+<li><strong>Command</strong>: <code>wget --mirror --convert-links --adjust-extension --page-requisites --no-parent https://example.com</code></li>
+<li>
+<p><strong>Usage</strong>: Creates a local copy of a website, useful for offline browsing or archiving web content.</p>
+</li>
+<li>
+<p><strong>Downloading Files</strong>:</p>
+</li>
+<li><strong>Example</strong>: Download a single file.</li>
+<li><strong>Command</strong>: <code>wget https://example.com/file.zip</code></li>
+<li>
+<p><strong>Usage</strong>: Download files from the internet, similar to <code>curl -O</code>.</p>
+</li>
+<li>
+<p><strong>Resuming Incomplete Downloads</strong>:</p>
+</li>
+<li><strong>Example</strong>: Resume a partially downloaded file.</li>
+<li><strong>Command</strong>: <code>wget -c https://example.com/largefile.zip</code></li>
+<li>
+<p><strong>Usage</strong>: Continues downloading a file from where it left off, useful for large files or unreliable network connections.</p>
+</li>
+<li>
+<p><strong>Downloading Files in the Background</strong>:</p>
+</li>
+<li><strong>Example</strong>: Download a file in the background.</li>
+<li><strong>Command</strong>: <code>wget -b https://example.com/largefile.zip</code></li>
+<li>
+<p><strong>Usage</strong>: Runs the download process in the background, allowing you to continue using the terminal for other tasks.</p>
+</li>
+<li>
+<p><strong>Limiting Download Speed</strong>:</p>
+</li>
+<li><strong>Example</strong>: Limit the download speed of a file.</li>
+<li><strong>Command</strong>: <code>wget --limit-rate=200k https://example.com/largefile.zip</code></li>
+<li>
+<p><strong>Usage</strong>: Limits the download speed to prevent saturation of network bandwidth, useful for managing network resources.</p>
+</li>
+<li>
+<p><strong>Downloading Multiple Files</strong>:</p>
+</li>
+<li><strong>Example</strong>: Download multiple files listed in a file.</li>
+<li><strong>Command</strong>: <code>wget -i filelist.txt</code></li>
+<li>
+<p><strong>Usage</strong>: Reads URLs from a file and downloads each one, useful for batch downloading files.</p>
+</li>
+<li>
+<p><strong>Mirroring FTP Sites</strong>:</p>
+</li>
+<li><strong>Example</strong>: Mirror an entire FTP site.</li>
+<li><strong>Command</strong>: <code>wget -m ftp://example.com</code></li>
+<li><strong>Usage</strong>: Creates a mirror copy of an FTP site, useful for backing up or duplicating FTP content.</li>
+</ol>
+<h3 id="practical-scenarios-for-using-curl-and-wget">Practical Scenarios for Using <code>curl</code> and <code>wget</code></h3>
+<ol>
+<li><strong>Automating Data Collection</strong>:</li>
+<li><strong>Scenario</strong>: Collecting data from multiple web services for analysis.</li>
+<li><strong>Command</strong>: <ul>
+<li><code>curl -o data1.json https://api.example1.com/resource</code></li>
+<li><code>wget -O data2.json https://api.example2.com/resource</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Usage</strong>: Automate the process of fetching data from various APIs.</p>
+</li>
+<li>
+<p><strong>Website Health Checks</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Regularly check the health of a website.</li>
+<li><strong>Command</strong>: <code>curl -I https://example.com | grep "200 OK"</code></li>
+<li>
+<p><strong>Usage</strong>: Script regular health checks to ensure a website is up and running.</p>
+</li>
+<li>
+<p><strong>Downloading Large Datasets</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Downloading large datasets for research.</li>
+<li><strong>Command</strong>: <ul>
+<li><code>wget -c https://example.com/large-dataset.zip</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Usage</strong>: Ensure the dataset is fully downloaded even if the connection drops.</p>
+</li>
+<li>
+<p><strong>Backup Websites</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Creating backups of web content.</li>
+<li><strong>Command</strong>: <code>wget --mirror https://example.com</code></li>
+<li>
+<p><strong>Usage</strong>: Regularly back up website content for archiving purposes.</p>
+</li>
+<li>
+<p><strong>API Development and Testing</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Testing new API endpoints during development.</li>
+<li><strong>Command</strong>: <code>curl -X POST -H "Content-Type: application/json" -d '{"test":"data"}' https://api.example.com/test</code></li>
+<li><strong>Usage</strong>: Ensure APIs respond correctly to various requests and payloads.</li>
+</ol>
+<p>By leveraging <code>curl</code> and <code>wget</code>, users can automate and simplify many tasks related to web interactions, making them valuable tools for developers, network administrators, and IT professionals.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="nmap.html" class="btn btn-neutral float-left" title="Nmap"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../projects/1-Setting-Up-a-Secure-VPN.html" class="btn btn-neutral float-right" title="1 Setting Up a Secure VPN">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Challenge DevOps Team</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="nmap.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../projects/1-Setting-Up-a-Secure-VPN.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

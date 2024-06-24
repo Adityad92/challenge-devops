@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Nslookup dig - Challenge DevOps</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Nslookup dig";
+        var mkdocs_page_input_path = "networking/learning/nslookup-dig.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> Challenge DevOps
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">About Us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Code Rendering Types</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/concept.html">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/CSR.html">CSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSR.html">SSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSG.html">SSG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/ISR.html">ISR</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Networking</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">learning</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="networking-overview.html">Networking overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="important-commands.html">Important commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="traceroute.html">Traceroute</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="netstat.html">Netstat</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="nslookup-dig.html">Nslookup dig</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ssh.html">Ssh</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="telnet.html">Telnet</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="nmap.html">Nmap</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="curl-wget.html">Curl wget</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/1-Setting-Up-a-Secure-VPN.html">1 Setting Up a Secure VPN</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Proxies</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/learning/overview.html">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/projects/1-Reverse-Proxy-Server-Nginx.html">1 Reverse Proxy Server Nginx</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/1-overview.html">1 overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/2-basic.html">2 basic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/3-ansible-features.html">3 ansible features</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/1-Web-Server-nginx.html">1 Web Server nginx</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/2-Managing-System-Packages.html">2 Managing System Packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/3-Configuring-a-Firewall.html">3 Configuring a Firewall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/4-Web-App-Using-Docker.html">4 Web App Using Docker</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/5-run-nginx-container.html">5 run nginx container</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Golang</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/important-packages.html">Important packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/yaml.html">Yaml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-package.html">Os package</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-exec.html">Os exec</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/path-filepath.html">Path filepath</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/encoding-json.html">Encoding json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/net-http.html">Net http</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strconv.html">Strconv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/context.html">Context</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strings.html">Strings</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/4-Container-Image-Builder.html">4 Container Image Builder</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/7-color-print-message.html">7 color print message</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/8-Currency-Conversion-API.html">8 Currency Conversion API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/9.Todo-List-API.html">9.Todo List API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/10-Recipe-API.html">10 Recipe API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/11-contact-list-csv.html">11 contact list csv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/12-mongodb-manual.html">12 mongodb manual</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/13-mongoDB-API.html">13 mongoDB API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/14-midleware-okta.html">14 midleware okta</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">6 color print message</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Challenge DevOps</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Networking</li>
+          <li class="breadcrumb-item">learning</li>
+      <li class="breadcrumb-item active">Nslookup dig</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><code>nslookup</code> and <code>dig</code> are network administration command-line tools used for querying Domain Name System (DNS) servers. They are particularly useful for diagnosing DNS-related issues and obtaining DNS records. Here are some practical use cases for using <code>nslookup</code> and <code>dig</code>:</p>
+<h3 id="practical-use-cases-for-nslookup">Practical Use Cases for <code>nslookup</code></h3>
+<ol>
+<li><strong>Resolving Domain Names to IP Addresses</strong>:</li>
+<li><strong>Example</strong>: To find the IP address of a specific domain name.</li>
+<li><strong>Command</strong>: <code>nslookup www.example.com</code></li>
+<li>
+<p><strong>Usage</strong>: Provides the IP address associated with the domain, useful for troubleshooting connectivity issues.</p>
+</li>
+<li>
+<p><strong>Finding the Mail Server for a Domain</strong>:</p>
+</li>
+<li><strong>Example</strong>: To find the mail servers (MX records) responsible for handling email for a domain.</li>
+<li><strong>Command</strong>: <code>nslookup -query=mx example.com</code></li>
+<li>
+<p><strong>Usage</strong>: Lists the mail servers, which is helpful for diagnosing email delivery issues.</p>
+</li>
+<li>
+<p><strong>Getting Authoritative DNS Servers</strong>:</p>
+</li>
+<li><strong>Example</strong>: To find the authoritative DNS servers for a domain.</li>
+<li><strong>Command</strong>: <code>nslookup -query=ns example.com</code></li>
+<li>
+<p><strong>Usage</strong>: Displays the DNS servers that have authority over the domain, useful for verifying DNS configurations.</p>
+</li>
+<li>
+<p><strong>Checking Reverse DNS Records</strong>:</p>
+</li>
+<li><strong>Example</strong>: To perform a reverse DNS lookup, translating an IP address back to a domain name.</li>
+<li><strong>Command</strong>: <code>nslookup 192.0.2.1</code></li>
+<li><strong>Usage</strong>: Helps verify that reverse DNS records are correctly configured.</li>
+</ol>
+<h3 id="practical-use-cases-for-dig">Practical Use Cases for <code>dig</code></h3>
+<ol>
+<li><strong>Detailed DNS Query Information</strong>:</li>
+<li><strong>Example</strong>: To perform a detailed DNS lookup for a domain.</li>
+<li><strong>Command</strong>: <code>dig www.example.com</code></li>
+<li>
+<p><strong>Usage</strong>: Provides detailed information about the DNS query and response, including all returned records and timing information.</p>
+</li>
+<li>
+<p><strong>Querying Specific DNS Record Types</strong>:</p>
+</li>
+<li><strong>Example</strong>: To query specific DNS record types like A, MX, NS, TXT, etc.</li>
+<li><strong>Command</strong>: <code>dig example.com MX</code></li>
+<li>
+<p><strong>Usage</strong>: Allows you to retrieve specific types of DNS records, useful for debugging and verifying DNS configurations.</p>
+</li>
+<li>
+<p><strong>Checking DNSSEC Information</strong>:</p>
+</li>
+<li><strong>Example</strong>: To verify DNS Security Extensions (DNSSEC) for a domain.</li>
+<li><strong>Command</strong>: <code>dig example.com +dnssec</code></li>
+<li>
+<p><strong>Usage</strong>: Retrieves DNSSEC-related information, helping ensure that DNS records are secured against tampering.</p>
+</li>
+<li>
+<p><strong>Tracing the Path to the Authoritative DNS Server</strong>:</p>
+</li>
+<li><strong>Example</strong>: To trace the path from the local DNS server to the authoritative server.</li>
+<li><strong>Command</strong>: <code>dig example.com +trace</code></li>
+<li>
+<p><strong>Usage</strong>: Shows each step in the DNS resolution process, useful for diagnosing where DNS resolution might be failing.</p>
+</li>
+<li>
+<p><strong>Checking DNS TTL Values</strong>:</p>
+</li>
+<li><strong>Example</strong>: To find the Time-To-Live (TTL) values for DNS records.</li>
+<li><strong>Command</strong>: <code>dig example.com</code></li>
+<li><strong>Usage</strong>: Displays TTL values, which indicate how long a DNS record is cached by resolvers. This can be useful for understanding and troubleshooting DNS propagation delays.</li>
+</ol>
+<h3 id="practical-scenarios-for-using-nslookup-and-dig">Practical Scenarios for Using <code>nslookup</code> and <code>dig</code></h3>
+<ol>
+<li><strong>Verifying DNS Configuration</strong>:</li>
+<li><strong>Scenario</strong>: After making changes to DNS records, such as updating A, MX, or CNAME records, use <code>nslookup</code> or <code>dig</code> to verify the changes.</li>
+<li>
+<p><strong>Command</strong>:</p>
+<ul>
+<li><code>nslookup www.example.com</code></li>
+<li><code>dig www.example.com</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Troubleshooting DNS Issues</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Users report they cannot access your website. Use <code>nslookup</code> or <code>dig</code> to diagnose the issue.</li>
+<li>
+<p><strong>Command</strong>:</p>
+<ul>
+<li><code>nslookup www.example.com</code></li>
+<li><code>dig www.example.com</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Diagnosing Email Problems</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Emails are not being delivered to your domain. Check the MX records to ensure they are correctly configured.</li>
+<li>
+<p><strong>Command</strong>:</p>
+<ul>
+<li><code>nslookup -query=mx example.com</code></li>
+<li><code>dig example.com MX</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Investigating Propagation Delays</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: You've updated DNS records, but changes are not visible to users. Check TTL values to understand propagation delays.</li>
+<li>
+<p><strong>Command</strong>:</p>
+<ul>
+<li><code>dig example.com</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Validating DNS Security</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Ensure your DNS records are secured with DNSSEC.</li>
+<li><strong>Command</strong>:<ul>
+<li><code>dig example.com +dnssec</code></li>
+</ul>
+</li>
+</ol>
+<p>By using <code>nslookup</code> and <code>dig</code> in these practical scenarios, network administrators and users can effectively diagnose, verify, and troubleshoot DNS-related issues.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="netstat.html" class="btn btn-neutral float-left" title="Netstat"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="ssh.html" class="btn btn-neutral float-right" title="Ssh">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Challenge DevOps Team</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="netstat.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="ssh.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

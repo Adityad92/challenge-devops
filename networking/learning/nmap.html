@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Nmap - Challenge DevOps</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Nmap";
+        var mkdocs_page_input_path = "networking/learning/nmap.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> Challenge DevOps
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">About Us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Code Rendering Types</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/concept.html">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/CSR.html">CSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSR.html">SSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSG.html">SSG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/ISR.html">ISR</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Networking</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">learning</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="networking-overview.html">Networking overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="important-commands.html">Important commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="traceroute.html">Traceroute</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="netstat.html">Netstat</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="nslookup-dig.html">Nslookup dig</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ssh.html">Ssh</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="telnet.html">Telnet</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="nmap.html">Nmap</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="curl-wget.html">Curl wget</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/1-Setting-Up-a-Secure-VPN.html">1 Setting Up a Secure VPN</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Proxies</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/learning/overview.html">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/projects/1-Reverse-Proxy-Server-Nginx.html">1 Reverse Proxy Server Nginx</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/1-overview.html">1 overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/2-basic.html">2 basic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/3-ansible-features.html">3 ansible features</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/1-Web-Server-nginx.html">1 Web Server nginx</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/2-Managing-System-Packages.html">2 Managing System Packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/3-Configuring-a-Firewall.html">3 Configuring a Firewall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/4-Web-App-Using-Docker.html">4 Web App Using Docker</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/5-run-nginx-container.html">5 run nginx container</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Golang</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/important-packages.html">Important packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/yaml.html">Yaml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-package.html">Os package</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-exec.html">Os exec</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/path-filepath.html">Path filepath</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/encoding-json.html">Encoding json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/net-http.html">Net http</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strconv.html">Strconv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/context.html">Context</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strings.html">Strings</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/4-Container-Image-Builder.html">4 Container Image Builder</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/7-color-print-message.html">7 color print message</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/8-Currency-Conversion-API.html">8 Currency Conversion API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/9.Todo-List-API.html">9.Todo List API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/10-Recipe-API.html">10 Recipe API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/11-contact-list-csv.html">11 contact list csv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/12-mongodb-manual.html">12 mongodb manual</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/13-mongoDB-API.html">13 mongoDB API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/14-midleware-okta.html">14 midleware okta</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">6 color print message</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Challenge DevOps</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Networking</li>
+          <li class="breadcrumb-item">learning</li>
+      <li class="breadcrumb-item active">Nmap</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Nmap (Network Mapper) is a powerful open-source tool used for network discovery and security auditing. It can scan large networks efficiently, identify hosts and services, detect open ports, and discover operating systems and versions. Here are some practical use cases for using Nmap:</p>
+<h3 id="practical-use-cases-for-nmap">Practical Use Cases for Nmap</h3>
+<ol>
+<li><strong>Network Inventory and Host Discovery</strong>:</li>
+<li><strong>Example</strong>: Discover all devices connected to a network.</li>
+<li><strong>Command</strong>: <code>nmap -sn 192.168.1.0/24</code></li>
+<li>
+<p><strong>Usage</strong>: Performs a ping scan to list all active hosts on the specified network, useful for maintaining an inventory of devices.</p>
+</li>
+<li>
+<p><strong>Port Scanning</strong>:</p>
+</li>
+<li><strong>Example</strong>: Identify open ports on a target host.</li>
+<li><strong>Command</strong>: <code>nmap -p 1-65535 192.168.1.10</code></li>
+<li>
+<p><strong>Usage</strong>: Scans all 65,535 ports on the target IP to identify which ones are open, useful for security auditing and vulnerability assessment.</p>
+</li>
+<li>
+<p><strong>Service Detection</strong>:</p>
+</li>
+<li><strong>Example</strong>: Determine the services running on open ports.</li>
+<li><strong>Command</strong>: <code>nmap -sV 192.168.1.10</code></li>
+<li>
+<p><strong>Usage</strong>: Detects service versions on the target host, helping to identify software running on open ports and check for outdated or vulnerable services.</p>
+</li>
+<li>
+<p><strong>Operating System Detection</strong>:</p>
+</li>
+<li><strong>Example</strong>: Identify the operating system running on a target host.</li>
+<li><strong>Command</strong>: <code>nmap -O 192.168.1.10</code></li>
+<li>
+<p><strong>Usage</strong>: Performs OS fingerprinting to determine the target's operating system, useful for network inventory and security assessments.</p>
+</li>
+<li>
+<p><strong>Network Mapping</strong>:</p>
+</li>
+<li><strong>Example</strong>: Create a map of the network topology.</li>
+<li><strong>Command</strong>: <code>nmap -sn -oX network_map.xml 192.168.1.0/24</code></li>
+<li>
+<p><strong>Usage</strong>: Generates an XML file with the network topology, which can be used to visualize the network and understand its structure.</p>
+</li>
+<li>
+<p><strong>Vulnerability Scanning</strong>:</p>
+</li>
+<li><strong>Example</strong>: Identify potential vulnerabilities on a target host.</li>
+<li><strong>Command</strong>: <code>nmap --script vuln 192.168.1.10</code></li>
+<li>
+<p><strong>Usage</strong>: Runs vulnerability detection scripts to identify common vulnerabilities, useful for proactive security measures.</p>
+</li>
+<li>
+<p><strong>Firewall and IDS Evasion</strong>:</p>
+</li>
+<li><strong>Example</strong>: Test firewall and intrusion detection system (IDS) evasion techniques.</li>
+<li><strong>Command</strong>: <code>nmap -sS -T4 -Pn 192.168.1.10</code></li>
+<li>
+<p><strong>Usage</strong>: Uses SYN scan with aggressive timing and disables ping, useful for testing the effectiveness of security measures.</p>
+</li>
+<li>
+<p><strong>UDP Scanning</strong>:</p>
+</li>
+<li><strong>Example</strong>: Scan for open UDP ports on a target host.</li>
+<li><strong>Command</strong>: <code>nmap -sU 192.168.1.10</code></li>
+<li>
+<p><strong>Usage</strong>: Identifies open UDP ports, which are often overlooked but can be critical for security assessments.</p>
+</li>
+<li>
+<p><strong>Scripting Engine (NSE)</strong>:</p>
+</li>
+<li><strong>Example</strong>: Perform complex scanning tasks using custom scripts.</li>
+<li><strong>Command</strong>: <code>nmap --script http-enum 192.168.1.10</code></li>
+<li>
+<p><strong>Usage</strong>: Uses the Nmap Scripting Engine to enumerate web server directories, useful for web application assessments.</p>
+</li>
+<li>
+<p><strong>Network Performance Monitoring</strong>:</p>
+<ul>
+<li><strong>Example</strong>: Measure the round-trip time to a host.</li>
+<li><strong>Command</strong>: <code>nmap --traceroute 192.168.1.10</code></li>
+<li><strong>Usage</strong>: Provides traceroute information along with the scan results, useful for diagnosing network performance issues.</li>
+</ul>
+</li>
+</ol>
+<h3 id="practical-scenarios-for-using-nmap">Practical Scenarios for Using Nmap</h3>
+<ol>
+<li><strong>IT Asset Management</strong>:</li>
+<li><strong>Scenario</strong>: Maintaining an up-to-date inventory of all devices on a network.</li>
+<li><strong>Command</strong>: <code>nmap -sn 10.0.0.0/24</code></li>
+<li>
+<p><strong>Usage</strong>: Regularly scan the network to detect new devices and ensure all known devices are accounted for.</p>
+</li>
+<li>
+<p><strong>Penetration Testing</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Assessing the security posture of a network before performing a penetration test.</li>
+<li><strong>Command</strong>: <code>nmap -sS -A -T4 target_ip</code></li>
+<li>
+<p><strong>Usage</strong>: Performs a comprehensive scan, including port, service, and OS detection, to gather information for further exploitation.</p>
+</li>
+<li>
+<p><strong>Identifying Rogue Devices</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Detecting unauthorized devices connected to the network.</li>
+<li><strong>Command</strong>: <code>nmap -sn 192.168.1.0/24</code></li>
+<li>
+<p><strong>Usage</strong>: Helps identify unknown or unauthorized devices, which can then be investigated and removed if necessary.</p>
+</li>
+<li>
+<p><strong>Compliance Auditing</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Ensuring compliance with security policies and regulations.</li>
+<li><strong>Command</strong>: <code>nmap --script compliance_check target_ip</code></li>
+<li>
+<p><strong>Usage</strong>: Runs compliance check scripts to verify that the network meets regulatory requirements, such as PCI-DSS or HIPAA.</p>
+</li>
+<li>
+<p><strong>Incident Response</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Investigating a security incident to determine the extent of a breach.</li>
+<li><strong>Command</strong>: <code>nmap -sV -O compromised_host_ip</code></li>
+<li>
+<p><strong>Usage</strong>: Gathers detailed information about the compromised host, including open ports, services, and operating system, aiding in incident analysis and response.</p>
+</li>
+<li>
+<p><strong>Web Application Security</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Identifying vulnerabilities in a web application.</li>
+<li><strong>Command</strong>: <code>nmap --script http-vuln* target_ip</code></li>
+<li><strong>Usage</strong>: Runs web vulnerability scripts to detect common issues like SQL injection, XSS, and misconfigurations.</li>
+</ol>
+<p>By leveraging Nmap's capabilities, network administrators, security professionals, and IT staff can effectively manage, secure, and troubleshoot networks, ensuring a robust and secure network environment.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="telnet.html" class="btn btn-neutral float-left" title="Telnet"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="curl-wget.html" class="btn btn-neutral float-right" title="Curl wget">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Challenge DevOps Team</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="telnet.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="curl-wget.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Challenge DevOps Team" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Ssh - Challenge DevOps</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Ssh";
+        var mkdocs_page_input_path = "networking/learning/ssh.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../index.html" class="icon icon-home"> Challenge DevOps
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../index.html">About Us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Code Rendering Types</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/concept.html">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/CSR.html">CSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSR.html">SSR</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/SSG.html">SSG</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rendering/ISR.html">ISR</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Networking</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">learning</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="networking-overview.html">Networking overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="important-commands.html">Important commands</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="traceroute.html">Traceroute</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="netstat.html">Netstat</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="nslookup-dig.html">Nslookup dig</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="ssh.html">Ssh</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="telnet.html">Telnet</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="nmap.html">Nmap</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="curl-wget.html">Curl wget</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../projects/1-Setting-Up-a-Secure-VPN.html">1 Setting Up a Secure VPN</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Proxies</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/learning/overview.html">Overview</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../proxies/projects/1-Reverse-Proxy-Server-Nginx.html">1 Reverse Proxy Server Nginx</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/1-overview.html">1 overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/2-basic.html">2 basic</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/learning/3-ansible-features.html">3 ansible features</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/1-Web-Server-nginx.html">1 Web Server nginx</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/2-Managing-System-Packages.html">2 Managing System Packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/3-Configuring-a-Firewall.html">3 Configuring a Firewall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/4-Web-App-Using-Docker.html">4 Web App Using Docker</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ansible/projects/5-run-nginx-container.html">5 run nginx container</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Golang</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/important-packages.html">Important packages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/func-breakdown.html">Func breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/pointers-dereferencing.html">Pointers dereferencing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/methods.html">Methods</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/struct.html">Struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/file-operations.html">File operations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/complex-struct.html">Complex struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/database-struct.html">Database struct</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-connection.html">Db connection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/db-crud.html">Db crud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/json.html">Json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/yaml.html">Yaml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-package.html">Os package</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/os-exec.html">Os exec</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/path-filepath.html">Path filepath</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/encoding-json.html">Encoding json</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/net-http.html">Net http</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strconv.html">Strconv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/context.html">Context</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/strings.html">Strings</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/1-Simple-CLI-Tool.html">1 Simple CLI Tool</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/2-Web-Server-with-Basic-API.html">2 Web Server with Basic API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/4-Container-Image-Builder.html">4 Container Image Builder</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/7-color-print-message.html">7 color print message</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/8-Currency-Conversion-API.html">8 Currency Conversion API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/9.Todo-List-API.html">9.Todo List API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/10-Recipe-API.html">10 Recipe API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/11-contact-list-csv.html">11 contact list csv</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/12-mongodb-manual.html">12 mongodb manual</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/13-mongoDB-API.html">13 mongoDB API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/projects/14-midleware-okta.html">14 midleware okta</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bash-Scripting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">learning</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/special-variable.html">Special variable</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/conditional-expression.html">Conditional expression</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/jq.html">Jq</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/learning/yq.html">Yq</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">projects</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/1-File-Organizer.html">1 File Organizer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/2-System-Monitor.html">2 System Monitor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/3-Backup-Script.html">3 Backup Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/4-Web-Log-Analyzer.html">4 Web Log Analyzer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/5-Task-Scheduler.html">5 Task Scheduler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../bash/projects/6-color-print-message.html">6 color print message</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Challenge DevOps</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Networking</li>
+          <li class="breadcrumb-item">learning</li>
+      <li class="breadcrumb-item active">Ssh</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Secure Shell (SSH) is a network protocol that provides a secure way to access a remote computer over an unsecured network. Here are some practical use cases for using SSH:</p>
+<h3 id="practical-use-cases-for-ssh">Practical Use Cases for SSH</h3>
+<ol>
+<li><strong>Remote Server Administration</strong>:</li>
+<li><strong>Example</strong>: Administering a remote server from your local machine.</li>
+<li><strong>Command</strong>: <code>ssh username@remote_server_ip</code></li>
+<li>
+<p><strong>Usage</strong>: Allows system administrators to manage and configure remote servers securely, execute commands, manage files, and monitor system performance.</p>
+</li>
+<li>
+<p><strong>Secure File Transfer</strong>:</p>
+</li>
+<li><strong>Example</strong>: Transferring files between your local machine and a remote server.</li>
+<li><strong>Commands</strong>:<ul>
+<li><code>scp file.txt username@remote_server_ip:/remote/path/</code> (Secure Copy)</li>
+<li><code>sftp username@remote_server_ip</code> (Secure FTP)</li>
+</ul>
+</li>
+<li>
+<p><strong>Usage</strong>: Enables secure transfer of files, useful for backing up data, uploading website content, and sharing files.</p>
+</li>
+<li>
+<p><strong>Port Forwarding/Tunneling</strong>:</p>
+</li>
+<li><strong>Example</strong>: Accessing a service on a remote server that is not directly accessible from your local network.</li>
+<li><strong>Command</strong>: <code>ssh -L local_port:remote_server_ip:remote_port username@remote_server_ip</code></li>
+<li>
+<p><strong>Usage</strong>: Forwards traffic from a local port to a remote service, useful for accessing databases, web servers, or other services securely.</p>
+</li>
+<li>
+<p><strong>Automated Remote Commands and Scripts</strong>:</p>
+</li>
+<li><strong>Example</strong>: Running automated scripts or commands on a remote server.</li>
+<li><strong>Command</strong>: <code>ssh username@remote_server_ip 'bash script.sh'</code></li>
+<li>
+<p><strong>Usage</strong>: Automates routine tasks, such as backups, updates, and monitoring, improving efficiency and reliability.</p>
+</li>
+<li>
+<p><strong>Accessing Remote Applications</strong>:</p>
+</li>
+<li><strong>Example</strong>: Running graphical applications on a remote server and displaying them locally.</li>
+<li><strong>Command</strong>: <code>ssh -X username@remote_server_ip</code> (X11 forwarding)</li>
+<li>
+<p><strong>Usage</strong>: Enables running and interacting with GUI-based applications on remote servers, useful for remote development and management.</p>
+</li>
+<li>
+<p><strong>Secure Proxying/Browsing</strong>:</p>
+</li>
+<li><strong>Example</strong>: Using a remote server as a proxy to browse the internet securely.</li>
+<li><strong>Command</strong>: <code>ssh -D local_port username@remote_server_ip</code></li>
+<li>
+<p><strong>Usage</strong>: Sets up a dynamic SOCKS proxy, allowing you to route your internet traffic through the remote server, enhancing privacy and security.</p>
+</li>
+<li>
+<p><strong>Remote System Monitoring</strong>:</p>
+</li>
+<li><strong>Example</strong>: Monitoring system logs, resource usage, and performance on a remote server.</li>
+<li><strong>Command</strong>: <code>ssh username@remote_server_ip 'tail -f /var/log/syslog'</code></li>
+<li>
+<p><strong>Usage</strong>: Allows real-time monitoring of system logs and performance metrics, useful for troubleshooting and maintaining system health.</p>
+</li>
+<li>
+<p><strong>Version Control with Git</strong>:</p>
+</li>
+<li><strong>Example</strong>: Managing source code repositories on a remote server using Git.</li>
+<li><strong>Commands</strong>:<ul>
+<li><code>ssh-add ~/.ssh/id_rsa</code> (Add SSH key)</li>
+<li><code>git clone ssh://username@remote_server_ip/path/to/repository.git</code></li>
+</ul>
+</li>
+<li><strong>Usage</strong>: Securely access and manage Git repositories, facilitating collaborative development and version control.</li>
+</ol>
+<h3 id="practical-scenarios-for-using-ssh">Practical Scenarios for Using SSH</h3>
+<ol>
+<li><strong>Deploying Web Applications</strong>:</li>
+<li><strong>Scenario</strong>: You need to deploy updates to a web application hosted on a remote server.</li>
+<li><strong>Command</strong>: <code>ssh username@web_server_ip</code> followed by deployment commands/scripts.</li>
+<li>
+<p><strong>Usage</strong>: Securely manage deployment processes, ensuring the web application is up-to-date.</p>
+</li>
+<li>
+<p><strong>Database Management</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: You need to access a remote database server to perform backups, updates, or queries.</li>
+<li><strong>Command</strong>: <code>ssh -L 3306:remote_db_ip:3306 username@remote_server_ip</code> (for MySQL)</li>
+<li>
+<p><strong>Usage</strong>: Securely manage database operations without exposing the database directly to the internet.</p>
+</li>
+<li>
+<p><strong>Remote Technical Support</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Providing technical support to a remote user or client.</li>
+<li><strong>Command</strong>: <code>ssh username@client_server_ip</code></li>
+<li>
+<p><strong>Usage</strong>: Securely access the client's system to troubleshoot issues, perform maintenance, and provide support.</p>
+</li>
+<li>
+<p><strong>IoT Device Management</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Managing and configuring IoT devices deployed in remote locations.</li>
+<li><strong>Command</strong>: <code>ssh username@iot_device_ip</code></li>
+<li>
+<p><strong>Usage</strong>: Securely access and manage IoT devices, ensuring they are correctly configured and functioning.</p>
+</li>
+<li>
+<p><strong>Development and Testing</strong>:</p>
+</li>
+<li><strong>Scenario</strong>: Testing software on different environments hosted on remote servers.</li>
+<li><strong>Command</strong>: <code>ssh username@dev_server_ip</code></li>
+<li><strong>Usage</strong>: Securely access development environments, run tests, and gather results, facilitating the development process.</li>
+</ol>
+<p>By leveraging SSH in these practical scenarios, users and administrators can securely manage, transfer, and interact with remote systems, ensuring secure and efficient network operations.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="nslookup-dig.html" class="btn btn-neutral float-left" title="Nslookup dig"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="telnet.html" class="btn btn-neutral float-right" title="Telnet">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Challenge DevOps Team</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="nslookup-dig.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="telnet.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
