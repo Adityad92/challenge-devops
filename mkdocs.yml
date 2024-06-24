@@ -31,6 +31,24 @@ nav:
   #   - variables: rendering/concept.md
   # - Kubernetes:
   # - Proxy:
+  - Networking:
+      - learning:
+        - networking/learning/networking-overview.md
+        - networking/learning/important-commands.md
+        - networking/learning/traceroute.md
+        - networking/learning/netstat.md
+        - networking/learning/nslookup-dig.md
+        - networking/learning/ssh.md
+        - networking/learning/telnet.md
+        - networking/learning/nmap.md
+        - networking/learning/curl-wget.md
+      - projects:
+        - networking/projects/1-Setting-Up-a-Secure-VPN.md
+  - Proxies:
+      - learning:
+        - proxies/learning/overview.md
+      - projects:
+        - proxies/projects/1-Reverse-Proxy-Server-Nginx.md
   - Ansible:
     - learning:
       - ansible/learning/1-overview.md
