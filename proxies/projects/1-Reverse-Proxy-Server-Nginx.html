@@ -145,6 +145,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/struct.html">Struct</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/interface.html">Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/interface-ex-2.html">Interface ex 2</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/file-operations.html">File operations</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../golang/learning/complex-struct.html">Complex struct</a>
@@ -282,7 +286,7 @@
 <li>Define upstream servers for each local web application you want to proxy. Each upstream server configuration specifies the server's IP address (usually <code>127.0.0.1</code> for localhost) and port number.</li>
 </ol>
 <p>Example:
-   ```nginx
+   ```bash
    upstream app1 {
        server 127.0.0.1:3000;  # Example: Node.js application running on port 3000
    }</p>
@@ -295,7 +299,7 @@
 <li>Set up server blocks (virtual hosts) for each local application, specifying the domain names or paths you want to use to access them.</li>
 </ol>
 <p>Example:
-   ```nginx
+   ```bash
    server {
        listen 80;
        server_name app1.local;</p>
