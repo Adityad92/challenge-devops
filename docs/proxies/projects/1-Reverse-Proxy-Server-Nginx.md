@@ -17,7 +17,7 @@ Certainly! Here's a practical DevOps project focused on proxies that you can per
    - Define upstream servers for each local web application you want to proxy. Each upstream server configuration specifies the server's IP address (usually `127.0.0.1` for localhost) and port number.
 
    Example:
-   ```nginx
+   ```bash
    upstream app1 {
        server 127.0.0.1:3000;  # Example: Node.js application running on port 3000
    }
@@ -31,7 +31,7 @@ Certainly! Here's a practical DevOps project focused on proxies that you can per
    - Set up server blocks (virtual hosts) for each local application, specifying the domain names or paths you want to use to access them.
 
    Example:
-   ```nginx
+   ```bash
    server {
        listen 80;
        server_name app1.local;
