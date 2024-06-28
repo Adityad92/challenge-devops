@@ -1,6 +1,9 @@
 site_name: Challenge DevOps
 theme:
   name: readthedocs #windmill mkdocs, readthedocs, material
+  navigation_depth: 4
+  titles_only: false
+  sticky_navigation: true
 copyright: 'Challenge DevOps Team'
 site_author: 'Challenge DevOps Team'
 site_description: 'Challenge DevOps Documentation'
@@ -10,6 +13,8 @@ markdown_extensions:
   - codehilite
   - attr_list
   - md_in_html
+  - toc:
+      permalink: true
 plugins:
     - search
 nav:
