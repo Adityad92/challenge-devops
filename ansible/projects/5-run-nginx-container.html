@@ -265,25 +265,25 @@
             <div class="section" itemprop="articleBody">
               
                 <p>Ansible is an open-source automation tool that can be used to automate various IT tasks including the deployment and management of Docker containers. To run a Docker container locally using Ansible, follow these steps:  </p>
-<h3 id="step-1-install-ansible">Step 1: Install Ansible</h3>
+<h3 id="step-1-install-ansible">Step 1: Install Ansible<a class="headerlink" href="#step-1-install-ansible" title="Permanent link">&para;</a></h3>
 <p>First, you need to have Ansible installed on your local machine. You can install Ansible on most Linux distributions using their package managers. For example, on Ubuntu, you can install it with:  </p>
 <pre class="codehilite"><code class="language-bash">sudo apt update  
 sudo apt install ansible  
 </code></pre>
 
 <p>For other operating systems or methods, refer to the official Ansible documentation for installation instructions.  </p>
-<h3 id="step-2-install-docker">Step 2: Install Docker</h3>
+<h3 id="step-2-install-docker">Step 2: Install Docker<a class="headerlink" href="#step-2-install-docker" title="Permanent link">&para;</a></h3>
 <p>Ensure that Docker is installed on your local machine. You can download and install Docker from the official Docker website. After installation, you can start the Docker service and enable it to run on boot with the following commands:  </p>
 <pre class="codehilite"><code class="language-bash">sudo systemctl start docker  
 sudo systemctl enable docker  
 </code></pre>
 
-<h3 id="step-3-configure-ansible-to-manage-docker">Step 3: Configure Ansible to Manage Docker</h3>
+<h3 id="step-3-configure-ansible-to-manage-docker">Step 3: Configure Ansible to Manage Docker<a class="headerlink" href="#step-3-configure-ansible-to-manage-docker" title="Permanent link">&para;</a></h3>
 <p>Ansible uses modules to interact with various services and systems. For Docker, you'll use the <code>docker_container</code> module. Before you can use this module, you may need to install the Docker SDK for Python, which is required by the module. You can install it using pip:  </p>
 <pre class="codehilite"><code class="language-bash">pip install docker  
 </code></pre>
 
-<h3 id="step-4-write-an-ansible-playbook">Step 4: Write an Ansible Playbook</h3>
+<h3 id="step-4-write-an-ansible-playbook">Step 4: Write an Ansible Playbook<a class="headerlink" href="#step-4-write-an-ansible-playbook" title="Permanent link">&para;</a></h3>
 <p>An Ansible playbook is a YAML file where you define the tasks to be executed by Ansible. Create a file named <code>docker_playbook.yml</code> with the following contents to define a task that runs a Docker container:  </p>
 <pre class="codehilite"><code class="language-yaml">---
 
@@ -311,19 +311,19 @@ all:
 </code></pre>
 
 <p>This playbook defines a single task that uses the <code>docker_container</code> module to ensure that a container named <code>mynginx</code> is running from the <code>nginx:latest</code> image. It also maps port 8080 on the host to port 80 inside the container.  </p>
-<h3 id="step-5-run-the-ansible-playbook">Step 5: Run the Ansible Playbook</h3>
+<h3 id="step-5-run-the-ansible-playbook">Step 5: Run the Ansible Playbook<a class="headerlink" href="#step-5-run-the-ansible-playbook" title="Permanent link">&para;</a></h3>
 <p>Execute the playbook using the <code>ansible-playbook</code> command:  </p>
 <pre class="codehilite"><code class="language-bash">ansible-playbook docker_playbook.yml  
 </code></pre>
 
 <p>Ansible will connect to your local machine (specified as <code>localhost</code> in the playbook), perform the necessary steps to ensure the container is running as described, and report the outcomes of the task.  </p>
-<h3 id="step-6-verify-the-container-is-running">Step 6: Verify the Container is Running</h3>
+<h3 id="step-6-verify-the-container-is-running">Step 6: Verify the Container is Running<a class="headerlink" href="#step-6-verify-the-container-is-running" title="Permanent link">&para;</a></h3>
 <p>You can verify that the Docker container is running by listing all active containers:  </p>
 <pre class="codehilite"><code class="language-bash">docker ps  
 </code></pre>
 
 <p>You should see your <code>mynginx</code> container listed.  </p>
-<h3 id="step-7-access-the-docker-container">Step 7: Access the Docker Container</h3>
+<h3 id="step-7-access-the-docker-container">Step 7: Access the Docker Container<a class="headerlink" href="#step-7-access-the-docker-container" title="Permanent link">&para;</a></h3>
 <p>Since we mapped port 8080 on the host to port 80 in the container, you can access the Nginx server by going to <code>http://localhost:8080</code> in a web browser.  </p>
 <p>Remember that this is a basic introduction and that Ansible and Docker are both complex tools with many features. For more advanced usage, you may want to explore topics such as Ansible roles, Docker volumes, Docker networks, and managing container lifecycles in greater detail. Always refer to the official documentation for the most accurate and detailed information.</p>
               

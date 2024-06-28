@@ -265,7 +265,7 @@
             <div class="section" itemprop="articleBody">
               
                 <p>Certainly! I'll explain these Ansible concepts aligned with the 80-20 principle, focusing on the most impactful aspects that will give you the majority of practical value.  </p>
-<h3 id="variables">Variables</h3>
+<h3 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
 <p>Variables in Ansible are how you deal with differences between systems. They allow you to manage specific configuration values that may vary from host to host.  </p>
 <p><strong>Defining Variables:</strong><br />
 You can define variables in several places within Ansible:  </p>
@@ -289,7 +289,7 @@ You can define variables in several places within Ansible:  </p>
 </code></pre>
 
 <p>In this example, <code>http_port</code> and <code>max_clients</code> are variables that are used in the template for the web server configuration.  </p>
-<h3 id="modules">Modules</h3>
+<h3 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h3>
 <p>Modules are the units of work in Ansible. They can do anything from checking the status of a service to installing a package.  </p>
 <p><strong>Commonly Used Modules:</strong>  </p>
 <ul>
@@ -308,7 +308,7 @@ You can define variables in several places within Ansible:  </p>
 </code></pre>
 
 <p>Here, <code>ansible.builtin.yum</code> is the module used to install the Apache package (<code>httpd</code>).  </p>
-<h3 id="roles">Roles</h3>
+<h3 id="roles">Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h3>
 <p>Roles are organizational units in Ansible that allow you to bundle tasks, handlers, files, templates, and variables into a reusable package.  </p>
 <p><strong>Creating a Role:</strong><br />
 Use the <code>ansible-galaxy</code> command to create a new role structure:  </p>
@@ -324,7 +324,7 @@ Use the <code>ansible-galaxy</code> command to create a new role structure:  </p
 </code></pre>
 
 <p>Roles allow you to keep your playbooks clean and manageable by abstracting the complexity into easily reusable directories.  </p>
-<h3 id="templates">Templates</h3>
+<h3 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h3>
 <p>Templates in Ansible use the Jinja2 templating language to render files. They are particularly useful for managing configuration files.  </p>
 <p><strong>Creating a Template:</strong><br />
 You would create a template file (<code>httpd.conf.j2</code>) with configuration settings, using Jinja2 syntax for variables and control structures. For instance:  </p>
@@ -348,7 +348,7 @@ You can use the <code>ansible.builtin.template</code> module to apply the templa
 </code></pre>
 
 <p>This task takes the <code>httpd.conf.j2</code> template, fills in the variable values, and copies the resulting file to the specified destination on the remote server.  </p>
-<h3 id="bringing-it-all-together-with-the-80-20-principle">Bringing It All Together with the 80-20 Principle:</h3>
+<h3 id="bringing-it-all-together-with-the-80-20-principle">Bringing It All Together with the 80-20 Principle:<a class="headerlink" href="#bringing-it-all-together-with-the-80-20-principle" title="Permanent link">&para;</a></h3>
 <p>By grasping these four concepts, you've covered a significant portion of the Ansible functionality that you'll use in most situations:  </p>
 <ol>
 <li><strong>Variables</strong> - Customize playbooks to work across different environments.  </li>

@@ -312,7 +312,7 @@ func main() {
 }
 </code></pre>
 
-<h2 id="think-of-an-interface-like-a-job-description-for-instance-lets-say-we-have-a-driver-job">Think of an interface like a job description. For instance, let's say we have a "Driver" job:</h2>
+<h2 id="think-of-an-interface-like-a-job-description-for-instance-lets-say-we-have-a-driver-job">Think of an interface like a job description. For instance, let's say we have a "Driver" job:<a class="headerlink" href="#think-of-an-interface-like-a-job-description-for-instance-lets-say-we-have-a-driver-job" title="Permanent link">&para;</a></h2>
 <pre class="codehilite"><code class="language-go">type Driver interface {
     Drive()
 }
@@ -359,7 +359,7 @@ func main() {
 <li>We can use any type that implements the interface where the interface is expected.</li>
 </ol>
 <p>Does this help clarify the concept? Would you like me to break it down further or try another example?</p>
-<h2 id="interfaces-become-more-powerful-when">Interfaces become more powerful when:</h2>
+<h2 id="interfaces-become-more-powerful-when">Interfaces become more powerful when:<a class="headerlink" href="#interfaces-become-more-powerful-when" title="Permanent link">&para;</a></h2>
 <ol>
 <li>You're dealing with multiple types that share behavior</li>
 <li>You want to write flexible, reusable code</li>
@@ -422,7 +422,7 @@ func main() {
 </ol>
 <p>In a real-world scenario, these different payment methods would have very different implementations (connecting to different APIs, handling different types of errors, etc.), but the rest of our code can treat them uniformly.</p>
 <p>Does this help illustrate the power and usefulness of interfaces? The key is that they allow you to write more flexible and maintainable code by focusing on what types can do, rather than what they are.</p>
-<h2 id="excellent-question-lets-rewrite-the-payment-system-example-without-using-interfaces-to-illustrate-the-differences-and-potential-problems-heres-how-it-might-look">Excellent question. Let's rewrite the payment system example without using interfaces to illustrate the differences and potential problems. Here's how it might look:</h2>
+<h2 id="excellent-question-lets-rewrite-the-payment-system-example-without-using-interfaces-to-illustrate-the-differences-and-potential-problems-heres-how-it-might-look">Excellent question. Let's rewrite the payment system example without using interfaces to illustrate the differences and potential problems. Here's how it might look:<a class="headerlink" href="#excellent-question-lets-rewrite-the-payment-system-example-without-using-interfaces-to-illustrate-the-differences-and-potential-problems-heres-how-it-might-look" title="Permanent link">&para;</a></h2>
 <pre class="codehilite"><code class="language-go">type CreditCard struct {
     Number string
     CVV    string

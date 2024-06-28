@@ -266,7 +266,7 @@
               
                 <p>The <code>context</code> package in Go is used to carry deadlines, cancellation signals, and other request-scoped values across API boundaries and between processes. Understanding and using the <code>context</code> package effectively is essential for writing reliable and maintainable concurrent code in Go.  </p>
 <p>Here's an overview of the <code>context</code> package following the 80-20 principle, where 20% of the concepts you learn will cover 80% of your use cases:  </p>
-<h3 id="core-concepts">Core Concepts</h3>
+<h3 id="core-concepts">Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Context Types</strong>:  </li>
 <li><code>context.Background()</code>: The root context, which is never canceled and has no values or deadlines. It is typically used in main functions, initialization, and tests.  </li>
@@ -281,7 +281,7 @@
 <li><code>context.WithTimeout(parent Context, timeout time.Duration)</code>: Similar to <code>WithDeadline</code> but specifies a duration after which to cancel, starting from now.  </li>
 <li><code>context.WithValue(parent Context, key, val interface{})</code>: Creates a context that carries a key-value pair. It's used to pass request-scoped data.  </li>
 </ol>
-<h3 id="common-scenarios">Common Scenarios</h3>
+<h3 id="common-scenarios">Common Scenarios<a class="headerlink" href="#common-scenarios" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p><strong>Timeouts</strong>: Use <code>context.WithTimeout</code> to prevent your application from hanging indefinitely. For example, set a timeout on HTTP requests or database calls.  </p>
@@ -296,14 +296,14 @@
 <p><strong>Deadlines</strong>: Use <code>context.WithDeadline</code> when you have a fixed point in time by which the work must be completed, such as a timestamp indicating when a reservation expires.  </p>
 </li>
 </ol>
-<h3 id="best-practices">Best Practices</h3>
+<h3 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Always pass context as the first parameter of a function.  </li>
 <li>Contexts should not be stored in structures; they should be passed along the call stack.  </li>
 <li>Values stored in context with <code>context.WithValue</code> should be used sparingly and only for data that is truly request-scoped.  </li>
 <li>Avoid using <code>context.TODO()</code> as a long-term solution; it's intended as a temporary placeholder.  </li>
 </ul>
-<h3 id="example-usage">Example Usage</h3>
+<h3 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h3>
 <p>Here's an example of how you might use a context with a timeout in a hypothetical function that makes an HTTP request:  </p>
 <pre class="codehilite"><code class="language-go">package main  
 
@@ -341,7 +341,7 @@ func main() {
 </code></pre>
 
 <p>In this example, <code>fetchWithTimeout</code> will cancel the HTTP request if it takes longer than 2 seconds. This is a common pattern to prevent your application from hanging indefinitely if an external resource is slow or unresponsive.  </p>
-<h3 id="advanced-usage">Advanced Usage</h3>
+<h3 id="advanced-usage">Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permanent link">&para;</a></h3>
 <p>Sometimes, you'll want to combine contexts or react to their cancellation. Here's a more advanced example that demonstrates waiting for multiple contexts to be done using <code>select</code>:  </p>
 <pre class="codehilite"><code class="language-go">package main  
 
@@ -390,9 +390,9 @@ func main() {
 </code></pre>
 
 <p>In this example, <code>operation1</code> and <code>operation2</code> are simulated operations that will complete after a certain amount of time or when the context is cancelled, whichever comes first. The main function creates a context with a 1-second timeout and launches both operations with this context. When the timeout is reached, the context's <code>Done</code> channel is closed, and the operations are cancelled if they haven't completed yet. The main function then prints the reason for the cancellation, which would be a deadline exceeded error in this case.  </p>
-<h3 id="understanding-cancellation">Understanding Cancellation</h3>
+<h3 id="understanding-cancellation">Understanding Cancellation<a class="headerlink" href="#understanding-cancellation" title="Permanent link">&para;</a></h3>
 <p>It's important to understand that cancelling a context does not stop the goroutines that are running; it merely signals them to stop. It's up to the goroutine to respect the context's <code>Done</code> channel and cease operations in a timely manner. This means you must always check for context cancellation in any potentially long-running or blocking operations.  </p>
-<h3 id="context-in-real-world-applications">Context in Real-world Applications</h3>
+<h3 id="context-in-real-world-applications">Context in Real-world Applications<a class="headerlink" href="#context-in-real-world-applications" title="Permanent link">&para;</a></h3>
 <p>In real-world applications, context is often used to manage cancellation and timeouts across API boundaries, such as:  </p>
 <ul>
 <li>In HTTP servers, to handle request cancellation and set request deadlines.  </li>

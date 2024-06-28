@@ -265,9 +265,9 @@
             <div class="section" itemprop="articleBody">
               
                 <p>Sure! Pointers and dereferencing are fundamental concepts in programming, especially in languages like Go, C, and C++. Let's go through a detailed explanation with examples.</p>
-<h3 id="what-is-a-pointer">What is a Pointer?</h3>
+<h3 id="what-is-a-pointer">What is a Pointer?<a class="headerlink" href="#what-is-a-pointer" title="Permanent link">&para;</a></h3>
 <p>A pointer is a variable that holds the memory address of another variable. Instead of storing a data value directly, a pointer stores the address where the value is located.</p>
-<h3 id="declaration-of-a-pointer">Declaration of a Pointer</h3>
+<h3 id="declaration-of-a-pointer">Declaration of a Pointer<a class="headerlink" href="#declaration-of-a-pointer" title="Permanent link">&para;</a></h3>
 <p>In Go, you declare a pointer by using the <code>*</code> operator. Here's a basic example:</p>
 <pre class="codehilite"><code class="language-go">package main
 
@@ -288,7 +288,7 @@ func main() {
 }
 </code></pre>
 
-<h3 id="explanation">Explanation:</h3>
+<h3 id="explanation">Explanation:<a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>var x int = 10</code>: Declare an integer variable <code>x</code> with a value of 10.</li>
 <li><code>var p *int</code>: Declare a pointer variable <code>p</code> that can hold the address of an integer.</li>
@@ -298,7 +298,7 @@ func main() {
 <li><code>fmt.Println("Value of p (address of x):", p)</code>: Prints the value of <code>p</code>, which is the address of <code>x</code>.</li>
 <li><code>fmt.Println("Value at the address stored in p:", *p)</code>: The <code>*</code> operator is used to dereference the pointer <code>p</code>. It gives the value stored at the address held by <code>p</code>, which is 10.</li>
 </ul>
-<h3 id="pointers-with-functions">Pointers with Functions</h3>
+<h3 id="pointers-with-functions">Pointers with Functions<a class="headerlink" href="#pointers-with-functions" title="Permanent link">&para;</a></h3>
 <p>Using pointers with functions allows you to modify the original value of a variable from within the function. Here's an example to illustrate this:</p>
 <pre class="codehilite"><code class="language-go">package main
 
@@ -318,13 +318,13 @@ func changeValue(p *int) {
 }
 </code></pre>
 
-<h3 id="explanation_1">Explanation:</h3>
+<h3 id="explanation_1">Explanation:<a class="headerlink" href="#explanation_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>changeValue(&amp;x)</code>: Passes the address of <code>x</code> to the <code>changeValue</code> function.</li>
 <li><code>func changeValue(p *int)</code>: The function takes a pointer to an integer as a parameter.</li>
 <li><code>*p = 20</code>: Dereferences the pointer <code>p</code> and changes the value at the address <code>p</code> points to. This effectively changes the value of <code>x</code> to 20.</li>
 </ul>
-<h3 id="practical-example-swapping-values">Practical Example: Swapping Values</h3>
+<h3 id="practical-example-swapping-values">Practical Example: Swapping Values<a class="headerlink" href="#practical-example-swapping-values" title="Permanent link">&para;</a></h3>
 <p>A practical example of using pointers is to swap the values of two variables:</p>
 <pre class="codehilite"><code class="language-go">package main
 
@@ -347,7 +347,7 @@ func swap(x, y *int) {
 }
 </code></pre>
 
-<h3 id="explanation_2">Explanation:</h3>
+<h3 id="explanation_2">Explanation:<a class="headerlink" href="#explanation_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>swap(&amp;a, &amp;b)</code>: Passes the addresses of <code>a</code> and <code>b</code> to the <code>swap</code> function.</li>
 <li><code>func swap(x, y *int)</code>: The function takes two pointers to integers as parameters.</li>
@@ -355,7 +355,7 @@ func swap(x, y *int) {
 <li><code>*x = *y</code>: Dereferences <code>y</code> to get the value of <code>b</code> and assigns it to <code>a</code>.</li>
 <li><code>*y = temp</code>: Assigns the value of <code>temp</code> (original value of <code>a</code>) to <code>b</code>.</li>
 </ul>
-<h3 id="summary">Summary:</h3>
+<h3 id="summary">Summary:<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Pointer (<code>*int</code>)</strong>: A variable that holds the memory address of an integer.</li>
 <li><strong>Address-of (<code>&amp;x</code>)</strong>: Operator to get the address of variable <code>x</code>.</li>
