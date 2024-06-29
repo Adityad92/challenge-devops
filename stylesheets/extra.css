@@ -1,0 +1,134 @@
+.classification {
+    background-color: #5b616b;
+    border-radius: 2px;
+    color: #fff;
+    margin-right: 0.25rem;
+    padding: 0.1rem 0.5rem;
+    text-transform: uppercase;
+}
+.requirement {
+    background-color: #cd2026;
+}
+.standard {
+    background-color: #f9c642; color: black;
+}
+.default {
+    background-color: #2e8540;
+}
+a[target="_blank"] {
+    background: url(/images/baseline_launch_black_18dp.png);
+    min-height: 20px;
+    padding-right: 16px;
+    background-position: right top;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}
+.md-header__topic {
+    font-family: 'Courier New', monospace;
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+.md-header__topic::before {
+    content: "<";
+    margin-right: 0.10em;
+}
+.md-header__topic::after {
+    content: "/>";
+    margin-left: 0.10em;
+}
+.md-tabs__link {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: .9rem;
+}
+.md-tabs__link--active {
+    color: #f4e6b3;
+    font-size: 1rem;
+    border-bottom: 2px solid #f4e6b3;
+}
+img.doc-logo {
+    width: 6em;
+    margin: 0;
+    padding: 0;
+}
+div.summary-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+div.summary-logo {
+    min-width: 7em;
+}
+div.summary-description {
+}
+[data-md-color-scheme="cargill-light"] {
+    --md-primary-fg-color:        #4d9fa7;
+    --md-primary-fg-color--light: #80bbc0;
+    --md-primary-fg-color--dark:  #007681;
+}
+[data-md-color-scheme="slate"] {
+    --md-admonition-fg-color: var(--md-default-fg-color);
+}
+
+[data-md-color-accent="cgl-lightblue"] {
+    --md-accent-fg-color: #52ada1;
+    --md-accent-fg-color--transparent: rgba(141, 231, 240, 0.1);
+    --md-accent-bg-color: rgba(0, 0, 0, 0.87);
+    --md-accent-bg-color--light: rgba(0, 0, 0, 0.54);
+}
+[data-md-color-primary="cgl-lightblue"] {
+    --md-primary-fg-color: #007681;
+    --md-primary-fg-color--light: #66adb3;
+    --md-primary-fg-color--dark: #004e55;
+    --md-primary-bg-color: #fff;
+    --md-primary-bg-color--light: hsla(0, 0%, 100%, 0.7);
+}
+
+[data-md-color-accent="cgl-black"] {
+    --md-accent-fg-color: #cacc5b;
+    --md-accent-fg-color--transparent: rgba(255, 110, 66, 0.1);
+    --md-accent-bg-color: #fff;
+    --md-accent-bg-color--light: hsla(0, 0%, 100%, 0.7);
+}
+[data-md-color-primary="cgl-black"] {
+    --md-primary-fg-color: #000;
+    --md-primary-fg-color--light: rgba(0, 0, 0, 0.54);
+    --md-primary-fg-color--dark: #000;
+    --md-primary-bg-color: #fff;
+    --md-primary-bg-color--light: hsla(0, 0%, 100%, 0.7);
+    --md-typeset-a-color: rgb(171 173 37);
+}
+@media screen and (min-width: 60em) {
+    [data-md-color-primary="cgl-black"] .md-search__form {
+        background-color: hsla(0, 0%, 100%, 0.12);
+    }
+    [data-md-color-primary="cgl-black"] .md-search__form:hover {
+        background-color: hsla(0, 0%, 100%, 0.3);
+    }
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+    font-size: 0.75rem;
+}
+.md-typeset table:not([class]) {
+    font-size: .75rem;
+}
+
+:root {
+    --md-admonition-icon--calendar: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg>')
+}
+.md-typeset .admonition.calendar,
+.md-typeset details.calendar {
+    border-color: rgb(43, 155, 70);
+}
+.md-typeset .calendar > .admonition-title,
+.md-typeset .calendar > summary {
+    background-color: rgba(43, 155, 70, 0.1);
+}
+.md-typeset .calendar > .admonition-title::before,
+.md-typeset .calendar > summary::before {
+    background-color: rgb(43, 155, 70);
+    -webkit-mask-image: var(--md-admonition-icon--calendar);
+    mask-image: var(--md-admonition-icon--calendar);
+}
