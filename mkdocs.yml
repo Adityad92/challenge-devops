@@ -62,7 +62,6 @@ nav:
   #   - loops: rendering/concept.md
   #   - variables: rendering/concept.md
   # - Kubernetes:
-  # - Proxy:
   - Networking:
       - learning:
         - networking/learning/networking-overview.md
@@ -116,7 +115,6 @@ nav:
       - golang/learning/strconv.md
       - golang/learning/context.md
       - golang/learning/strings.md
-
     - projects:
       - golang/projects/1-Simple-CLI-Tool.md
       - golang/projects/2-Web-Server-with-Basic-API.md
@@ -145,5 +143,17 @@ nav:
       - bash/projects/4-Web-Log-Analyzer.md
       - bash/projects/5-Task-Scheduler.md
       - bash/projects/6-color-print-message.md
+  - miscellaneous:
+      - misc/CSP.md
+      - misc/CORS.md
+      - misc/Authentication-Authorization.md
+      - misc/Encryption-Cryptography.md
+      - misc/SSL-TLS.md
+      - misc/HTTP-Security-Headers.md
+      - misc/okta.md
+      - misc/OWASP.md
+      - misc/Session-Management.md
+      - misc/API-Security.md
+      
   # - Monitoring:
   # - Logging:
