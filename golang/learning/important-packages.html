@@ -2616,10 +2616,10 @@
 
 <p>Certainly! The 80-20 principle suggests that we should focus on the most valuable 20% of something that gives us 80% of the results. With that in mind, I'll explain the most important and commonly used features of the packages you've listed:  </p>
 <ol>
-<li><code>fmt</code>:  </li>
-<li><strong>Primary Use</strong>: Printing formatted output and reading input.  </li>
 <li>
-<p><strong>Key Functions</strong>:  </p>
+<p><code>fmt</code>:<br />
+<strong>Primary Use</strong>: Printing formatted output and reading input.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
 <li><code>fmt.Println()</code>: Print with a newline.  </li>
 <li><code>fmt.Printf()</code>: Print formatted strings, using verbs like <code>%s</code> for strings, <code>%d</code> for integers, etc.  </li>
@@ -2629,22 +2629,18 @@
 </ul>
 </li>
 <li>
-<p><code>log</code>:  </p>
-</li>
-<li><strong>Primary Use</strong>: Logging with timestamps and configurable output destinations.  </li>
-<li>
-<p><strong>Key Functions</strong>:  </p>
+<p><code>log</code>:<br />
+<strong>Primary Use</strong>: Logging with timestamps and configurable output destinations.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
 <li><code>log.Println()</code>: Log a message with a timestamp.  </li>
 <li><code>log.Fatal()</code>: Log a message and then call <code>os.Exit(1)</code>.  </li>
 </ul>
 </li>
 <li>
-<p><code>os</code>:  </p>
-</li>
-<li><strong>Primary Use</strong>: Interacting with operating system functionality.  </li>
-<li>
-<p><strong>Key Functions</strong>:  </p>
+<p><code>os</code>:<br />
+<strong>Primary Use</strong>: Interacting with operating system functionality.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
 <li><code>os.Open()</code>: Open a file.  </li>
 <li><code>os.Getenv()</code>: Get an environment variable.  </li>
@@ -2656,33 +2652,27 @@
 </ul>
 </li>
 <li>
-<p><code>os/exec</code>:  </p>
-</li>
-<li><strong>Primary Use</strong>: Executing external commands.  </li>
-<li>
-<p><strong>Key Functions</strong>:  </p>
+<p><code>os/exec</code>:<br />
+<strong>Primary Use</strong>: Executing external commands.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
 <li><code>exec.Command()</code>: Create a new command.  </li>
 <li><code>cmd.Run()</code>: Run the command and wait for it to finish.  </li>
 </ul>
 </li>
 <li>
-<p><code>path/filepath</code>:  </p>
-</li>
-<li><strong>Primary Use</strong>: Manipulating file paths in a way compatible with the operating system.  </li>
-<li>
-<p><strong>Key Functions</strong>:  </p>
+<p><code>path/filepath</code>:<br />
+<strong>Primary Use</strong>: Manipulating file paths in a way compatible with the operating system.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
 <li><code>filepath.Abs()</code>: Get the absolute path.  </li>
 <li><code>filepath.Join()</code>: Join path elements into a single path.  </li>
 </ul>
 </li>
 <li>
-<p><code>encoding/json</code>:  </p>
-</li>
-<li><strong>Primary Use</strong>: Encoding and decoding JSON data.  </li>
-<li>
-<p><strong>Key Functions</strong>:  </p>
+<p><code>encoding/json</code>:<br />
+<strong>Primary Use</strong>: Encoding and decoding JSON data.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
 <li><code>json.Marshal()</code>: Convert a Go struct or map into JSON.  </li>
 <li><code>json.Unmarshal()</code>: Parse JSON into a Go struct or map. </li>
@@ -2691,11 +2681,9 @@
 </ul>
 </li>
 <li>
-<p><code>net/http</code>:  </p>
-</li>
-<li><strong>Primary Use</strong>: Building HTTP clients and servers.  </li>
-<li>
-<p><strong>Key Functions</strong>:  </p>
+<p><code>net/http</code>:<br />
+<strong>Primary Use</strong>: Building HTTP clients and servers.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
 <li><code>http.ListenAndServe()</code>: Start an HTTP server.  </li>
 <li><code>http.Get()</code>: Make a GET request.</li>
@@ -2704,50 +2692,46 @@
 </ul>
 </li>
 <li>
-<p><code>strconv</code>:  </p>
-</li>
-<li><strong>Primary Use</strong>: Converting between strings and other types.  </li>
-<li>
-<p><strong>Key Functions</strong>:  </p>
+<p><code>strconv</code>:<br />
+<strong>Primary Use</strong>: Converting between strings and other types.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
 <li><code>strconv.Atoi()</code>: Convert a string to an int.  </li>
 <li><code>strconv.Itoa()</code>: Convert an int to a string.  </li>
 </ul>
 </li>
 <li>
-<p><code>sync</code>:  </p>
-</li>
-<li><strong>Primary Use</strong>: Synchronization primitives like mutexes and wait groups.  </li>
-<li>
-<p><strong>Key Functions</strong>:  </p>
+<p><code>sync</code>:<br />
+<strong>Primary Use</strong>: Synchronization primitives like mutexes and wait groups.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
 <li><code>sync.Mutex</code>: A mutual exclusion lock.  </li>
 <li><code>sync.WaitGroup</code>: Wait for a collection of goroutines to finish.  </li>
 </ul>
 </li>
 <li>
-<p><code>context</code>:  </p>
+<p><code>context</code>:<br />
+<strong>Primary Use</strong>: Passing request-scoped values, cancelation signals, and deadlines across API boundaries.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
-<li><strong>Primary Use</strong>: Passing request-scoped values, cancelation signals, and deadlines across API boundaries.  </li>
-<li><strong>Key Functions</strong>:  </li>
 <li><code>context.Background()</code>: Returns an empty context, typically used at the start of a request.  </li>
 <li><code>context.WithCancel()</code>: Creates a context that can be canceled.  </li>
 </ul>
 </li>
 <li>
-<p><code>time</code>:  </p>
+<p><code>time</code>:<br />
+<strong>Primary Use</strong>: Measuring and displaying time.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
-<li><strong>Primary Use</strong>: Measuring and displaying time.  </li>
-<li><strong>Key Functions</strong>:  </li>
 <li><code>time.Now()</code>: Get the current time.  </li>
 <li><code>time.Sleep()</code>: Pause for a duration.  </li>
 </ul>
 </li>
 <li>
-<p><code>encoding/csv</code>:  </p>
+<p><code>encoding/csv</code>:<br />
+<strong>Primary Use</strong>: Reading and writing CSV files.<br />
+<strong>Key Functions</strong>:  </p>
 <ul>
-<li><strong>Primary Use</strong>: Reading and writing CSV files.  </li>
-<li><strong>Key Functions</strong>:  </li>
 <li><code>csv.NewReader()</code>: Create a new CSV reader.  </li>
 <li><code>csv.NewWriter()</code>: Create a new CSV writer.</li>
 <li><code>csv.Reader.Read()</code>: Read a single record from CSV.</li>

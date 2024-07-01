@@ -2124,6 +2124,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#this-is-a-bash-shell-parameter-expansion-used-to-extract-a-substring-from-the-variable-vela_build_tag-lets-break-it-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      This is a Bash shell parameter expansion used to extract a substring from the variable VELA_BUILD_TAG. Let's break it down:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-is-a-bash-operator-used-for-removing-a-prefix-pattern-it-works-from-right-to-left-removing-the-longest-matching-pattern-from-the-beginning-of-the-variables-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      : This is a Bash operator used for removing a prefix pattern. It works from right to left, removing the longest matching pattern from the beginning of the variable's value.
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2676,6 +2694,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#this-is-a-bash-shell-parameter-expansion-used-to-extract-a-substring-from-the-variable-vela_build_tag-lets-break-it-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      This is a Bash shell parameter expansion used to extract a substring from the variable VELA_BUILD_TAG. Let's break it down:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-is-a-bash-operator-used-for-removing-a-prefix-pattern-it-works-from-right-to-left-removing-the-longest-matching-pattern-from-the-beginning-of-the-variables-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      : This is a Bash operator used for removing a prefix pattern. It works from right to left, removing the longest matching pattern from the beginning of the variable's value.
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2789,6 +2825,17 @@ sleep<span class="w"> </span><span class="m">10</span><span class="w"> </span><s
 <div class="highlight"><pre><span></span><code>./script.sh<span class="w"> </span>arg1<span class="w"> </span>arg2
 </code></pre></div>
 <p>You would see output corresponding to the special variables based on the provided arguments and the script’s execution context.</p>
+<h3 id="this-is-a-bash-shell-parameter-expansion-used-to-extract-a-substring-from-the-variable-vela_build_tag-lets-break-it-down">This is a Bash shell parameter expansion used to extract a substring from the variable VELA_BUILD_TAG. Let's break it down:<a class="headerlink" href="#this-is-a-bash-shell-parameter-expansion-used-to-extract-a-substring-from-the-variable-vela_build_tag-lets-break-it-down" title="Permanent link">&para;</a></h3>
+<p>${VELA_BUILD_TAG}: This refers to the variable VELA_BUILD_TAG. It's likely this variable holds a string representing a build tag, potentially including a version prefix like "v".</p>
+<h2 id="this-is-a-bash-operator-used-for-removing-a-prefix-pattern-it-works-from-right-to-left-removing-the-longest-matching-pattern-from-the-beginning-of-the-variables-value">: This is a Bash operator used for removing a prefix pattern. It works from right to left, removing the longest matching pattern from the beginning of the variable's value.<a class="headerlink" href="#this-is-a-bash-operator-used-for-removing-a-prefix-pattern-it-works-from-right-to-left-removing-the-longest-matching-pattern-from-the-beginning-of-the-variables-value" title="Permanent link">&para;</a></h2>
+<p>v: This is the pattern being removed. In this case, it's the letter "v".
+In essence, the expression ${VELA_BUILD_TAG##v} removes the shortest prefix "v" from the value of VELA_BUILD_TAG.</p>
+<p>Example:</p>
+<p>If VELA_BUILD_TAG is set to "v1.2.3", then:</p>
+<p>${VELA_BUILD_TAG##v} 
+will evaluate to "1.2.3".</p>
+<p>Purpose:</p>
+<p>This parameter expansion is commonly used to extract the actual version number from a build tag that includes a version prefix. It allows you to work with just the version information without the leading "v".</p>
 
 
 
