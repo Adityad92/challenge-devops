@@ -70,6 +70,7 @@ nav:
   - Proxies:
       - learning:
         - proxies/learning/overview.md
+        - proxies/learning/openresty.md
       - projects:
         - proxies/projects/1-nginx-reverse-proxy.md
         - proxies/projects/2-nginx-load-balancing.md
