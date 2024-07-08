@@ -53,7 +53,17 @@ nav:
   #   - functions: rendering/concept.md
   #   - loops: rendering/concept.md
   #   - variables: rendering/concept.md
-  # - Kubernetes:
+  - Kubernetes:
+      - learning:
+        - kubernetes/learning/kubernetes.md
+        - kubernetes/learning/ingress-controller.md
+        - kubernetes/learning/deployment.md
+        - kubernetes/learning/service.md
+        - kubernetes/learning/networking.md
+        - kubernetes/learning/ingress.md
+        - kubernetes/learning/configmap-secret.md
+        - kubernetes/learning/volumes.md
+        - kubernetes/learning/scheduling.md
   - Networking:
       - learning:
         - networking/learning/networking-overview.md
