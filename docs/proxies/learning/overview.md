@@ -44,6 +44,8 @@ A proxy server acts as an intermediary between clients (users or applications) a
    - **Scenario**: Intercepting and logging network traffic for analysis, troubleshooting, and compliance auditing.
    - **Proxy Type**: Transparent Proxy (e.g., Fiddler, Charles Proxy).
 
+
+
 ### Key Benefits of Using Proxies
 
 - **Security**: Proxies can enforce access control policies, filter malicious content, and provide an additional layer of defense against cyber threats.
@@ -66,3 +68,26 @@ If you're new to DevOps and want to start working with proxies, here are some st
 5. **Integration with DevOps Pipelines**: Explore how proxies can be integrated into your CI/CD pipelines or infrastructure automation tools (e.g., Ansible, Terraform) to automate deployment and configuration tasks.
 
 By familiarizing yourself with proxies and their role in networking and DevOps, you can enhance security, improve performance, and streamline management of your infrastructure and applications.
+
+
+### Loadbalancing types
+
+Nginx, a popular web server and reverse proxy, can also be used as a load balancer to distribute traffic among multiple backend servers. This helps to increase the capacity and reliability of applications by ensuring that no single server bears too much load. Nginx supports several load balancing methods:  
+   
+1. **Round Robin** – This is the default load balancing method. Requests are distributed in a cyclic fashion among the backend servers. If the servers are of equal specification, Round Robin is straightforward and effective.  
+   
+2. **Least Connections** – The request is sent to the server with the fewest active connections. This method is more adaptive than Round Robin, as it takes into consideration the current load on each server.  
+   
+3. **IP Hash** – The client's IP address is used to determine which server receives the request. This method ensures that a client will consistently connect to the same server, which can be important for session persistence.  
+   
+4. **Weighted** – With Round Robin and Least Connections methods, you can assign weights to backend servers. Servers with higher weights will receive a larger share of the requests. This is useful when the servers have different capacities.  
+   
+5. **Generic Hash** – A hash of a specific variable is used for determining the distribution of requests. This variable could be a text string, or a combination of text and client variables, giving you flexibility in how requests are routed.  
+   
+6. **Least Time** (available in Nginx Plus) – Sends requests to the server with the least average response time and least number of active connections. This combines two metrics to make a more informed decision.  
+   
+7. **Random with Two Choices** (available in Nginx Plus) – Picks two servers randomly and then applies the Least Connections method to select the final server. This can often result in a distribution that's almost as good as Least Connections but with less overhead.  
+   
+Nginx Plus, the commercial version of Nginx, offers additional advanced load balancing features such as session persistence (sticky sessions), health checks, live activity monitoring, and more.   
+  
+When configuring load balancing with Nginx, it's also important to set up proper health checks to ensure that traffic is not sent to unhealthy or unresponsive servers. Nginx Plus offers enhanced health check options, but even with the open-source version of Nginx, you can script health checks and use the results to add or remove servers from the load balancing pool.

@@ -8,13 +8,6 @@ copyright: 'Challenge DevOps Team'
 site_author: 'Challenge DevOps Team'
 site_description: 'Challenge DevOps Documentation'
 use_directory_urls: false
-# markdown_extensions:
-#   - admonition
-#   - codehilite
-#   - attr_list
-#   - md_in_html
-# plugins:
-#     - search
 markdown_extensions:
   - abbr
   - admonition
@@ -41,7 +34,6 @@ markdown_extensions:
       permalink: true
 plugins:
   - search
-  # - mermaid2
 extra_css:
   - stylesheets/extra.css
 nav:
@@ -79,7 +71,11 @@ nav:
       - learning:
         - proxies/learning/overview.md
       - projects:
-        - proxies/projects/1-Reverse-Proxy-Server-Nginx.md
+        - proxies/projects/1-nginx-reverse-proxy.md
+        - proxies/projects/2-nginx-load-balancing.md
+        - proxies/projects/3-multiple-web-server.md
+        - proxies/projects/4-redirect.md
+        - proxies/projects/5-rewrite.md
   - Ansible:
     - learning:
       - ansible/learning/1-overview.md
@@ -109,6 +105,7 @@ nav:
       - golang/learning/yaml.md
       - golang/learning/os-package.md
       - golang/learning/os-exec.md
+      - golang/learning/defer.md
       - golang/learning/path-filepath.md
       - golang/learning/encoding-json.md
       - golang/learning/net-http.md

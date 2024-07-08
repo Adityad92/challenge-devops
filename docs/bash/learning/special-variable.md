@@ -73,3 +73,23 @@ If you run this script with some arguments, for example:
 ```
 
 You would see output corresponding to the special variables based on the provided arguments and the script’s execution context.
+
+
+### This is a Bash shell parameter expansion used to extract a substring from the variable VELA_BUILD_TAG. Let's break it down:
+
+${VELA_BUILD_TAG}: This refers to the variable VELA_BUILD_TAG. It's likely this variable holds a string representing a build tag, potentially including a version prefix like "v".
+##: This is a Bash operator used for removing a prefix pattern. It works from right to left, removing the longest matching pattern from the beginning of the variable's value.
+v: This is the pattern being removed. In this case, it's the letter "v".
+In essence, the expression ${VELA_BUILD_TAG##v} removes the shortest prefix "v" from the value of VELA_BUILD_TAG.
+
+Example:
+
+If VELA_BUILD_TAG is set to "v1.2.3", then:
+
+
+${VELA_BUILD_TAG##v} 
+will evaluate to "1.2.3".
+
+Purpose:
+
+This parameter expansion is commonly used to extract the actual version number from a build tag that includes a version prefix. It allows you to work with just the version information without the leading "v".

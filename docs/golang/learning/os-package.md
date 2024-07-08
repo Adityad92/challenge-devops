@@ -1,43 +1,49 @@
 The `os` package in Go provides a platform-independent interface to operating system functionality. The 80-20 principle applied to the `os` package suggests that we focus on the most commonly used functions that provide the majority of practical utility. Here are key functions and scenarios where you might use them:  
    
 1. **File Operations**:  
-   - `os.Create(name string) (*os.File, error)`: Creates a new file or truncates an existing one. It's commonly used when you need to write to a new file.  
-   - `os.Open(name string) (*os.File, error)`: Opens a file in read-only mode. Use this when you need to read from a file.  
-   - `os.OpenFile(name string, flag int, perm FileMode) (*os.File, error)`: Opens a file with specified flags (e.g., read/write, append mode) and permissions.  
-   - `os.ReadFile(name string) ([]byte, error)`: Reads the entire contents of a file into a byte slice. It's a convenient way to read small files.  
-   - `os.WriteFile(name string, data []byte, perm FileMode) error`: Writes data to a file with the specified permissions. Like `ReadFile`, it's convenient for small files.  
+      - `os.Create(name string) (*os.File, error)`: Creates a new file or truncates an existing one. It's commonly used when you need to write to a new file.  
+      - `os.Open(name string) (*os.File, error)`: Opens a file in read-only mode. Use this when you need to read from a file.  
+      - `os.OpenFile(name string, flag int, perm FileMode) (*os.File, error)`: Opens a file with specified flags (e.g., read/write, append mode) and permissions.  
+      - `os.ReadFile(name string) ([]byte, error)`: Reads the entire contents of a file into a byte slice. It's a convenient way to read small files.  
+      - `os.WriteFile(name string, data []byte, perm FileMode) error`: Writes data to a file with the specified permissions. Like `ReadFile`, it's convenient for small files.  
    
 2. **File and Directory Information**:  
-   - `os.Stat(name string) (FileInfo, error)`: Returns a `FileInfo` object which provides information about a file.  
-   - `os.IsNotExist(err error) bool`: Checks if an error is due to a file not existing.  
+      - `os.Stat(name string) (FileInfo, error)`: Returns a `FileInfo` object which provides information about a file.  
+      - `os.IsNotExist(err error) bool`: Checks if an error is due to a file not existing.  
    
 3. **Environment Variables**:  
-   - `os.Getenv(key string) string`: Retrieves the value of an environment variable.  
-   - `os.Setenv(key, value string) error`: Sets the value of an environment variable.  
-   - `os.LookupEnv(key string) (string, bool)`: Looks up an environment variable and reports whether it was found.  
-   - `os.Environ() []string`: Returns a copy of strings representing the environment, in the form "key=value".  
+      - `os.Getenv(key string) string`: Retrieves the value of an environment variable.  
+      - `os.Setenv(key, value string) error`: Sets the value of an environment variable.  
+      - `os.LookupEnv(key string) (string, bool)`: Looks up an environment variable and reports whether it was found.  
+      - `os.Environ() []string`: Returns a copy of strings representing the environment, in the form "key=value".  
    
 4. **Process Management**:  
-   - `os.Exit(code int)`: Exits the current program with the given status code. It's commonly used to terminate the program after an error or when a CLI tool has finished execution.  
-   - `os.Getpid() int`: Returns the process ID of the caller.  
-   - `os.Getppid() int`: Returns the process ID of the caller's parent.  
+      - `os.Exit(code int)`: Exits the current program with the given status code. It's commonly used to terminate the program after an error or when a CLI tool has finished execution.  
+      - `os.Getpid() int`: Returns the process ID of the caller.  
+      - `os.Getppid() int`: Returns the process ID of the caller's parent.  
    
 5. **Working Directory**:  
-   - `os.Getwd() (dir string, err error)`: Returns a string containing the current working directory.  
-   - `os.Chdir(dir string) error`: Changes the current working directory.  
-   
+      - `os.Getwd() (dir string, err error)`: Returns a string containing the current working directory.  
+      - `os.Chdir(dir string) error`: Changes the current working directory. 
+      
 6. **File Manipulation**:  
-   - `os.Remove(name string) error`: Removes a file or empty directory.  
-   - `os.RemoveAll(path string) error`: Removes a file or directory and any children it contains.  
-   - `os.Rename(oldpath, newpath string) error`: Renames (moves) a file.  
+      - `os.Remove(name string) error`: Removes a file or empty directory.  
+      - `os.RemoveAll(path string) error`: Removes a file or directory and any children it contains.  
+      - `os.Rename(oldpath, newpath string) error`: Renames (moves) a file.  
    
 7. **File Permissions**:  
-   - `os.Chmod(name string, mode FileMode) error`: Changes the mode of the file to the specified mode.  
-   - `os.Chown(name string, uid, gid int) error`: Changes the numeric uid and gid of the named file.  
+      - `os.Chmod(name string, mode FileMode) error`: Changes the mode of the file to the specified mode.  
+      - `os.Chown(name string, uid, gid int) error`: Changes the numeric uid and gid of the named file.  
    
 8. **File Handling**:  
-   - `os.File`: Represents an open file descriptor. It has methods for I/O operations (`Read`, `Write`, `Close`, etc.).  
-   
+      - `os.File`: Represents an open file descriptor. It has methods for I/O operations (`Read`, `Write`, `Close`, etc.).  
+
+9. **Directory Operations**:
+      - `os.Mkdir(name string, perm FileMode) error`: Creates a directory.
+      - `os.MkdirAll(path string, perm FileMode) error`: Creates a directory and all necessary parents.
+      - `os.Remove(name string) error`: Removes a file or empty directory.
+      - `os.RemoveAll(path string) error`: Removes a file or directory and its contents. 
+
 **Scenarios**:  
    
 - **Reading and Writing Files**: You're writing a program that needs to read configuration from a file and write logs. You'd use `os.Open` to read the config and `os.Create` along with `os.File.Write` to write logs.
