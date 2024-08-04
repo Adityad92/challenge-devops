@@ -107,6 +107,9 @@ nav:
       - golang/learning/struct.md
       - golang/learning/interface.md
       - golang/learning/interface-ex-2.md
+      - golang/learning/pointers.md
+      - golang/learning/goroutines.md
+      - golang/learning/channels.md
       - golang/learning/file-operations.md
       - golang/learning/complex-struct.md
       - golang/learning/database-struct.md

@@ -10,8 +10,10 @@ mkdocs gh-deploy -->
 <!-- https://medium.com/norsys-octogone/using-mkdocs-to-create-your-documentation-48f503219bc4 -->
 
 <!-- docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material build -->
+<!-- podman run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material build -->
 
 <!-- docker run --rm -it -v ~/.ssh:/root/.ssh -v ${PWD}:/docs squidfunk/mkdocs-material gh-deploy -->
+<!-- podman run --rm -it -v ~/.ssh:/root/.ssh -v ${PWD}:/docs squidfunk/mkdocs-material gh-deploy -->
 
 <!-- docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material -->
 <!-- podman run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material -->
