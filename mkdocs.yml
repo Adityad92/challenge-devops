@@ -101,7 +101,11 @@ nav:
   - Golang:
     - learning:
       - golang/learning/important-packages.md
+      - golang/learning/data_types.md
       - golang/learning/func-breakdown.md
+      - golang/learning/switch_case.md
+      - golang/learning/anonymous_functions.md
+      - golang/learning/variadic_functions.md
       - golang/learning/pointers-dereferencing.md
       - golang/learning/methods.md
       - golang/learning/struct.md
@@ -110,15 +114,18 @@ nav:
       - golang/learning/pointers.md
       - golang/learning/goroutines.md
       - golang/learning/channels.md
+      - golang/learning/break_continue.md
       - golang/learning/file-operations.md
       - golang/learning/complex-struct.md
       - golang/learning/database-struct.md
       - golang/learning/db-connection.md
       - golang/learning/db-crud.md
+      - golang/learning/make.md
       - golang/learning/json.md
       - golang/learning/yaml.md
       - golang/learning/os-package.md
       - golang/learning/os-exec.md
+      - golang/learning/io_package.md
       - golang/learning/defer.md
       - golang/learning/path-filepath.md
       - golang/learning/encoding-json.md
@@ -126,6 +133,9 @@ nav:
       - golang/learning/strconv.md
       - golang/learning/context.md
       - golang/learning/strings.md
+      - golang/learning/time.md
+      - golang/learning/goto_labels.md
+      - golang/learning/error_handling.md
     - projects:
       - golang/projects/1-Simple-CLI-Tool.md
       - golang/projects/2-Web-Server-with-Basic-API.md
