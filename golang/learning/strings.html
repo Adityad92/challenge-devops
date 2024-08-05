@@ -16,7 +16,7 @@
         <link rel="prev" href="context.html">
       
       
-        <link rel="next" href="../projects/1-Simple-CLI-Tool.html">
+        <link rel="next" href="time.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -1642,11 +1642,95 @@
   
   
     <li class="md-nav__item">
+      <a href="data_types.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="func-breakdown.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Func breakdown
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="switch_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Switch case
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="anonymous_functions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anonymous functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="variadic_functions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Variadic functions
   </span>
   
 
@@ -1831,6 +1915,27 @@
   
   
     <li class="md-nav__item">
+      <a href="break_continue.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Break continue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="file-operations.html" class="md-nav__link">
         
   
@@ -1936,6 +2041,27 @@
   
   
     <li class="md-nav__item">
+      <a href="make.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Make
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="json.html" class="md-nav__link">
         
   
@@ -2004,6 +2130,27 @@
   
   <span class="md-ellipsis">
     Os exec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="io_package.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Io package
   </span>
   
 
@@ -2265,6 +2412,69 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="time.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="goto_labels.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Goto labels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="error_handling.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Error handling
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3397,6 +3607,78 @@ In this example, <code>range</code> iterates over the string by runes, not bytes
 <h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
 <p>Using the <code>strings</code> package functions is generally efficient for typical use cases. However, when working with very large strings or in performance-critical code, it is wise to be mindful of memory allocations. The <code>strings.Builder</code> type is particularly useful in such scenarios, as it minimizes memory copying and allocations.  </p>
 <p>By understanding and utilizing these functions and best practices, you can handle most string manipulation tasks in Go effectively. Remember, the <code>strings</code> package functions are safe for use with UTF-8 encoded strings, which is the default string encoding in Go.</p>
+<hr />
+<p>You're on the right track for efficient string concatenation in Go! While Go doesn't have a dedicated <code>StringBuilder</code> class like some other languages, the <code>strings.Builder</code> type is the Go way to achieve the same performance benefits.</p>
+<p><strong>Why <code>strings.Builder</code>?</strong></p>
+<p>In Go, strings are immutable. This means that every time you concatenate strings using the <code>+</code> operator, a new string object is created. For frequent concatenations (especially within loops), this can lead to significant performance overhead.</p>
+<p><code>strings.Builder</code> provides a mutable buffer to build strings efficiently. You append data to the buffer, and only when you're finished do you convert it to a string, minimizing allocations.</p>
+<p><strong>Example and Usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">        </span><span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">builder</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Builder</span>
+
+<span class="w">        </span><span class="c1">// Append data to the builder</span>
+<span class="w">        </span><span class="nx">builder</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">builder</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">builder</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">builder</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;!&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">// Efficiently convert to a string</span>
+<span class="w">        </span><span class="nx">finalString</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">builder</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">finalString</span><span class="p">)</span><span class="w"> </span><span class="c1">// Output: Hello, world!</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Key Methods:</strong></p>
+<ul>
+<li><code>WriteString(s string)</code>: Appends a string to the builder.</li>
+<li><code>WriteRune(r rune)</code>: Appends a single Unicode code point (rune).</li>
+<li><code>WriteByte(c byte)</code>: Appends a single byte.</li>
+<li><code>Len() int</code>: Returns the number of bytes in the builder's buffer.</li>
+<li><code>Cap() int</code>: Returns the capacity of the builder's buffer.</li>
+<li><code>Reset()</code>: Clears the builder's buffer, making it empty.</li>
+<li><code>String() string</code>: Converts the builder's buffer contents to a string.</li>
+</ul>
+<p><strong>When to Use <code>strings.Builder</code>:</strong></p>
+<ul>
+<li><strong>Looping and Concatenation:</strong> When building strings iteratively, especially in loops.</li>
+<li><strong>Performance-Critical Code:</strong> When string concatenation is a bottleneck in your application's performance.</li>
+</ul>
+<p><strong>Example (Looping with <code>strings.Builder</code>):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">        </span><span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">builder</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Builder</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">builder</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;Number: &quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="nx">builder</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span><span class="w"> </span><span class="c1">// Convert int to string</span>
+<span class="w">                </span><span class="nx">builder</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">builder</span><span class="p">.</span><span class="nx">String</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code>Number: 1
+Number: 2
+Number: 3
+Number: 4
+Number: 5
+</code></pre></div>
+<p>By using <code>strings.Builder</code>, you avoid creating multiple intermediate strings within the loop, significantly improving performance.</p>
+<p>Let me know if you have any more questions or would like to explore other string manipulation techniques in Go!</p>
 
 
 
