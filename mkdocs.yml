@@ -53,6 +53,8 @@ nav:
   #   - functions: rendering/concept.md
   #   - loops: rendering/concept.md
   #   - variables: rendering/concept.md
+  - Certificates:
+      - certificates/SSL.md
   - Kubernetes:
       - learning:
         - kubernetes/learning/kubernetes.md
